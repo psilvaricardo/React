@@ -3,6 +3,16 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  // we should use 'state' if we need to manage some 
+  // component internal data
+  state = {
+    persons: [
+      { name: 'Paul', age: 28 },
+      { name: 'Mike', age: 40 },
+      { name: 'John', age: 57 }
+    ]
+  }
+
   // react will call this method to render something to the DOM.
   render() {
 
@@ -11,9 +21,10 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!!</p>
-        <Person name="Paul" age="28" />
-        <Person name="Mike" age="40" >My Hobbies: Racing</Person>
-        <Person name="John" age="57" />
+        <button>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Racing</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
       </div>
     );
     
