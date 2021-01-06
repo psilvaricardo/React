@@ -14,7 +14,20 @@ class App extends Component {
   }
 
   switchNameHandler = () => {
-    console.log('name handler was clicked..!!');
+    // console.log('name handler was clicked..!!');
+    // DON'T DO THIS: this.state.persons[0].name = 'Richard';
+    
+    // Since we extend from Component, this allow us to ensure 
+    // React gets to know about this update and updates the DOM.
+    // setState takes an Object as an argument and it will merge 
+    // whatever we define here  with our existing 'state'
+    this.setState( { 
+      persons: [
+        { name: 'Paul Walker', age: 28 },
+        { name: 'Mike', age: 40 },
+        { name: 'John', age: 47 }
+      ]
+    } )
   }
 
   // react will call this method to render something to the DOM.
