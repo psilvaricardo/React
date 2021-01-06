@@ -10,7 +10,7 @@ import React from 'react';
 // As a best practice, we will use ES6:
 
 const person = () => {
-    return <p>I'm a Person</p>
+    return <p>I'm a Person and I'm {Math.floor(Math.random()*30)} years old</p>
 }
 
 export default person;
