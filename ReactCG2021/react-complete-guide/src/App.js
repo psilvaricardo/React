@@ -13,7 +13,7 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('name handler was clicked..!!');
     // DON'T DO THIS: this.state.persons[0].name = 'Richard';
     
@@ -23,7 +23,7 @@ class App extends Component {
     // whatever we define here  with our existing 'state'
     this.setState( { 
       persons: [
-        { name: 'Paul Walker', age: 28 },
+        { name: newName, age: 28 },
         { name: 'Mike', age: 40 },
         { name: 'John', age: 47 }
       ]
@@ -38,10 +38,24 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <button
+        // Passing method references between components.
+        // Be aware that this way can be inefficient due to performance.
+        onClick={() => this.switchNameHandler('Paul Walker')}>
+          Switch Name</button>
+        <Person 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age} />
+        <Person 
+        name={this.state.persons[1].name} 
+        age={this.state.persons[1].age}
+        // Passing method references between components. 
+        // We SHOULD use 'bind' for performance reasons, React can't re-render 
+        // certain things in your app too often, 
+        click={this.switchNameHandler.bind(this, 'Paul W.')} >My Hobbies: Racing</Person>
+        <Person 
+        name={this.state.persons[2].name} 
+        age={this.state.persons[2].age} />
       </div>
     );
     
