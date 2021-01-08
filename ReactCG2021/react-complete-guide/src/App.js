@@ -44,12 +44,22 @@ class App extends Component {
   // react will call this method to render something to the DOM.
   render() {
 
+    // inline styles, CSS properties on its JS representation.
+    // this way could be bit limited, but it is scoped-style.
+    const btnStyle = {
+      backgroundColor: 'white',
+      font: 'inerhit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!!</p>
-        <button
+        <button style={btnStyle}
         // Passing method references between components.
         // Be aware that this way can be inefficient due to performance.
         onClick={() => this.switchNameHandler('Paul Walker')}>
