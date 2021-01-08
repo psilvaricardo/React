@@ -30,6 +30,17 @@ class App extends Component {
     } )
   }
 
+  // Adding Two-way binding
+  nameChangedHandler = (event) => {
+    this.setState( { 
+      persons: [
+        { name: 'Paul', age: 28 },
+        { name: event.target.value, age: 40 },
+        { name: 'John', age: 47 }
+      ]
+    } )
+  }
+
   // react will call this method to render something to the DOM.
   render() {
 
@@ -52,7 +63,9 @@ class App extends Component {
         // Passing method references between components. 
         // We SHOULD use 'bind' for performance reasons, React can't re-render 
         // certain things in your app too often, 
-        click={this.switchNameHandler.bind(this, 'Paul W.')} >My Hobbies: Racing</Person>
+        click={this.switchNameHandler.bind(this, 'Paul W.')}
+        // Passing method reference for two-way binding.
+        changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
         <Person 
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age} />
