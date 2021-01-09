@@ -26,7 +26,8 @@ class App extends Component {
         { name: newName, age: 28 },
         { name: 'Mike', age: 40 },
         { name: 'John', age: 47 }
-      ]
+      ],
+      showPersons: false
     } )
   }
 
@@ -39,6 +40,14 @@ class App extends Component {
         { name: 'John', age: 47 }
       ]
     } )
+  }
+
+  togglePersonsHandler = () => {
+    // this is either true or false
+    const doesShow = this.state.showPersons;
+    // remember, this is not overriding the hole state
+    // it will merge the new value for showPersons with the existing state.
+    this.setState( { showPersons: !doesShow } );
   }
 
   // react will call this method to render something to the DOM.
@@ -62,23 +71,32 @@ class App extends Component {
         <button style={btnStyle}
         // Passing method references between components.
         // Be aware that this way can be inefficient due to performance.
-        onClick={() => this.switchNameHandler('Paul Walker')}>
-          Switch Name</button>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age} />
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        // Passing method references between components. 
-        // We SHOULD use 'bind' for performance reasons, React can't re-render 
-        // certain things in your app too often, 
-        click={this.switchNameHandler.bind(this, 'Paul W.')}
-        // Passing method reference for two-way binding.
-        changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age} />
+        onClick={this.togglePersonsHandler}> Switch Name</button>
+
+        { 
+        // Rendering content conditionally, at the end, we are working with JSX:
+        // the <div> element is on the 'true' part of the ternary expression
+        this.state.showPersons ? 
+          <div>
+            <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age} />
+            <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            // Passing method references between components. 
+            // We SHOULD use 'bind' for performance reasons, React can't re-render 
+            // certain things in your app too often, 
+            click={this.switchNameHandler.bind(this, 'Paul W.')}
+            // Passing method reference for two-way binding.
+            changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
+            <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age} />
+          </div>
+          : null // else, render 'nothing' if false.
+        }
+
       </div>
     );
     
