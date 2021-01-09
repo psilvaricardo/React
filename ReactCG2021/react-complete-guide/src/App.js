@@ -68,21 +68,22 @@ class App extends Component {
     if ( this.state.showPersons ){
       persons = (
         <div>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age} />
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        // Passing method references between components. 
-        // We SHOULD use 'bind' for performance reasons, React can't re-render 
-        // certain things in your app too often, 
-        click={this.switchNameHandler.bind(this, 'Paul W.')}
-        // Passing method reference for two-way binding.
-        changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age} />
+          {
+            // In React, everything is JavaScript, so we need to convert the JS array
+            // to valid JSX with the 'map' function, we are creating an anonymous function
+            // that will be executed on every element of the given array, this is ES6
+            // arrow function I pass to the map, you should return what you want to map
+            // this item into, our goal is to return valid JSX code.
+
+            this.state.persons.map(
+              personItem => {
+                return <Person 
+                          name={personItem.name}
+                          age={personItem.age} />
+              }
+            )
+          }
+          
       </div>
       );
     }
