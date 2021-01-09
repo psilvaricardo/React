@@ -63,6 +63,31 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    // Handling dynamic content "the JS way" or more efficient way!!
+    let persons = null;
+    if ( this.state.showPersons ){
+      persons = (
+        <div>
+        <Person 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age} />
+        <Person 
+        name={this.state.persons[1].name} 
+        age={this.state.persons[1].age}
+        // Passing method references between components. 
+        // We SHOULD use 'bind' for performance reasons, React can't re-render 
+        // certain things in your app too often, 
+        click={this.switchNameHandler.bind(this, 'Paul W.')}
+        // Passing method reference for two-way binding.
+        changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
+        <Person 
+        name={this.state.persons[2].name} 
+        age={this.state.persons[2].age} />
+      </div>
+      );
+    }
+
+
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
       <div className="App">
@@ -73,29 +98,7 @@ class App extends Component {
         // Be aware that this way can be inefficient due to performance.
         onClick={this.togglePersonsHandler}> Switch Name</button>
 
-        { 
-        // Rendering content conditionally, at the end, we are working with JSX:
-        // the <div> element is on the 'true' part of the ternary expression
-        this.state.showPersons ? 
-          <div>
-            <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} />
-            <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            // Passing method references between components. 
-            // We SHOULD use 'bind' for performance reasons, React can't re-render 
-            // certain things in your app too often, 
-            click={this.switchNameHandler.bind(this, 'Paul W.')}
-            // Passing method reference for two-way binding.
-            changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
-            <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age} />
-          </div>
-          : null // else, render 'nothing' if false.
-        }
+        {persons}
 
       </div>
     );
