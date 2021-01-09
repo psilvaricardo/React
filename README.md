@@ -20,3 +20,10 @@ The following page gives a good overview over the various methods you can use on
 - slice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 - splice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
+## Useful Resources & Links
+
+- create-react-app: https://github.com/facebookincubator/create-react-app
+- Introducing JSX: https://reactjs.org/docs/introducing-jsx.html
+- Rendering Elements: https://reactjs.org/docs/rendering-elements.html
+- Components & Props: https://reactjs.org/docs/components-and-props.html
+- Listenable Events: https://reactjs.org/docs/events.html
