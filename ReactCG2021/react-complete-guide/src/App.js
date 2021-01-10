@@ -7,14 +7,20 @@ class App extends Component {
   // component internal data.
   state = {
     persons: [
-      { name: 'Paul', age: 28 },
-      { name: 'Mike', age: 40 },
-      { name: 'John', age: 57 }
+      // id can be anything as long as it is unique..!!
+      { id: 'KHJSD', name: 'Paul', age: 28 },
+      { id: 'ASDSA', name: 'Mike', age: 40 },
+      { id: 'EWQFS', name: 'John', age: 57 }
     ]
   }
 
   // Adding Two-way binding
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+    const updatedPerson = this.state.persons.find();
+    
+
+
+
     this.setState( { 
       persons: [
         { name: 'Paul', age: 28 },
@@ -80,9 +86,11 @@ class App extends Component {
             this.state.persons.map(
               (personItem, index) => {
                 return <Person 
+                          key={personItem.id}
                           name={personItem.name}
                           age={personItem.age} 
-                          click={() => this.deletePersonHandler(index)}/>
+                          click={() => this.deletePersonHandler(index)}
+                          changed={(event) => this.nameChangedHandler(event, personItem.id)} />
               }
             )
           }
