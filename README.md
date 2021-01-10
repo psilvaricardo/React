@@ -27,3 +27,5 @@ The following page gives a good overview over the various methods you can use on
 - Rendering Elements: https://reactjs.org/docs/rendering-elements.html
 - Components & Props: https://reactjs.org/docs/components-and-props.html
 - Listenable Events: https://reactjs.org/docs/events.html
+- Conditional Rendering: https://reactjs.org/docs/conditional-rendering.html
+- Lists & Keys: https://reactjs.org/docs/lists-and-keys.html
