@@ -3,7 +3,7 @@
 Here are some projects related to ReactJS, some of them are from the Udemy's 2021 versions.
 
 * `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development.
-* `react-complete-guide` This project is part of section 3 and is being used to understand the base features and syntax of React.
+* `react-complete-guide` This project is part of sections 3, 4 and is being used to understand the base features and syntax of React.
 
 # JS Array Functions
 
@@ -26,3 +26,5 @@ The following page gives a good overview over the various methods you can use on
 - Rendering Elements: https://reactjs.org/docs/rendering-elements.html
 - Components & Props: https://reactjs.org/docs/components-and-props.html
 - Listenable Events: https://reactjs.org/docs/events.html
+- Conditional Rendering: https://reactjs.org/docs/conditional-rendering.html
+- Lists & Keys: https://reactjs.org/docs/lists-and-keys.html
