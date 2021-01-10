@@ -16,18 +16,31 @@ class App extends Component {
 
   // Adding Two-way binding
   nameChangedHandler = (event, id) => {
-    const updatedPerson = this.state.persons.find();
-    
+    // we want to update the name but of course ONLY for the
+    // person into which input field we typed so we need to find it.
+    const personIndex = 
+      this.state.persons.findIndex(
+        // this anonymus function is executed for every element on the array.
+        p => {
+          // Is this the element I was looking for or not ??
+          return p.id === id;
+        }
+      );
 
+      // later, I can get the person from the state, of course, let's make a copy,
+      // IT'S A GOOD PRACTICE TO NOT MUTATE THE STATE DIRECTLY, let's create a new
+      // JS object and then use the spread operator in front of the object I'm fetching:
+      const personFound = {
+        ...this.state.persons[personIndex]
+      }
 
+      // I want to update the person's name:
+      personFound.name = event.target.value;
+      // and always working with copies:
+      const updatedPersonsArr = [...this.state.persons];
+      updatedPersonsArr[personIndex] = personFound;
 
-    this.setState( { 
-      persons: [
-        { name: 'Paul', age: 28 },
-        { name: event.target.value, age: 40 },
-        { name: 'John', age: 47 }
-      ]
-    } )
+    this.setState( { persons: updatedPersonsArr } )
   }
 
   togglePersonsHandler = () => {
