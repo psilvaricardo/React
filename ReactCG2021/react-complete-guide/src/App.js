@@ -13,24 +13,6 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = (newName) => {
-    // console.log('name handler was clicked..!!');
-    // DON'T DO THIS: this.state.persons[0].name = 'Richard';
-    
-    // Since we extend from Component, this allow us to ensure 
-    // React gets to know about this update and updates the DOM.
-    // setState takes an Object as an argument and it will merge 
-    // whatever we define here  with our existing 'state'
-    this.setState( { 
-      persons: [
-        { name: newName, age: 28 },
-        { name: 'Mike', age: 40 },
-        { name: 'John', age: 47 }
-      ],
-      showPersons: false
-    } )
-  }
-
   // Adding Two-way binding
   nameChangedHandler = (event) => {
     this.setState( { 
@@ -48,6 +30,26 @@ class App extends Component {
     // remember, this is not overriding the hole state
     // it will merge the new value for showPersons with the existing state.
     this.setState( { showPersons: !doesShow } );
+  }
+
+  deletePersonHandler = (personIndex) => {
+
+    // In JS, objects and arrays are referenced types, so when I got persons from 
+    // my current state, I got a pointer to the 'original' persons object managed 
+    // by React, by 'splicing' the array below, I already mutated the original data, 
+    // and while it works without throwing an error, it might lead to unpredictable 
+    // errors on your app and BAD PRACTICE, DO NOT DO THE BELOW:
+
+        // const updatedPersons = this.state.persons;
+        // updatedPersons.splice(personIndex,1);
+        // this.setState({ persons: updatedPersons});
+    
+    // A good practice is, first, let's create a COPY of the original persons array.
+    const updatedPersons = [...this.state.persons];
+    // remove one element at the given index
+    updatedPersons.splice(personIndex,1);
+    // and update the state with the updated array:
+    this.setState({ persons: updatedPersons});
   }
 
   // react will call this method to render something to the DOM.
@@ -76,10 +78,11 @@ class App extends Component {
             // this item into, our goal is to return valid JSX code.
 
             this.state.persons.map(
-              personItem => {
+              (personItem, index) => {
                 return <Person 
                           name={personItem.name}
-                          age={personItem.age} />
+                          age={personItem.age} 
+                          click={() => this.deletePersonHandler(index)}/>
               }
             )
           }
