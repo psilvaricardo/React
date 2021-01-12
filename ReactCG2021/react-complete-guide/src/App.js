@@ -116,12 +116,20 @@ class App extends Component {
       btnStyle.backgroundColor = 'red';
     }
 
+    // Setting css class names dynamically.
+    const cssClasses = [];
+    if (this.state.persons.length <= 2){
+      cssClasses.push('red'); // cssClasses = ['red']
+    }
+    if (this.state.persons.length <= 1){
+      cssClasses.push('bold'); // cssClasses = ['red','bold']
+    }
 
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!!</p>
+        <p className={cssClasses.join(' ')}>This is really working!!</p>
         <button style={btnStyle}
         // Passing method references between components.
         // Be aware that this way can be inefficient due to performance.
