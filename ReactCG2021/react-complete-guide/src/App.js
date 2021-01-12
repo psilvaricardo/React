@@ -77,7 +77,8 @@ class App extends Component {
     // inline styles, CSS properties on its JS representation.
     // this way could be bit limited, but it is scoped-style.
     const btnStyle = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inerhit',
       border: '1px solid blue',
       padding: '8px',
@@ -110,6 +111,9 @@ class App extends Component {
           
       </div>
       );
+
+      // Setting styles dynamically.
+      btnStyle.backgroundColor = 'red';
     }
 
 
