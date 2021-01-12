@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -82,7 +83,12 @@ class App extends Component {
       font: 'inerhit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      // now we can add any valid sudo selector
+      ':hover':{
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     // Handling dynamic content "the JS way" or more efficient way!!
@@ -114,6 +120,11 @@ class App extends Component {
 
       // Setting styles dynamically.
       btnStyle.backgroundColor = 'red';
+      btnStyle[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+
     }
 
     // Setting css class names dynamically.
@@ -145,4 +156,6 @@ class App extends Component {
   }
 }
 
-export default App;
+// Wrap pur app with Radium, this is just a higher order component
+// kind-of injecting some extra functionality
+export default Radium(App);

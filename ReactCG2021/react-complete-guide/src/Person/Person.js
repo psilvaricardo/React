@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import './Person.css'
 
 // Capital letter on the file name is just a React convention.
@@ -20,4 +21,7 @@ const person = (props) => {
     )
 }
 
-export default person;
+// Wrap pur app with Radium, this is just a higher order component
+// kind-of injecting some extra functionality
+export default Radium(person);
+
