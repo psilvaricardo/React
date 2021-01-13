@@ -30,11 +30,11 @@ const person = (props) => {
     // Using Radium for media queries if you want to scope it
     // or change something dynamically. Radium will parse this
     // JS property name.
-    const divstyle = {
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    }
+    // const divstyle = {
+    //     '@media (min-width: 500px)': {
+    //         width: '450px'
+    //     }
+    // }
 
 
     return (

@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 // import Radium , {StyleRoot} from 'radium';
+import styled from 'styled-components'
 import Person from './Person/Person';
+
+// // Setting styles dynamically with styled components:
+const StyledBtn = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green' };
+  color: white;
+  font: inerhit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen' };
+    color: black;
+  }
+`;
+
 
 class App extends Component {
   // we should use 'state' if we need to manage some 
@@ -77,19 +94,19 @@ class App extends Component {
 
     // inline styles, CSS properties on its JS representation.
     // this way could be bit limited, but it is scoped-style.
-    const btnStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inerhit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      // now we can add any valid sudo selector
-      ':hover':{
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
+    // const btnStyle = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inerhit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   // now we can add any valid sudo selector
+    //   ':hover':{
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black'
+    //   }
+    // }
 
     // Handling dynamic content "the JS way" or more efficient way!!
     let persons = null;
@@ -119,11 +136,12 @@ class App extends Component {
       );
 
       // Setting styles dynamically.
-      btnStyle.backgroundColor = 'red';
-      btnStyle[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // btnStyle.backgroundColor = 'red';
+      // btnStyle[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
+
 
     }
 
@@ -144,10 +162,11 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I'm a React App</h1>
           <p className={cssClasses.join(' ')}>This is really working!!</p>
-          <button style={btnStyle}
+          <StyledBtn alt={this.state.showPersons}
           // Passing method references between components.
           // Be aware that this way can be inefficient due to performance.
-          onClick={this.togglePersonsHandler}> Switch Name</button>
+          onClick={this.togglePersonsHandler}> Switch Name
+          </StyledBtn>
 
           {persons}
 
