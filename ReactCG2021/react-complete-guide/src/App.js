@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Radium , {StyleRoot} from 'radium';
-import styled from 'styled-components'
 import Person from './Person/Person';
-
-// // Setting styles dynamically with styled components:
-const StyledBtn = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green' };
-  color: white;
-  font: inerhit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-  
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen' };
-    color: black;
-  }
-`;
-
 
 class App extends Component {
   // we should use 'state' if we need to manage some 
@@ -92,22 +74,6 @@ class App extends Component {
   // react will call this method to render something to the DOM.
   render() {
 
-    // inline styles, CSS properties on its JS representation.
-    // this way could be bit limited, but it is scoped-style.
-    // const btnStyle = {
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   font: 'inerhit',
-    //   border: '1px solid blue',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   // now we can add any valid sudo selector
-    //   ':hover':{
-    //     backgroundColor: 'lightgreen',
-    //     color: 'black'
-    //   }
-    // }
-
     // Handling dynamic content "the JS way" or more efficient way!!
     let persons = null;
     if ( this.state.showPersons ){
@@ -135,14 +101,6 @@ class App extends Component {
       </div>
       );
 
-      // Setting styles dynamically.
-      // btnStyle.backgroundColor = 'red';
-      // btnStyle[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // }
-
-
     }
 
     // Setting css class names dynamically.
@@ -156,30 +114,22 @@ class App extends Component {
 
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
-      // To use plugins requiring media queries, keyframes, etc
-      // we need to wrap our application in the StyleRoot component:
-      //<StyleRoot>
+
         <div className="App">
           <h1>Hi, I'm a React App</h1>
           <p className={cssClasses.join(' ')}>This is really working!!</p>
-          <StyledBtn alt={this.state.showPersons}
+          <button className="button"
           // Passing method references between components.
           // Be aware that this way can be inefficient due to performance.
           onClick={this.togglePersonsHandler}> Switch Name
-          </StyledBtn>
+          </button>
 
           {persons}
 
         </div>
-      //</StyleRoot>
     );
     
-    // return React.createElement('div', {className: 'App'},
-    //   React.createElement('h1', null, 'Does this works now?')) 
   }
 }
 
-// Wrap pur app with Radium, this is just a higher order component
-// kind-of injecting some extra functionality
-// export default Radium(App);
 export default App;
