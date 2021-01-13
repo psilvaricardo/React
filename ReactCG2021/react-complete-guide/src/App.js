@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium , {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -138,17 +138,21 @@ class App extends Component {
 
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={cssClasses.join(' ')}>This is really working!!</p>
-        <button style={btnStyle}
-        // Passing method references between components.
-        // Be aware that this way can be inefficient due to performance.
-        onClick={this.togglePersonsHandler}> Switch Name</button>
+      // To use plugins requiring media queries, keyframes, etc
+      // we need to wrap our application in the StyleRoot component:
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={cssClasses.join(' ')}>This is really working!!</p>
+          <button style={btnStyle}
+          // Passing method references between components.
+          // Be aware that this way can be inefficient due to performance.
+          onClick={this.togglePersonsHandler}> Switch Name</button>
 
-        {persons}
+          {persons}
 
-      </div>
+        </div>
+      </StyleRoot>
     );
     
     // return React.createElement('div', {className: 'App'},

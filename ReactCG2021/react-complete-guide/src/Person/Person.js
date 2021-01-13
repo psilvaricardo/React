@@ -12,8 +12,18 @@ import './Person.css'
 // As a best practice, we will use ES6:
 
 const person = (props) => {
+    // Using Radium for media queries if you want to scope it
+    // or change something dynamically. Radium will parse this
+    // JS property name.
+    const divstyle = {
+        '@media (min-width: 500px)': {
+            width: '450px'
+        }
+    }
+
+
     return (
-        <div className="Person">
+        <div className="Person" style={divstyle}>
             <p onClick={props.click}>I'm {props.name} and I'm {props.age} years old</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name} />
