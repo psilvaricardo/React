@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -76,6 +76,8 @@ class App extends Component {
 
     // Handling dynamic content "the JS way" or more efficient way!!
     let persons = null;
+    let btnClass = '';
+
     if ( this.state.showPersons ){
       persons = (
         <div>
@@ -101,24 +103,26 @@ class App extends Component {
       </div>
       );
 
+      btnClass = classes.Red;
+
     }
 
     // Setting css class names dynamically.
     const cssClasses = [];
     if (this.state.persons.length <= 2){
-      cssClasses.push('red'); // cssClasses = ['red']
+      cssClasses.push(classes.red); // cssClasses = ['red']
     }
     if (this.state.persons.length <= 1){
-      cssClasses.push('bold'); // cssClasses = ['red','bold']
+      cssClasses.push(classes.bold); // cssClasses = ['red','bold']
     }
 
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
 
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
           <p className={cssClasses.join(' ')}>This is really working!!</p>
-          <button className="button"
+          <button className={btnClass}
           // Passing method references between components.
           // Be aware that this way can be inefficient due to performance.
           onClick={this.togglePersonsHandler}> Switch Name
