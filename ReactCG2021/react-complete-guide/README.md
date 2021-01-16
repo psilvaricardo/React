@@ -2,7 +2,7 @@
 
 Here are some projects related to ReactJS, some of them are from the Udemy's 2021 versions.
 
-* `react-complete-guide` This project is part of section 3 and is being used to understand the base features and syntax of React.
+* `react-complete-guide` This project is part of sections 3 to 7 and is being used to understand the base features and syntax of React.
 
 # JS Array Functions
 
@@ -27,3 +27,7 @@ The following page gives a good overview over the various methods you can use on
 - Listenable Events: https://reactjs.org/docs/events.html
 - Conditional Rendering: https://reactjs.org/docs/conditional-rendering.html
 - Lists & Keys: https://reactjs.org/docs/lists-and-keys.html
+- Using CSS Modules in create-react-app Projects: https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
+- More information about CSS Modules: https://github.com/css-modules/css-modules
+- Error Boundaries: https://reactjs.org/docs/error-boundaries.html
+- Chrome Devtool Debugging: https://developers.google.com/web/tools/chrome-devtools/javascript/
