@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   // we should use 'state' if we need to manage some 
@@ -90,12 +91,16 @@ class App extends Component {
 
             this.state.persons.map(
               (personItem, index) => {
-                return <Person 
-                          key={personItem.id}
-                          name={personItem.name}
-                          age={personItem.age} 
-                          click={() => this.deletePersonHandler(index)}
-                          changed={(event) => this.nameChangedHandler(event, personItem.id)} />
+                // Adding the wrapper and moving the key to the higher-order component
+                // with the goal of handling any errors that the child-component could 
+                // throw.
+                return <ErrorBoundary key={personItem.id}>
+                <Person // key={personItem.id}
+                    name={personItem.name}
+                    age={personItem.age} 
+                    click={() => this.deletePersonHandler(index)}
+                    changed={(event) => this.nameChangedHandler(event, personItem.id)} />
+                </ErrorBoundary>
               }
             )
           }

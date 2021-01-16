@@ -12,6 +12,16 @@ import classes from './Person.module.css'
 
 const person = (props) => {
 
+    // example of error handler
+    
+    // Uncomment THIS to activate the error boundery POC
+    /* const rnd = Math.random();
+    if (rnd > 0.8)
+    {
+        // we have 20% chance of getting an error for this POC.
+        throw new Error('Error handler example');
+    }*/
+
     return (
         // we can use this new StyleDiv as a regular react component:
         <div className={classes.Person}>
