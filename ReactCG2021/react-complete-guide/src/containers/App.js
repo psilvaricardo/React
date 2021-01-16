@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   // we should use 'state' if we need to manage some 
@@ -77,64 +77,28 @@ class App extends Component {
 
     // Handling dynamic content "the JS way" or more efficient way!!
     let persons = null;
-    let btnClass = '';
 
     if ( this.state.showPersons ){
-      persons = (
-        <div>
-          {
-            // In React, everything is JavaScript, so we need to convert the JS array
-            // to valid JSX with the 'map' function, we are creating an anonymous function
-            // that will be executed on every element of the given array, this is ES6
-            // arrow function I pass to the map, you should return what you want to map
-            // this item into, our goal is to return valid JSX code.
-
-            this.state.persons.map(
-              (personItem, index) => {
-                // Adding the wrapper and moving the key to the higher-order component
-                // with the goal of handling any errors that the child-component could 
-                // throw.
-                return <ErrorBoundary key={personItem.id}>
-                <Person // key={personItem.id}
-                    name={personItem.name}
-                    age={personItem.age} 
-                    click={() => this.deletePersonHandler(index)}
-                    changed={(event) => this.nameChangedHandler(event, personItem.id)} />
-                </ErrorBoundary>
-              }
-            )
-          }
-          
-      </div>
-      );
-
-      btnClass = classes.Red;
-
-    }
-
-    // Setting css class names dynamically.
-    const cssClasses = [];
-    if (this.state.persons.length <= 2){
-      cssClasses.push(classes.red); // cssClasses = ['red']
-    }
-    if (this.state.persons.length <= 1){
-      cssClasses.push(classes.bold); // cssClasses = ['red','bold']
+      // In React, everything is JavaScript, so we need to convert the JS array
+      // to valid JSX with the 'map' function, we are creating an anonymous function
+      // that will be executed on every element of the given array, this is ES6
+      // arrow function I pass to the map, you should return what you want to map
+      // this item into, our goal is to return valid JSX code.
+      persons = <Persons 
+              persons={this.state.persons} 
+              clicked={this.deletePersonHandler}
+              changed={this.nameChangedHandler} />;
     }
 
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
 
         <div className={classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={cssClasses.join(' ')}>This is really working!!</p>
-          <button className={btnClass}
-          // Passing method references between components.
-          // Be aware that this way can be inefficient due to performance.
-          onClick={this.togglePersonsHandler}> Switch Name
-          </button>
-
+          <Cockpit 
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            clicked={this.togglePersonsHandler} />
           {persons}
-
         </div>
     );
     
