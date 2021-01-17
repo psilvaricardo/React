@@ -26,4 +26,5 @@ Instructions:
 - More information about CSS Modules: https://github.com/css-modules/css-modules
 - Error Boundaries: https://reactjs.org/docs/error-boundaries.html
 - Chrome Devtool Debugging: https://developers.google.com/web/tools/chrome-devtools/javascript/
+- Reference vs Primitive types: https://academind.com/tutorials/reference-vs-primitive-values/
 
