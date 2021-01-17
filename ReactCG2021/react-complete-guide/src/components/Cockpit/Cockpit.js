@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.module.css';
 
 const cockpit = (props) => {
+
+    // Using Refs in functional components
+    const toggleBtnRef = useRef(null);
 
     // As a defaul, it takes a function that will be executed for 
     // every render cycle and when the component is created.
     useEffect(() => {
         console.log('[Cockpit.js] 1st useEffect');
         
-        setTimeout(() => {
-            alert('Saved data to cloud!')
-        }, 1000);
+        // this will simulate that we "click" the button just right after 
+        // the JSX code was parsed and rendered (meaning, the button exists).
+        toggleBtnRef.current.click();
 
         // Required when we need to do some CLEAN UP work...
         // if 'return' is present with no dependencies properties, meaning, 2nd argument = []
@@ -55,10 +58,12 @@ const cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
             <p className={cssClasses.join(' ')}>This is really working!!</p>
-            <button className={btnClass}
-            // Passing method references between components.
-            // Be aware that this way can be inefficient due to performance.
-            onClick={props.clicked}> Switch Name
+            <button 
+                ref={toggleBtnRef}
+                className={btnClass}
+                // Passing method references between components.
+                // Be aware that this way can be inefficient due to performance.
+                onClick={props.clicked}> Switch Name
             </button>
         </div>
     );
