@@ -87,7 +87,7 @@ shouldComponentUpdate(nextProps, nextState){
 
       // on a synchronous mode, this.state is NOT GUARANTEED to have the latest state.
       // when you need to update your state based on what we have on the previous state, 
-      // it is much better to update the state using an inner function in this way:
+      // it is THE BEST PRACTICE to update the state using an inner function in this way:
       this.setState( (prevState, props) =>{
         return { 
           persons: updatedPersonsArr,

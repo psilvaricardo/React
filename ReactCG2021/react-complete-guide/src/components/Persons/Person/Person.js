@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classes from './Person.module.css'
 import Aux from '../../../hoc/Aux'
 import divWithClass from '../../../hoc/divWithClass'
@@ -37,6 +38,17 @@ class Person extends Component {
             </Aux>
         );
     }
+}
+
+// after the component's definition we can tell everyone which props this component is using
+// and the type of data, so you setup key/value pairs inside the new PropTypes property below,
+// if you are writting a library that you plan to share with others, you should include this on
+// every component you have:
+Person.PropTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    click: PropTypes.func,
+    changed: PropTypes.func
 }
 
 export default divWithClass(Person, classes.Person);
