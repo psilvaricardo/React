@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component{
+// If you are going to check if your component has changed reviewing all its properties
+// you can use PureComponent which is already doing that comparison with a complete props check.
+class Persons extends PureComponent{
     //static getDerivedStateFromProps(props, state){
         // YOU MUST USE THIS METHOD VERY CAREFULLY
         // this method can be used to wheter to continue or not the render 
@@ -15,20 +17,22 @@ class Persons extends Component{
     //     return state;
     // }
 
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('[Persons.js] shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('[Persons.js] shouldComponentUpdate');
 
-        // some changes for optimization and performance.
-        // I will render ONLY if we have changes.
-        if (nextProps.persons !== this.props.persons){
-            return true; // it tells if react should continue updating.
-        }
-        else
-        {
-            // if the props.persons does NOT changed, there is no need to rerender.
-            return false; 
-        }
-    }
+    //     // some changes for optimization and performance.
+    //     // I will render ONLY if we have changes.
+    //     if (nextProps.persons !== this.props.persons ||
+    //         nextProps.changed !== this.props.changed || 
+    //         nextProps.clicked !== this.props.clicked ){
+    //         return true; // it tells if react should continue updating.
+    //     }
+    //     else
+    //     {
+    //         // if the props.persons does NOT changed, there is no need to rerender.
+    //         return false; 
+    //     }
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log('[Persons.js] getSnapshotBeforeUpdate');
