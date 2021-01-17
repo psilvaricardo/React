@@ -26,6 +26,14 @@ class App extends Component {
 
   // # 2. After the constructor, getDerivedStateFromProps is executed.
   static getDerivedStateFromProps(props, state){
+    // YOU MUST USE THIS METHOD VERY CAREFULLY
+    // this method can be used to wheter to continue or not the render 
+    // process for performace purposes. You can sync the state to your props.
+
+    // getDerivedStateFromProps(props, state) => shouldComponebtUpdate(nextProps, nextState)
+    // shouldComponebtUpdate(nextProps, nextState) => render() => Update Child component props
+    // => getSnapshotBeforeUpdate(prevProps, prevState) => componentDidUpdate()
+
     console.log('[App.js] getDerivedStateFromProps', props);
     return state;
   }
