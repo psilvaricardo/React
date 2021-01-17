@@ -30,6 +30,12 @@ class Persons extends Component{
         console.log(snapshot);
     }
 
+    // Required when we need to do some CLEAN UP work...
+    // it runs right before the component is REMOVED
+    componentWillUnmount(){
+        console.log('[Persons.js] componentWillUnmount');
+    }
+
     render(){
         console.log('[Persons.js] rendering...');
 
