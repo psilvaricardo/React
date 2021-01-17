@@ -14,6 +14,21 @@ import divWithClass from '../../../hoc/divWithClass'
 // As a best practice, we will use ES6:
 
 class Person extends Component {
+
+    // another way to use refs
+    constructor(props){
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
+
+    // this example will set the focus on the last input item on the screen
+    // we are using the ref to create a new proṕ and set it to the class.
+    componentDidMount()
+    {
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
+
     render(){
         console.log('[Person.js] rendering...');
 
@@ -30,11 +45,17 @@ class Person extends Component {
         return (
             // we can use this new StyleDiv as a regular react component:
             <Aux>
-                <p onClick={this.props.click}>
+                <p key="i1" onClick={this.props.click}>
                     I'm {this.props.name} and I'm {this.props.age} years old
                 </p>
-                <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
+                <p key="i2">{this.props.children}</p>
+                <input 
+                    key="i3" 
+                    // ref={(inputEl) => this.inputElement = inputEl }
+                    ref={this.inputElementRef}
+                    type="text" 
+                    onChange={this.props.changed} 
+                    value={this.props.name} />
             </Aux>
         );
     }
@@ -44,7 +65,7 @@ class Person extends Component {
 // and the type of data, so you setup key/value pairs inside the new PropTypes property below,
 // if you are writting a library that you plan to share with others, you should include this on
 // every component you have:
-Person.PropTypes = {
+Person.propTypes = {
     name: PropTypes.string,
     age: PropTypes.number,
     click: PropTypes.func,
