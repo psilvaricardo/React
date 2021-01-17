@@ -65,6 +65,8 @@ const cockpit = (props) => {
                 // Be aware that this way can be inefficient due to performance.
                 onClick={props.clicked}> Switch Name
             </button>
+
+            <button onClick={props.login}>Log in</button>
         </div>
     );
 }

@@ -45,6 +45,7 @@ class Person extends Component {
         return (
             // we can use this new StyleDiv as a regular react component:
             <Aux>
+                {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in</p> }
                 <p key="i1" onClick={this.props.click}>
                     I'm {this.props.name} and I'm {this.props.age} years old
                 </p>
