@@ -6,8 +6,10 @@ import React from 'react';
 // value you want and it also an anonymous function
 const authContext = 
     React.createContext(
-        {authenticated: false},
-        login: () => {}
+        {
+            authenticated: false,
+            login: () => {}
+        }
     );
 
 export default authContext;

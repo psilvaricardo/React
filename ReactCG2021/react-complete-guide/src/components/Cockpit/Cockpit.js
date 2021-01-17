@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.module.css';
 import AuthContext from '../../context/auth-context';
 
@@ -6,6 +6,10 @@ const cockpit = (props) => {
 
     // Using Refs in functional components
     const toggleBtnRef = useRef(null);
+
+    // a different way to access the AuthContext, with REACT HOOKS.
+    // this way of accessing the context can be used ONLY in functional-based componets.
+    const authContext = useContext(AuthContext);
 
     // As a defaul, it takes a function that will be executed for 
     // every render cycle and when the component is created.
@@ -66,10 +70,7 @@ const cockpit = (props) => {
                 // Be aware that this way can be inefficient due to performance.
                 onClick={props.clicked}> Switch Name
             </button>
-
-            <AuthContext.Consumer>
-                { (context) => <button onClick={context.login}>Log in</button> }
-            </AuthContext.Consumer>
+            <button onClick={authContext.login}>Log in</button>
         </div>
     );
 }

@@ -22,6 +22,11 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
 
+    // a different way to access the AuthContext
+    // if you do this, react will give you access to a new property: this.context
+    // this way of accessing the context can be used ONLY in class-based componets.
+    static contextType = AuthContext;
+
     // this example will set the focus on the last input item on the screen
     // we are using the ref to create a new proṕ and set it to the class.
     componentDidMount()
@@ -46,11 +51,7 @@ class Person extends Component {
         return (
             // we can use this new StyleDiv as a regular react component:
             <Aux>
-                <AuthContext.Consumer>
-                    { (context) =>
-                        context.authenticated ? <p>Authenticated</p> : <p>Please log in</p>
-                    }
-                </AuthContext.Consumer>
+                { this.context.authenticated ? (<p>Authenticated</p>) : (<p>Please log in</p>) }
                 <p key="i1" onClick={this.props.click}>
                     I'm {this.props.name} and I'm {this.props.age} years old
                 </p>
