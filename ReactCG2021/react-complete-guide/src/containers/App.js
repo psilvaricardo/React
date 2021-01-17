@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import DivWithClass from '../hoc/DivWithClass';
+import divWithClass from '../hoc/divWithClass';
+import Aux from '../hoc/Aux';
 class App extends Component {
 
 
@@ -137,7 +138,9 @@ shouldComponentUpdate(nextProps, nextState){
     // we are returning JSX, it seems to be HTML, but is NOT.
     return (
 
-        <DivWithClass cssClassName={classes.App}>
+        // Another form of HOC
+        //<DivWithClass cssClassName={classes.App}>
+        <Aux>
           <button onClick={() => 
             this.setState({showCockpit: false})
             }>Remove Cockpit</button>
@@ -151,10 +154,10 @@ shouldComponentUpdate(nextProps, nextState){
               clicked={this.togglePersonsHandler} /> ) : null 
           }  
           {persons}
-        </DivWithClass>
+        </Aux>
     );
     
   }
 }
 
-export default App;
+export default divWithClass(App, classes.App);
