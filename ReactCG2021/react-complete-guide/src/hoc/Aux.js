@@ -1,4 +1,4 @@
-// High order component that is an empty wrapper
+// This High Order Component (HOC) is an empty wrapper
 // It does exactly the same as React.Fragment
 // technically they are the same
 const aux = props => props.children;
