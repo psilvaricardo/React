@@ -24,7 +24,8 @@ class App extends Component {
       { id: 'EWQFS', name: 'John', age: 57 }
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   // # 2. After the constructor, getDerivedStateFromProps is executed.
@@ -84,7 +85,15 @@ shouldComponentUpdate(nextProps, nextState){
       const updatedPersonsArr = [...this.state.persons];
       updatedPersonsArr[personIndex] = personFound;
 
-    this.setState( { persons: updatedPersonsArr } )
+      // on a synchronous mode, this.state is NOT GUARANTEED to have the latest state.
+      // when you need to update your state based on what we have on the previous state, 
+      // it is much better to update the state using an inner function in this way:
+      this.setState( (prevState, props) =>{
+        return { 
+          persons: updatedPersonsArr,
+          changeCounter: prevState.changeCounter +1
+        };
+      });
   }
 
   togglePersonsHandler = () => {
