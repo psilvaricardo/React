@@ -4,6 +4,15 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+
+
+  // # 1. we add the constructor.
+  constructor(props){
+    super(props);
+    console.log('[App.js] constructor');
+    // the state could be initialized here with: this.state = {}
+  }
+
   // we should use 'state' if we need to manage some 
   // component internal data.
   state = {
@@ -13,6 +22,20 @@ class App extends Component {
       { id: 'ASDSA', name: 'Mike', age: 40 },
       { id: 'EWQFS', name: 'John', age: 57 }
     ]
+  }
+
+  // # 2. After the constructor, getDerivedStateFromProps is executed.
+  static getDerivedStateFromProps(props, state){
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  //componentWillMount(){
+  //  console.log('[App.js] componentWillMount IS deprecated...');
+  //}
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
   }
 
   // Adding Two-way binding
@@ -72,8 +95,10 @@ class App extends Component {
     this.setState({ persons: updatedPersons});
   }
 
+  // # 3. After getDerivedStateFromProps, the render method is executed.
   // react will call this method to render something to the DOM.
   render() {
+    console.log('[App.js] render');
 
     // Handling dynamic content "the JS way" or more efficient way!!
     let persons = null;

@@ -11,6 +11,7 @@ import classes from './Person.module.css'
 // As a best practice, we will use ES6:
 
 const person = (props) => {
+    console.log('[Person.js] rendering...');
 
     // example of error handler
     
