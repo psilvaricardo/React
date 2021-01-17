@@ -15,8 +15,8 @@ class Persons extends Component{
     //     return state;
     // }
 
-    shouldComponebtUpdate(nextProps, nextState){
-        console.log('[Persons.js] shouldComponebtUpdate', props);
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('[Persons.js] shouldComponentUpdate');
         return true; // if react should continue updating... 
     }
 

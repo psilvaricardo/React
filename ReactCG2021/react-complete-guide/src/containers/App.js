@@ -46,6 +46,15 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate');
+}
+
+shouldComponentUpdate(nextProps, nextState){
+  console.log('[App.js] shouldComponentUpdate');
+  return true; // if react should continue updating... 
+}
+
   // Adding Two-way binding
   nameChangedHandler = (event, id) => {
     // we want to update the name but of course ONLY for the
