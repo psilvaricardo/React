@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import classes from './Person.module.css'
 import Aux from '../../../hoc/Aux'
+import divWithClass from '../../../hoc/divWithClass'
 
 // Capital letter on the file name is just a React convention.
 
@@ -38,4 +39,4 @@ class Person extends Component {
     }
 }
 
-export default Person;
+export default divWithClass(Person, classes.Person);

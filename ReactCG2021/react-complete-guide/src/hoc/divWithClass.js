@@ -14,7 +14,7 @@ import React from 'react';
 const divWithClass = (WrappedComponent, cssClassName) => {
     return props => (
         <div className={cssClassName}>
-            <WrappedComponent />
+            <WrappedComponent {...props} />
         </div>
     );
 };
