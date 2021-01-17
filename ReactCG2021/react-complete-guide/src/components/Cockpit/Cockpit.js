@@ -44,10 +44,10 @@ const cockpit = (props) => {
     }
 
     // Setting css class names dynamically.
-    if (props.persons.length <= 2){
+    if (props.personsLength <= 2){
       cssClasses.push(classes.red); // cssClasses = ['red']
     }
-    if (props.persons.length <= 1){
+    if (props.personsLength <= 1){
       cssClasses.push(classes.bold); // cssClasses = ['red','bold']
     }
 
@@ -64,4 +64,8 @@ const cockpit = (props) => {
     );
 }
 
-export default cockpit;
+// this is roughtly equivalent to shouldcomponentUpdate
+// memo uses memoization, where React will store a snapshot of
+// this component and it will re-render only if its input changes,
+// hence, adding optimization for functional components.
+export default React.memo(cockpit);
