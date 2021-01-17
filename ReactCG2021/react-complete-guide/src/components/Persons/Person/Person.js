@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Person.module.css'
 
 // Capital letter on the file name is just a React convention.
@@ -10,27 +10,29 @@ import classes from './Person.module.css'
 // function, which in the end would result in the same.
 // As a best practice, we will use ES6:
 
-const person = (props) => {
-    console.log('[Person.js] rendering...');
+class Person extends Component {
+    render(){
+        console.log('[Person.js] rendering...');
 
-    // example of error handler
-    
-    // Uncomment THIS to activate the error boundery POC
-    /* const rnd = Math.random();
-    if (rnd > 0.8)
-    {
-        // we have 20% chance of getting an error for this POC.
-        throw new Error('Error handler example');
-    }*/
+        // example of error handler
 
-    return (
-        // we can use this new StyleDiv as a regular react component:
-        <div className={classes.Person}>
-            <p onClick={props.click}>I'm {props.name} and I'm {props.age} years old</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
+        // Uncomment THIS to activate the error boundery POC
+        /* const rnd = Math.random();
+        if (rnd > 0.8)
+        {
+            // we have 20% chance of getting an error for this POC.
+            throw new Error('Error handler example');
+        }*/
+
+        return (
+            // we can use this new StyleDiv as a regular react component:
+            <div className={classes.Person}>
+                <p onClick={this.props.click}>I'm {this.props.name} and I'm {this.props.age} years old</p>
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </div>
+        );
+    }
 }
 
-export default person;
+export default Person;
