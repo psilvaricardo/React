@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.module.css';
 
 const cockpit = (props) => {
+
+    // As a defaul, it takes a function that will be executed for 
+    // every render cycle and when the component is created.
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        // p.i. Http request...
+    })
 
     const cssClasses = [];
     let btnClass = '';
