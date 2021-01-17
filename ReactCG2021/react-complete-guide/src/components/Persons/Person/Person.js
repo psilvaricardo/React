@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './Person.module.css'
 import Aux from '../../../hoc/Aux'
 import divWithClass from '../../../hoc/divWithClass'
+import AuthContext from '../../../context/auth-context'
 
 // Capital letter on the file name is just a React convention.
 
@@ -45,7 +46,11 @@ class Person extends Component {
         return (
             // we can use this new StyleDiv as a regular react component:
             <Aux>
-                {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in</p> }
+                <AuthContext.Consumer>
+                    { (context) =>
+                        context.authenticated ? <p>Authenticated</p> : <p>Please log in</p>
+                    }
+                </AuthContext.Consumer>
                 <p key="i1" onClick={this.props.click}>
                     I'm {this.props.name} and I'm {this.props.age} years old
                 </p>

@@ -4,6 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import divWithClass from '../hoc/divWithClass';
 import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 class App extends Component {
 
 
@@ -163,16 +164,24 @@ shouldComponentUpdate(nextProps, nextState){
             this.setState({showCockpit: false})
             }>Remove Cockpit</button>
 
+          <AuthContext.Provider value={
+              {
+                authenticated: this.state.authenticated,
+                login: this.loginHandler
+              }
+            }>
           {
+            // AuthContext should wrap all the parts of your application 
+            // that need access to this context.
             this.state.showCockpit ? (
               <Cockpit 
               title={this.props.appTitle}
               showPersons={this.state.showPersons}
               personsLength={this.state.persons.length}
-              clicked={this.togglePersonsHandler}
-              login={this.loginHandler} /> ) : null 
+              clicked={this.togglePersonsHandler} /> ) : null 
           }  
           {persons}
+          </AuthContext.Provider>
         </Aux>
     );
     
