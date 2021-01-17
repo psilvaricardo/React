@@ -7,8 +7,13 @@ const cockpit = (props) => {
     // every render cycle and when the component is created.
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        // p.i. Http request...
-    })
+        
+        setTimeout(() => {
+            alert('Saved data to cloud!')
+        }, 1000);
+    // the 2nd argument will tell useEffect to execute ONLY when a property changed: [props.persons])
+    // this [] means you have no dependencies, it will run only the first time is rendered. 
+    }, [])
 
     const cssClasses = [];
     let btnClass = '';
