@@ -32,3 +32,4 @@ Instructions:
 - PropTypes: https://reactjs.org/docs/typechecking-with-proptypes.html
 - Higher Order Components: https://reactjs.org/docs/higher-order-components.html
 - Refs: https://reactjs.org/docs/refs-and-the-dom.html
+- Enabling CSS Modules: https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
