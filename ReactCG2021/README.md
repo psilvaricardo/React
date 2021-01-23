@@ -4,6 +4,8 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
 
 * `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development.
 * `react-complete-guide` This project is part of sections 3 to 7 and is being used to understand the base features and syntax of React.
+* `burger-builder-basic` This project is part of section 8 and it is the first 'real app' on its basic version to demostrate how to use all the features and syntax of React reviewed so far in this course.
+* `http-ajax-examples` This project is part of section 9 and it is an aplication on its basic version to demostrate how to use Axios and some of its features so you can reach out to the Web.
 
 # JS Array Functions
 
@@ -39,3 +41,7 @@ The following page gives a good overview over the various methods you can use on
 - Higher Order Components: https://reactjs.org/docs/higher-order-components.html
 - Refs: https://reactjs.org/docs/refs-and-the-dom.html
 - Enabling CSS Modules: https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
+
+## Reaching out to the Web from React (Http/Ajax)
+
+- Axios Docs: https://github.com/axios/axios

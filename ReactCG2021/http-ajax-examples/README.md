@@ -2,7 +2,7 @@
 
 Here are some projects related to ReactJS, some of them are from the Udemy's 2021 versions.
 
-* `burger-builder-basic` This project is part of section 8 and it is the first 'real app' on its basic version to demostrate how to use all the features and syntax of React reviewed so far in this course.
+* `http-ajax-examples` This project is part of section 9 and it is an aplication on its basic version to demostrate how to use Axios and some of its features so you can reach out to the Web.
 
 # JS Array Functions
 
