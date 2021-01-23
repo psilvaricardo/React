@@ -40,3 +40,8 @@ The following page gives a good overview over the various methods you can use on
 - Higher Order Components: https://reactjs.org/docs/higher-order-components.html
 - Refs: https://reactjs.org/docs/refs-and-the-dom.html
 - Enabling CSS Modules: https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
+
+## Reaching out to the Web from React (Http/Ajax)
+
+- Axios Docs: https://github.com/axios/axios
+- JSON Placeholder: https://jsonplaceholder.typicode.com/ is a free online REST API that you can use whenever you need some fake data. It can be in a README on GitHub, for a demo on CodeSandbox, in code examples on Stack Overflow,...or simply to test things locally.
