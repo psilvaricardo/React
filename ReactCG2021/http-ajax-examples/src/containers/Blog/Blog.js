@@ -15,13 +15,15 @@ class Blog extends Component {
     }
 
     componentDidMount () {
+        // get is an asynchronoous call
         axios.get( '/posts' )
+            // 'then' is simply a method that takes a function when the 'get' call resolves. 
             .then( response => {
                 const posts = response.data.slice(0, 4);
                 const updatedPosts = posts.map(post => {
                     return {
                         ...post,
-                        author: 'Max'
+                        author: 'Richard'
                     }
                 });
                 this.setState({posts: updatedPosts});
