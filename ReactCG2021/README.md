@@ -5,6 +5,7 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
 * `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development.
 * `react-complete-guide` This project is part of sections 3 to 7 and is being used to understand the base features and syntax of React.
 * `burger-builder-basic` This project is part of section 8 and it is the first 'real app' on its basic version to demostrate how to use all the features and syntax of React reviewed so far in this course.
+* `burger-builder-server` This project is part of section 10 and it is the imporoved version of the basic burger application to demostrate how to implement and integrate the backend using [Firebase](https://firebase.google.com) to store and retrieve our orders even after our single-page is reloaded.
 * `http-ajax-examples` This project is part of section 9 and it is an aplication on its basic version to demostrate how to use Axios and some of its features so you can reach out to the Web.
 
 # JS Array Functions
@@ -46,3 +47,7 @@ The following page gives a good overview over the various methods you can use on
 
 - Axios Docs: https://github.com/axios/axios
 - JSON Placeholder: https://jsonplaceholder.typicode.com/ is a free online REST API that you can use whenever you need some fake data. It can be in a README on GitHub, for a demo on CodeSandbox, in code examples on Stack Overflow,...or simply to test things locally.
+
+## Backend Service
+
+- Firebase: https://firebase.google.com This is a free service offered by google, it is an out-to-the-box working backend which includes a data base.

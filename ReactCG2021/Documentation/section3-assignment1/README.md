@@ -38,3 +38,7 @@ Instructions:
 
 - Axios Docs: https://github.com/axios/axios
 - JSON Placeholder: https://jsonplaceholder.typicode.com/ is a free online REST API that you can use whenever you need some fake data. It can be in a README on GitHub, for a demo on CodeSandbox, in code examples on Stack Overflow,...or simply to test things locally.
+
+## Backend Service
+
+- Firebase: https://firebase.google.com This is a free service offered by google, it is an out-to-the-box working backend which includes a data base.
