@@ -1,0 +1,5 @@
+How to use the downloaded files
+
+1) Run "npm install" in this folder
+2) Run "npm start" to view the project
+
