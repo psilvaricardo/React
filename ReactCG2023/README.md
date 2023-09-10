@@ -11,6 +11,14 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
 
 # JS Array Functions
 
+* Next-Gen JavaScript *
+- Read more about let: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
+- Read more about const: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
+
+* ES6 Arrow Functions *
+- Read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+
 Not really next-gen JavaScript, but also important: JavaScript array functions like map() , filter() , reduce()  etc. You'll see me use them quite a bit since a lot of React concepts rely on working with arrays (in immutable ways).
 
 The following page gives a good overview over the various methods you can use on the array prototype - feel free to click through them and refresh your knowledge as required: [JS Reference: Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array). Particularly important in this course are:
