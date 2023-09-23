@@ -1,18 +1,10 @@
 import FirstGenericComponent from './components/FirstGenericComponent';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload...
-          <FirstGenericComponent></FirstGenericComponent>
-        </p>
-        
-      </header>
+    <div>
+      <h2>Let's get's started!</h2>
+        <FirstGenericComponent></FirstGenericComponent>
     </div>
   );
 }
