@@ -4,12 +4,18 @@ import './FirstGenericComponent.css'
 // Ctrl + Shift + I : will format the code...
 
 function FirstGenericComponent() {
+    // dummy data for now
+    const expenseDate = new Date(2023,9,23);
+    const expenseTitle = 'Car Insurance';
+    const expenseAmount = 2394.34;
+
+
     return (
         <div className="expense-item">
-            <div>September 23 2023</div>
+            <div>{expenseDate.toISOString()}</div>
             <div className="expense-item__description">
-                <h2>First Geneic Component</h2>
-                <div className="expense-item__price">$2394.34</div>
+                <h2>{expenseTitle}</h2>
+                <div className="expense-item__price">${expenseAmount}</div>
             </div>
         </div>
     );
