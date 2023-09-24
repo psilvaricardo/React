@@ -1,4 +1,5 @@
 import Header from './components/UI/Header';
+import Concept from './components/Concept/Concept';
 import componentsImage from './assets/images/components.png';
 import stateImage from './assets/images/state.png';
 import eventsImage from './assets/images/events.png';
@@ -30,12 +31,8 @@ const App = () => {
       <Header />
       <ul id="concepts">
         {/* first task: Output the "Key Concepts" data */}
-          {concepts.map((concept) => (
-          <li className="concept">
-            <img src={concept.image} alt={concept.title} />
-            <h2>{concept.title}</h2>
-            <p>{concept.description}</p>
-          </li>
+          {concepts.map((concept, index) => (
+            <Concept data={concept} key={index}/>
           ))}
       </ul>
     </div>
