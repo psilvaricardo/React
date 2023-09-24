@@ -5,7 +5,7 @@ import './FirstGenericComponent.css';
 
 // Ctrl + Shift + I : will format the code...
 
-function FirstGenericComponent(props) {
+const FirstGenericComponent = (props) => {
 
     /* An alternate, valid JS syntaxis is using 'object destructuring' :
     function FirstGenericComponent({date, title, amount})

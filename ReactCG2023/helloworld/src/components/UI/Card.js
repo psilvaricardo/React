@@ -1,6 +1,6 @@
 import './Card.css';
 
-function Card(props) {
+const Card = (props) => {
     // anything we receive as a css class from the outside is added here.
     const classes = 'card ' + props.className;
 

@@ -2,7 +2,7 @@ import FirstGenericComponent from './FirstGenericComponent';
 import Card from '../UI/Card'
 import './DisplayingComponents.css';
 
-function DisplayingComponents(props) {
+const DisplayingComponents = (props) => {
 
     return (
 

@@ -1,6 +1,6 @@
 import './CustomDate.css';
 
-function CustomDate(props) {
+const CustomDate = (props) => {
 
     const month = props.date.toLocaleString('en-US', { month: 'long' });
     const year = props.date.getFullYear();
