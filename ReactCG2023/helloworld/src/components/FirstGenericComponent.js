@@ -21,7 +21,7 @@ function FirstGenericComponent(props) {
                 <h2>{props.title}</h2>
                 <div className="expense-item__price">${props.amount}</div>
             </div>
-            <div>{props.id}</div>
+            {/*<div>{props.id}</div>*/}
         </div>
     );
 

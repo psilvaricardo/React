@@ -1,4 +1,5 @@
-import FirstGenericComponent from './components/FirstGenericComponent';
+
+import DisplayingComponents from './components/DisplayingComponents';
 
 function App() {
   // adding dummy props...
@@ -12,24 +13,9 @@ function App() {
   return (
     <div>
       <h2>Let's get's started!</h2>
-      {/* Map over expenses and render FirstGenericComponent for each expense */}
-      {expenses.map((expense) => (
-        <FirstGenericComponent
-          key={expense.id} // Don't forget to provide a unique key for each component
-          id={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
+        <DisplayingComponents
+          expenses={expenses}
         />
-
-      /* An alternate, valid syntaxis could be passing the entire object:
-        <FirstGenericComponent
-          key={expense.id} // Don't forget to provide a unique key for each component
-          expense={expense}
-        />
-      */ 
-
-      ))}
     </div>
   );
 }
