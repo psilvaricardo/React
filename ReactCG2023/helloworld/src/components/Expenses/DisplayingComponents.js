@@ -1,5 +1,5 @@
 import FirstGenericComponent from './FirstGenericComponent';
-import Card from './Card';
+import Card from '../UI/Card'
 import './DisplayingComponents.css';
 
 function DisplayingComponents(props) {

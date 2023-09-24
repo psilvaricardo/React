@@ -1,6 +1,6 @@
 
 import CustomDate from './CustomDate';
-import Card from './Card';
+import Card from '../UI/Card';
 import './FirstGenericComponent.css';
 
 // Ctrl + Shift + I : will format the code...

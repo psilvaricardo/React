@@ -1,5 +1,5 @@
 
-import DisplayingComponents from './components/DisplayingComponents';
+import DisplayingComponents from './components/Expenses/DisplayingComponents';
 
 function App() {
   // adding dummy props...
