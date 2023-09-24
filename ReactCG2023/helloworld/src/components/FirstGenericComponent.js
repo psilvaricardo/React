@@ -13,7 +13,6 @@ function FirstGenericComponent(props) {
                 <div className="expense-item__price">${props.amount}</div>
             </div>
             <div>{props.id}</div>
-            <div>{props.key}</div>
         </div>
     );
 
