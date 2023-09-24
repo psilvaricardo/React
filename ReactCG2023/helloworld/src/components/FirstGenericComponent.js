@@ -4,7 +4,7 @@ import './FirstGenericComponent.css'
 // Ctrl + Shift + I : will format the code...
 
 function FirstGenericComponent(props) {
-        
+
     return (
         <div className="expense-item">
             <div>{props.date.toISOString()}</div>
