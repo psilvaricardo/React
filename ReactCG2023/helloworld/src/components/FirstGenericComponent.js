@@ -1,5 +1,6 @@
 
-import './FirstGenericComponent.css'
+import CustomDate from './CustomDate';
+import './FirstGenericComponent.css';
 
 // Ctrl + Shift + I : will format the code...
 
@@ -15,11 +16,7 @@ function FirstGenericComponent(props) {
 
     return (
         <div className="expense-item">
-            <div>
-                <div>{month}</div>
-                <div>{year}</div>
-                <div>{day}</div>
-            </div>
+            <CustomDate date={props.date} />
             <div className="expense-item__description">
                 <h2>{props.title}</h2>
                 <div className="expense-item__price">${props.amount}</div>
