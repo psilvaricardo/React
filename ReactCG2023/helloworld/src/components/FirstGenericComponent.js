@@ -5,6 +5,10 @@ import './FirstGenericComponent.css'
 
 function FirstGenericComponent(props) {
 
+    /* An alternate, valid syntaxis is using 'object destructuring' :
+    function FirstGenericComponent({date, title, amount})
+    */
+
     return (
         <div className="expense-item">
             <div>{props.date.toISOString()}</div>

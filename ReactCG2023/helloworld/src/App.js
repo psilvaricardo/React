@@ -21,6 +21,14 @@ function App() {
           amount={expense.amount}
           date={expense.date}
         />
+
+      /* An alternate, valid syntaxis could be passing the entire object:
+        <FirstGenericComponent
+          key={expense.id} // Don't forget to provide a unique key for each component
+          expense={expense}
+        />
+      */ 
+
       ))}
     </div>
   );
