@@ -5,7 +5,7 @@ import './FirstGenericComponent.css'
 
 function FirstGenericComponent(props) {
 
-    /* An alternate, valid syntaxis is using 'object destructuring' :
+    /* An alternate, valid JS syntaxis is using 'object destructuring' :
     function FirstGenericComponent({date, title, amount})
     */
 
