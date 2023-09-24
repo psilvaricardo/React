@@ -4,9 +4,9 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
 
 * `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of sections 3 and is being used to understand the React Basics and working with Components and the initial POC for Composition.
 * `01-time-to-practice`: This is just a demo application that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of sections 4 and this is just a simple practice to apply all the knowledge learned from section 3, using, building and using components. The instructor provided an initial application and the goal is: 
-- To split existing components into smaller components.
-- Create and use multiple custom components.
-- Pass data via props.
+  - To split existing components into smaller components.
+  - Create and use multiple custom components.
+  - Pass data via props.
 
 
 # JS Array Functions
