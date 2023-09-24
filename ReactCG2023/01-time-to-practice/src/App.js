@@ -24,7 +24,7 @@ const concepts = [
   },
 ];
 
-function App() {
+const App = () => {
   return (
     <div>
       <header>
