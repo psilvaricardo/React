@@ -2,11 +2,16 @@
 
 Here are some projects related to ReactJS, some of them are from the Udemy's 2023 versions.
 
-* `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of sections 3 and is being used to understand the React Basics and working with Components and the initial POC for Composition.
-* `01-time-to-practice`: This is just a demo application that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of sections 4 and this is just a simple practice to apply all the knowledge learned from section 3, using, building and using components. The instructor provided an initial application and the goal is: 
+* `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of section 3 and is being used to understand the React Basics and working with Components and the initial POC for Composition.
+* `01-time-to-practice`: This is just a demo application that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of section 4 and this is just a simple practice to apply all the knowledge learned from section 3, using, building and using components. The instructor provided an initial application and the goal is: 
   - To split existing components into smaller components.
   - Create and use multiple custom components.
   - Pass data via props.
+* `05-react-state-and-events`: This is the first demo application based on section 5 where we focus on user's interaction and handling user's events like clicks, input from some text fields and so on; and we are going to have a look at the very important concept of STATE in React apps. With React we take the DECLARATIVE approach where we define the desided target state(s) and let React figure out the actual JavaScript DOM instructions. The goal of this section is:
+  - Making Apps Interactive and Reactive
+  - Handling Events
+  - Updating the UI & Working with "State"
+  - Take a closer look at Components and State.
 
 
 # JS Array Functions
