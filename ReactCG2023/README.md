@@ -85,7 +85,7 @@ userName => { ... }
 // If your function takes no parameters, parentheses must not be omitted 
 () => { ... }
 // if your function takes more than one parameter, you also must not omit parentheses 
-((userName, userAge) => { ... }
+(userName, userAge) => { ... }
 // If your arrow function contains no other logic but a return statement, you may omit the curly braces and the return keyword.
 number => number * 3;
 // If you go for the shorter alternative and you're trying to return a JavaScript object only, here we are wrapping the object in extra parentheses, because JavaScript treats the curly braces as function body wrappers (not as code that creates a JS object). 
