@@ -60,3 +60,103 @@ The following page gives a good overview over the various methods you can use on
 ## Backend Service
 
 - Firebase: https://firebase.google.com This is a free service offered by google, it is an out-to-the-box working backend which includes a data base.
+
+## Java Script Refresher
+
+In case it's some time since you last worked with JavaScript, we will revisit some core concepts. This is valid by the time of writing it (Sep/2023).
+
+There are some different ways to create a function, you can have no params, or add as many parameters as you need. 
+
+```js
+// function declared in traditional way, using the function reserved word:
+function greetUser ( userName, message ) {
+   // function code here.
+}
+
+// here the function declared using the arrow syntaxis (arrow function syntaxis):
+const greetUser = (userName, message) => {
+  // function code here.
+};
+
+// If your arrow functions takes exactly one parameter, you may omit the wrapping parentheses. Instead of
+(userName) => { ... }
+// you could write
+userName => { ... }
+// If your function takes no parameters, parentheses must not be omitted 
+() => { ... }
+// if your function takes more than one parameter, you also must not omit parentheses 
+((userName, userAge) => { ... }
+// If your arrow function contains no other logic but a return statement, you may omit the curly braces and the return keyword.
+number => number * 3;
+// If you go for the shorter alternative and you're trying to return a JavaScript object only, here we are wrapping the object in extra parentheses, because JavaScript treats the curly braces as function body wrappers (not as code that creates a JS object). 
+number => ({ age: number }); 
+```
+
+Destructuring is a feature in JavaScript that allows you to extract values from arrays or properties from objects and assign them to variables in a more concise and convenient way. It provides a syntax for breaking down complex data structures into simpler parts. There are two main forms of destructuring in JavaScript:
+
+1. Array Destructuring: You can destructure arrays by using square brackets []. Here's a basic example:
+```js
+const numbers = [1, 2, 3, 4, 5];
+const [first, second] = numbers; // Destructuring assignment
+
+console.log(first);  // Output: 1
+console.log(second); // Output: 2
+```
+
+2. Object Destructuring: You can destructure objects by using curly braces {}. Here's an example:
+```js
+const person = { firstName: 'John', lastName: 'Doe' };
+const { firstName, lastName } = person; // Destructuring assignment
+
+console.log(firstName); // Output: 'John'
+console.log(lastName);  // Output: 'Doe'
+```
+
+3. Destructuring in Function Parameter Lists with Objects:
+```js
+function printPerson({ firstName, lastName }) {
+  console.log(`First Name: ${firstName}`);
+  console.log(`Last Name: ${lastName}`);
+}
+
+const person = { firstName: 'John', lastName: 'Doe' };
+printPerson(person);
+```
+
+4. Destructuring in Function Parameter Lists with Arrays:
+```js
+function logNumbers([first, second]) {
+  console.log(`First Number: ${first}`);
+  console.log(`Second Number: ${second}`);
+}
+
+const numbers = [10, 20];
+logNumbers(numbers);
+```
+
+The spread operator (...) is a JavaScript feature that allows you to spread elements from one data structure (such as an array or an object) into another. It provides a concise and flexible way to work with arrays, objects, and function arguments. It is is commonly used for tasks like merging arrays, creating copies of objects, and simplifying function parameter handling. It's available in modern JavaScript and is widely supported in various environments, making it a valuable part of JavaScript development. Here's how the spread operator works:
+
+1. Spread Operator with Arrays --> In this example, the spread operator is used to create a new array moreNumbers that contains all the elements from the numbers array, followed by additional elements 4, 5, and 6. It essentially spreads out the elements of numbers into the new array.
+```js
+const numbers = [1, 2, 3];
+const moreNumbers = [...numbers, 4, 5, 6];
+console.log(moreNumbers); // Output: [1, 2, 3, 4, 5, 6]
+```
+
+2. Spread Operator with Objects --> In this case, the spread operator is used to create a new object updatedPerson that includes all the properties from the person object and adds a new property age. It spreads out the properties of person into the new object.
+```js
+const person = { firstName: 'John', lastName: 'Doe' };
+const updatedPerson = { ...person, age: 30 };
+console.log(updatedPerson); // Output: { firstName: 'John', lastName: 'Doe', age: 30 }
+```
+
+3. Spread Operator with Function Arguments --> In functions, you can use the spread operator to pass elements of an array as separate arguments to the function. In this example, the ...numbers spread operator passes the values 1, 2, and 3 as individual arguments to the sum function.
+```js
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const numbers = [1, 2, 3];
+const result = sum(...numbers);
+console.log(result); // Output: 6
+```
