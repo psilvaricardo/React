@@ -1,11 +1,11 @@
 
-import CustomDate from './CustomDate';
+import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
-import './FirstGenericComponent.css';
+import './ExpenseItem.css';
 
 // Ctrl + Shift + I : will format the code...
 
-const FirstGenericComponent = (props) => {
+const ExpenseItem = (props) => {
 
     /* An alternate, valid JS syntaxis is using 'object destructuring' :
     function FirstGenericComponent({date, title, amount})
@@ -17,7 +17,7 @@ const FirstGenericComponent = (props) => {
 
     return (
         <Card className="expense-item">
-            <CustomDate date={props.date} />
+            <ExpenseDate date={props.date} />
             <div className="expense-item__description">
                 <h2>{props.title}</h2>
                 <div className="expense-item__price">${props.amount}</div>
@@ -28,4 +28,4 @@ const FirstGenericComponent = (props) => {
 
 }
 
-export default FirstGenericComponent;
+export default ExpenseItem;

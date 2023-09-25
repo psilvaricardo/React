@@ -1,5 +1,5 @@
 
-import DisplayingComponents from './components/Expenses/DisplayingComponents';
+import Expenses from './components/Expenses/Expenses';
 
 const App = () => {
   // adding dummy props...
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       <h2>Let's get's started!</h2>
-        <DisplayingComponents
+        <Expenses
           expenses={expenses}
         />
     </div>

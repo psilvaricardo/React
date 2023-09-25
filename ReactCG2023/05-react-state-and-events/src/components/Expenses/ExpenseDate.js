@@ -1,6 +1,6 @@
-import './CustomDate.css';
+import './ExpenseDate.css';
 
-const CustomDate = (props) => {
+const ExpenseDate = (props) => {
 
     const month = props.date.toLocaleString('en-US', { month: 'long' });
     const year = props.date.getFullYear();
@@ -15,4 +15,4 @@ const CustomDate = (props) => {
     );
 }
 
-export default CustomDate;
+export default ExpenseDate;

@@ -1,14 +1,14 @@
-import FirstGenericComponent from './FirstGenericComponent';
+import ExpenseItem from './ExpenseItem'
 import Card from '../UI/Card'
-import './DisplayingComponents.css';
+import './Expenses.css';
 
-const DisplayingComponents = (props) => {
+const Expenses = (props) => {
 
     return (
 
         <Card className="expenses">
             {props.expenses.map((expense) => (
-                <FirstGenericComponent
+                <ExpenseItem
                     key={expense.id} // Don't forget to provide a unique key for each component
                     id={expense.id}
                     title={expense.title}
@@ -21,4 +21,4 @@ const DisplayingComponents = (props) => {
 
 }
 
-export default DisplayingComponents;
+export default Expenses;
