@@ -11,8 +11,9 @@ const ExpenseItem = (props) => {
     function FirstGenericComponent({date, title, amount})
     */
 
-    // setting up the state variable for the title.
-    const [title, setTitle] = useState(props.title); // Destructuring assignment [<currentStateValue>,<functionForUpdatingIt>]
+    // setting up the title state variable with an initial value, for this case, 
+    // the initial value comes from props.title, but can be anything you need.
+    const [title, setTitle] = useState(props.title); // Destructuring assignment [<currentStateValue>,<functionUsedForUpdatingIt>]
 
     const clickHandler = () => {
         setTitle('Updated!');
