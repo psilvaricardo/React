@@ -1,5 +1,6 @@
 
 import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
   // adding dummy props...
@@ -12,10 +13,10 @@ const App = () => {
 
   return (
     <div>
-      <h2>Let's get's started!</h2>
-        <Expenses
-          expenses={expenses}
-        />
+      <NewExpense />
+      <Expenses
+        expenses={expenses}
+      />
     </div>
   );
 }
