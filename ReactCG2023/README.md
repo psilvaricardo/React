@@ -11,7 +11,11 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
   - Making Apps Interactive and Reactive
   - Handling Events
   - Updating the UI & Working with "State"
-  - Take a closer look at Components and State.
+  - Take a closer look at Components and State
+* `06-rendering-lists-conditional-content`: We will continue working on our demo application from previous module. In this section, the goal of this section is:
+  - Working with real dynamic content
+  - Rendering Dynamic Lists
+  - Rendering Conditional Content only when certain conditions are met
 
 
 # JS Array Functions
