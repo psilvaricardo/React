@@ -48,9 +48,26 @@ const ExpenseForm = () => {
         });
     }
 
+    const SubmitHandler = (event) => {
+        // Usually, onSubmit will reload the page, we can prevent the default of this request being sent
+        // of this request being sent and since that request is not sent the page will now also not reload
+        // because we stay on the currently loaded page.
+
+        event.preventDefault(); // This is built into JS, nothing reacts-specific.
+        
+        // userInput State variable is our current ExpenseData.
+        const ExpenseData = {
+            title: userInput.enteredTitle,
+            amount: userInput.enteredAmount,
+            date: userInput.enteredDate
+        };
+
+        console.log(ExpenseData);
+    }
+
     
     return (
-        <form>
+        <form onSubmit={SubmitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
