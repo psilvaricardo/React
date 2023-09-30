@@ -7,12 +7,16 @@ import ExpenseFilter from './ExpenseFilter';
 
 const Expenses = (props) => {
 
-    const [filteredYear, setFilteredYear]  // Destructuring assignment [<currentStateValue>,<functionUsedForUpdatingIt>]
-    = useState('2021');
-
+    const [filteredYear, setFilteredYear] = useState('2021'); // Destructuring assignment
+    
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
     };
+
+    const filteredExpenses = props.expenses.filter((expense) => {
+            const expenseYear = new Date(expense.date).getFullYear().toString();
+            return expenseYear === filteredYear;
+        });
 
     return (
 
@@ -20,9 +24,8 @@ const Expenses = (props) => {
             <Card className="expenses">
                 {/* the ExpenseFilter is a "controled component" because the value, the real logic is not handled there, but in a parent component.*/}
                 <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-                {/* This is already rendering the ExpenseItem in a dynamic way using the below dynamic expression
-                    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
-                {props.expenses.map((expense) => (
+                {/* This is already rendering the ExpenseItem in a dynamic way using the below dynamic expression */}
+                {filteredExpenses.map((expense) => (
                     <ExpenseItem
                         key={expense.id} // Don't forget to provide a unique key for each component
                         id={expense.id}
