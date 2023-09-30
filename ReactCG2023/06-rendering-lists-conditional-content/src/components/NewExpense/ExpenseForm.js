@@ -60,7 +60,7 @@ const ExpenseForm = (props) => {
         const expenseData = {
             id: Math.random(), // not the best way but for now let's leave it as is
             title: userInput.enteredTitle,
-            amount: userInput.enteredAmount,
+            amount: +userInput.enteredAmount,
             // FIXING date: adding Date constructor because this was saving the date as a String value, not as Date.
             date: new Date(userInput.enteredDate)
         };

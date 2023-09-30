@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import "./Expenses.css";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2021"); // Destructuring assignment
@@ -20,12 +21,11 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        {/* the ExpenseFilter is a "controled component" because the value, the real logic is not handled there, but in a parent component.*/}
         <ExpenseFilter
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {/* This is already rendering the ExpenseItem in a dynamic way using the below dynamic expression */}
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
