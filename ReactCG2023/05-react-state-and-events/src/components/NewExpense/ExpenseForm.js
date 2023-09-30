@@ -63,6 +63,12 @@ const ExpenseForm = () => {
         };
 
         console.log(ExpenseData);
+        // Adding Two-way binding, after the user submit the form, reset to the initial state.
+        setUserInput({
+            enteredTitle: '',
+            enteredAmount: '',
+            enteredDate: ''
+        });
     }
 
     
