@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
     // setting up the initial status of the Component.
 
@@ -56,13 +56,15 @@ const ExpenseForm = () => {
         event.preventDefault(); // This is built into JS, nothing reacts-specific.
         
         // userInput State variable is our current ExpenseData.
-        const ExpenseData = {
+        const expenseData = {
             title: userInput.enteredTitle,
             amount: userInput.enteredAmount,
             date: userInput.enteredDate
         };
 
-        console.log(ExpenseData);
+        // adding communication to the parent component.
+        props.onSaveExpenseData(expenseData);
+
         // Adding Two-way binding, after the user submit the form, reset to the initial state.
         setUserInput({
             enteredTitle: '',
