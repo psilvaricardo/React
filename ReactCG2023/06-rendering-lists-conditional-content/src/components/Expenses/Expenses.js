@@ -18,6 +18,20 @@ const Expenses = (props) => {
             return expenseYear === filteredYear;
         });
 
+    // adding this dynamic expression to output conditional content
+    let expensesContent = <p>No expenses found</p>;
+    if (filteredExpenses.length > 0){
+        expensesContent = filteredExpenses.map((expense) => (
+                        <ExpenseItem
+                            key={expense.id} // Don't forget to provide a unique key for each component
+                            id={expense.id}
+                            title={expense.title}
+                            amount={expense.amount}
+                            date={expense.date}
+                        />
+                        ));
+    }
+
     return (
 
         <div>
@@ -25,15 +39,7 @@ const Expenses = (props) => {
                 {/* the ExpenseFilter is a "controled component" because the value, the real logic is not handled there, but in a parent component.*/}
                 <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
                 {/* This is already rendering the ExpenseItem in a dynamic way using the below dynamic expression */}
-                {filteredExpenses.map((expense) => (
-                    <ExpenseItem
-                        key={expense.id} // Don't forget to provide a unique key for each component
-                        id={expense.id}
-                        title={expense.title}
-                        amount={expense.amount}
-                        date={expense.date}
-                    />
-                ))}
+                {expensesContent}
             </Card>
         </div>
     );
