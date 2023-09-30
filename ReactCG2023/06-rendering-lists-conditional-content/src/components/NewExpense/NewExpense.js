@@ -1,30 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
+  // Create a state variable to track whether the form should be shown
+  const [showWebForm, setShowWebForm] = useState(false);
 
-    const saveExpenseHandler = (enteredExpenseData) => {
-        const expenseData = {
-            ...enteredExpenseData,
-            id: Math.random().toString()
-        };
+  const newExpenseBtnHandler = () => {
+    setShowWebForm(true);
+  };
 
-        // adding communication to the parent component.
-        props.onAddExpense(expenseData);
+  const saveExpenseHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
     };
 
+    // adding communication to the parent component.
+    props.onAddExpense(expenseData);
+    setShowWebForm(false);
+  };
 
-    return (
-        <div className='new-expense'>
-            {/* Adding Child-To-Partent Communication (Button-up)
+  const onCancelBtnHandler = () => {
+    setShowWebForm(false);
+  };
 
-            Adding a new property/function to Expense form, the value for this prop should be a function
-            that eventually be trigger when onSubmit event happens inside of this component, when the user 
-            saves the user expense data */}
-            <ExpenseForm onSaveExpenseData={saveExpenseHandler} />
-        </div>
-    );
+  return (
+    <div className="new-expense">
+      {!showWebForm && <button onClick={newExpenseBtnHandler}>Add New Expense</button>}
+      {showWebForm && 
+        <ExpenseForm onSaveExpenseData={saveExpenseHandler} onCancelClickEvent={onCancelBtnHandler} />}
+    </div>
+  );
 }
 
 export default NewExpense;
