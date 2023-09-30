@@ -18,6 +18,7 @@ const Expenses = (props) => {
 
         <div>
             <Card className="expenses">
+                {/* the ExpenseFilter is a "controled component" because the value, the real logic is not handled there, but in a parent component.*/}
                 <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
                 {props.expenses.map((expense) => (
                     <ExpenseItem

@@ -6,7 +6,7 @@ const ExpensesFilter = (props) => {
 
     // adding communication with the parent
     const dropDownChangeHandler = (event) => {
-        props.filterChangeHandler(event.target.value);
+        props.onChangeFilter(event.target.value);
     };
 
 
