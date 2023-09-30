@@ -22,7 +22,8 @@ const ExpenseForm = (props) => {
         = useState({
             enteredTitle: '',
             enteredAmount: '',
-            enteredDate: ''
+            enteredDate: '',
+            id: 0
         });
 
     const titleChangeHandler = (event) => {
@@ -57,6 +58,7 @@ const ExpenseForm = (props) => {
         
         // userInput State variable is our current ExpenseData.
         const expenseData = {
+            id: Math.random(), // not the best way but for now let's leave it as is
             title: userInput.enteredTitle,
             amount: userInput.enteredAmount,
             // FIXING date: adding Date constructor because this was saving the date as a String value, not as Date.
@@ -70,7 +72,8 @@ const ExpenseForm = (props) => {
         setUserInput({
             enteredTitle: '',
             enteredAmount: '',
-            enteredDate: ''
+            enteredDate: '',
+            id: 0
         });
     }
 
