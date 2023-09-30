@@ -59,7 +59,8 @@ const ExpenseForm = (props) => {
         const expenseData = {
             title: userInput.enteredTitle,
             amount: userInput.enteredAmount,
-            date: userInput.enteredDate
+            // FIXING date: adding Date constructor because this was saving the date as a String value, not as Date.
+            date: new Date(userInput.enteredDate)
         };
 
         // adding communication to the parent component.
