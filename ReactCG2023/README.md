@@ -16,6 +16,11 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
   - Working with real dynamic content
   - Rendering Dynamic Lists
   - Rendering Conditional Content only when certain conditions are met
+* `07-styling-react-components`: Part of building React apps is also about styling those apps. You wanna make sure that your applications look good and styling is also an important part of building components. Therefore in this module, we will dive into how you can set up styles in a conditional or dynamic way. And then we'll dive into two popular approaches for scoping styles to components, so for setting up styles such that they only affect the component and are not added as global styles. The goal of this section is:
+  - Make your apps looks good
+  - Conditional and Dynamic Styles
+  - Styled Components
+  - CSS Modules
 
 
 # JS Array Functions
