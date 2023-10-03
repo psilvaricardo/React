@@ -6,14 +6,14 @@ import './App.css';
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
-    { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' }
+    { text: 'Do all exercises!', id: 0 },
+    { text: 'Finish the course!', id: 1 }
   ]);
 
   const addGoalHandler = enteredText => {
     setCourseGoals(prevGoals => {
       const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: 'goal1' });
+      updatedGoals.unshift({ text: enteredText, id: Math.random() });
       return updatedGoals;
     });
   };
