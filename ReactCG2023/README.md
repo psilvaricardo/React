@@ -21,7 +21,12 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
   - Conditional and Dynamic Styles
   - Styled Components
   - CSS Modules
-
+* `08-debugging-react-apps`: During your development process, you will always face errors. And in this module, you will learn how to debug React apps. The goal of this section is:
+  - Debugging & Analyzing React Apps
+  - Finding and Fixing Errors
+  - Understanding Error Messages
+  - Using the React DevTools
+  
 
 # JS Array Functions
 
