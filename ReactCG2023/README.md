@@ -26,7 +26,14 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
   - Finding and Fixing Errors
   - Understanding Error Messages
   - Using the React DevTools
-  
+* `09-react-investment-calculator`: In this core section, we're going to build two demo projects, two basic yet non-trivial demo projects, which allow you to apply your knowledge and to practice what you learned. The goal of this section is:
+  - Apply your knowledge and to practice what you learned so far
+  - You'll work with components, state, some styling and all these crucial core concepts we explored throughout the previous sections.
+  - You'll practice how to split an existing component and an existing application into multiple components
+  - You will practice how to work with state, how to manage and use state
+  - and you'll practice outputting list and conditional content.
+
+
 
 # JS Array Functions
 
