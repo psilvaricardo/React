@@ -6,6 +6,10 @@ Here are some projects related to ReactJS, some of them are from the Udemy's 202
   - [`CodePen`](https://codepen.io) It's a social development environment for front-end designers and developers. 
   - [`JSBin`](https://jsbin.com) It's another web editor and makes easy for Us to enter some JS code and see some console output.
 
+* `ReactCG2023` for the [*React - The Complete Guide (incl Hooks, React Router, Redux)*](https://www.udemy.com/course/react-the-complete-guide-incl-redux/) (Ed. 2023) by [Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/#instructor-2). Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!. We can use the following tools:
+  - [`CodeSandbox`](https://codesandbox.io/) CodeSandbox keeps you in flow by giving you cloud development environments that resume in 1 second..
+
+
 # JS Array Functions
 
 Not really next-gen JavaScript, but also important: JavaScript array functions like map() , filter() , reduce()  etc. You'll see me use them quite a bit since a lot of React concepts rely on working with arrays (in immutable ways).
@@ -40,6 +44,7 @@ The following page gives a good overview over the various methods you can use on
 - Higher Order Components: https://reactjs.org/docs/higher-order-components.html
 - Refs: https://reactjs.org/docs/refs-and-the-dom.html
 - Enabling CSS Modules: https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
+- Styled Components: https://styled-components.com/
 
 ## Reaching out to the Web from React (Http/Ajax)
 
