@@ -1,38 +1,68 @@
+# Getting Started with Vite.js and React
+
+This guide will walk you through the steps to create a new React app using Vite.js.
+
+## Step 1: Install Node.js and npm
+
+Make sure you have Node.js and npm (Node Package Manager) installed on your machine. You can download and install them from the official website: [Node.js](https://nodejs.org/).
+
+## Step 2: Install Vite.js globally
+
+Open your terminal or command prompt and run the following command to install Vite.js globally:
+
+```bash
+npm install -g create-vite
+```
+
+## Step 3: Create a new React app
+
+Run the following command to create a new React app using Vite.js:
+
+```bash
+create-vite my-react-app --template react
+```
+
+Replace "my-react-app" with the desired name for your project. This command will generate the basic structure for a React app using Vite.js.
+
+Step 4: Navigate to the project folder
+
+Change into the project directory:
+
+```bash
+cd my-react-app
+```
+
+## Step 5: Install dependencies
+
+Run the following command to install the project dependencies:
+
+```bash
+npm install
+```
+
+## Step 6: Start the development server
+
+Once the dependencies are installed, start the development server with the following command:
+
+```bash
+npm run dev
+```
+
+This command will start the development server, and you should see output indicating that the server is running. By default, the app will be available at http://localhost:3000.
+
+You can now open your web browser and navigate to the provided URL to see your newly created React app using Vite.js. 
+
+Here are 4 reasons Why You Should Prefer Vite Over Create-React-App (CRA):
+https://semaphoreci.com/blog/vite
+
+
 # Various projects related to React, ReactJS and React Native
 
-Here are some projects related to ReactJS, some of them are from the Udemy's 2023 versions.
+Here are some projects related to ReactJS, some of them are from the Udemy's 2024 version.
 
-* `hello-world`: This is just a simple project that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of section 3 and is being used to understand the React Basics and working with Components and the initial POC for Composition.
-* `01-time-to-practice`: This is just a demo application that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is using a pre-configured webpack build for development. This project is part of section 4 and this is just a simple practice to apply all the knowledge learned from section 3, using, building and using components. The instructor provided an initial application and the goal is: 
-  - To split existing components into smaller components.
-  - Create and use multiple custom components.
-  - Pass data via props.
-* `05-react-state-and-events`: This is the first demo application based on section 5 where we focus on user's interaction and handling user's events like clicks, input from some text fields and so on; and we are going to have a look at the very important concept of STATE in React apps. With React we take the DECLARATIVE approach where we define the desided target state(s) and let React figure out the actual JavaScript DOM instructions. The goal of this section is:
-  - Making Apps Interactive and Reactive
-  - Handling Events
-  - Updating the UI & Working with "State"
-  - Take a closer look at Components and State
-* `06-rendering-lists-conditional-content`: We will continue working on our demo application from previous module. In this section, the goal of this section is:
-  - Working with real dynamic content
-  - Rendering Dynamic Lists
-  - Rendering Conditional Content only when certain conditions are met
-* `07-styling-react-components`: Part of building React apps is also about styling those apps. You wanna make sure that your applications look good and styling is also an important part of building components. Therefore in this module, we will dive into how you can set up styles in a conditional or dynamic way. And then we'll dive into two popular approaches for scoping styles to components, so for setting up styles such that they only affect the component and are not added as global styles. The goal of this section is:
-  - Make your apps looks good
-  - Conditional and Dynamic Styles
-  - Styled Components
-  - CSS Modules
-* `08-debugging-react-apps`: During your development process, you will always face errors. And in this module, you will learn how to debug React apps. The goal of this section is:
-  - Debugging & Analyzing React Apps
-  - Finding and Fixing Errors
-  - Understanding Error Messages
-  - Using the React DevTools
-* `09-react-investment-calculator`: In this core section, we're going to build two demo projects, two basic yet non-trivial demo projects, which allow you to apply your knowledge and to practice what you learned. The goal of this section is:
-  - Apply your knowledge and to practice what you learned so far
-  - You'll work with components, state, some styling and all these crucial core concepts we explored throughout the previous sections.
-  - You'll practice how to split an existing component and an existing application into multiple components
-  - You will practice how to work with state, how to manage and use state
-  - and you'll practice outputting list and conditional content.
-
+* `00-vanilla-js-demo`: This is just a simple project to demo the legacy JS functionality.
+* `00-vanilla-reacrt-demo`: This is just a react demo application as a proof of concept for the js demo app.
+* `01-starting-project`: This is the first demo application based on section 1, just a small practice.
 
 
 # JS Array Functions
