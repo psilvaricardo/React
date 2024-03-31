@@ -1,8 +1,11 @@
 
-import { apiKey } from './util.js';
+// import { apiKey } from './util.js';
+// import apiKey from './util.js'; // using default export we don't need {}
+import {apiKey, abc} from './util.js'; // using default export we don't need {}
 
 console.log('Import Export');
 console.log(apiKey);
+console.log(abc);
 console.log('---------------');
 
 
