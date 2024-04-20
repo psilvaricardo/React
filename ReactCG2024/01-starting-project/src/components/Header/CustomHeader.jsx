@@ -1,5 +1,5 @@
 import './CustomHeader.css';
-import dynamicImg from '../assets/react-core-concepts.png';
+import dynamicImg from '../../assets/react-core-concepts.png';
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
 function genRandomInt(max) {

@@ -1,6 +1,7 @@
 import { CORE_CONCEPTS } from './data';
 import CoreConcept from './components/CoreConcept';
-import CustomHeader from './components/CustomHeader';
+import CustomHeader from './components/Header/CustomHeader';
+import TabButton from './components/TabButton';
 
 function App() {
   return (
@@ -14,6 +15,15 @@ function App() {
               <CoreConcept key={index} {...concept} />
             ))}
           </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
