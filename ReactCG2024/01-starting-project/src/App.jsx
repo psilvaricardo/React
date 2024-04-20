@@ -4,6 +4,12 @@ import CustomHeader from './components/Header/CustomHeader';
 import TabButton from './components/TabButton';
 
 function App() {
+
+  function clickHandler() {
+    console.log('click handler!!');
+  }
+
+
   return (
     <div>
       <CustomHeader />
@@ -19,11 +25,12 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={clickHandler}>Components</TabButton>
+            <TabButton onSelect={clickHandler}>JSX</TabButton>
+            <TabButton onSelect={clickHandler}>Props</TabButton>
+            <TabButton onSelect={clickHandler}>State</TabButton>
           </menu>
+
         </section>
       </main>
     </div>
