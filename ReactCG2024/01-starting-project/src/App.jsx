@@ -34,12 +34,14 @@ function App() {
             {Object.entries(EXAMPLES).map(([key, example]) => (
               <TabButton 
                 key={key}
-              isSelected={ selectedTopic === key } 
-              onSelect={() => clickHandler( key ) }>{example.title}</TabButton>
-              
+                isSelected={ selectedTopic === key } 
+                onSelect={() => clickHandler( key ) }
+              >
+                {example.title}
+              </TabButton>
             ))}
           </menu>
-          
+
           { !selectedTopic ? 
             (<p>Please select a topic.</p>) : 
             (
