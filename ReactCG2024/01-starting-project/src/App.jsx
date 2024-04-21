@@ -4,7 +4,7 @@ import CoreConcept from './components/CoreConcept';
 import CustomHeader from './components/Header/CustomHeader';
 import TabButton from './components/TabButton';
 
-function App() {
+const App = () => {
   const [ selectedTopic, setSelectedTopic ] = useState();
 
   let tabContent = 'Please click a button';

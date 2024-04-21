@@ -2,11 +2,9 @@ import './CustomHeader.css';
 import dynamicImg from '../../assets/react-core-concepts.png';
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
+const genRandomInt = (max) => Math.floor(Math.random() * (max + 1));
 
-export default function CustomHeader() {
+const CustomHeader = () => {
     const description = reactDescriptions[genRandomInt(2)];
     return (
       <header>
@@ -19,4 +17,5 @@ export default function CustomHeader() {
       </header>
     );
   }
-  
+
+export default CustomHeader;
