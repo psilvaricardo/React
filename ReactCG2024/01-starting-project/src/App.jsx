@@ -31,10 +31,18 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => clickHandler('components')}>Components</TabButton>
-            <TabButton onSelect={() => clickHandler('jsx')}>JSX</TabButton>
-            <TabButton onSelect={() => clickHandler('props')}>Props</TabButton>
-            <TabButton onSelect={() => clickHandler('state')}>State</TabButton>
+            <TabButton 
+              isSelected={ selectedTopic === 'components' } 
+              onSelect={() => clickHandler('components') }>Components</TabButton>
+            <TabButton 
+              isSelected={ selectedTopic === 'jsx' }
+              onSelect={() => clickHandler('jsx') }>JSX</TabButton>
+            <TabButton 
+              isSelected={ selectedTopic === 'props' }
+              onSelect={() => clickHandler('props') }>Props</TabButton>
+            <TabButton 
+              isSelected={ selectedTopic === 'state' }
+              onSelect={() => clickHandler('state')}>State</TabButton>
           </menu>
           { !selectedTopic ? 
             (<p>Please select a topic.</p>) : 
