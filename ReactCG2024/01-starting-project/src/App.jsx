@@ -31,19 +31,15 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton 
-              isSelected={ selectedTopic === 'components' } 
-              onSelect={() => clickHandler('components') }>Components</TabButton>
-            <TabButton 
-              isSelected={ selectedTopic === 'jsx' }
-              onSelect={() => clickHandler('jsx') }>JSX</TabButton>
-            <TabButton 
-              isSelected={ selectedTopic === 'props' }
-              onSelect={() => clickHandler('props') }>Props</TabButton>
-            <TabButton 
-              isSelected={ selectedTopic === 'state' }
-              onSelect={() => clickHandler('state')}>State</TabButton>
+            {Object.entries(EXAMPLES).map(([key, example]) => (
+              <TabButton 
+                key={key}
+              isSelected={ selectedTopic === key } 
+              onSelect={() => clickHandler( key ) }>{example.title}</TabButton>
+              
+            ))}
           </menu>
+          
           { !selectedTopic ? 
             (<p>Please select a topic.</p>) : 
             (
