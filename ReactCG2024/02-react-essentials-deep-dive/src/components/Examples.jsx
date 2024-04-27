@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { EXAMPLES } from '../data';
 import TabButton from './TabButton';
+import Section from './Section';
 
 const Examples = () => {
     const [ selectedTopic, setSelectedTopic ] = useState();
@@ -10,12 +11,10 @@ const Examples = () => {
     function clickHandler(selectedBtn) {
       // selectedBtn => 'components', 'jsx', 'props', 'state'
       setSelectedTopic(selectedBtn);
-      // console.log('selectedBtn => ' + selectedBtn);
     }
 
     return (
-        <section id='examples'>
-        <h2>Examples</h2>
+        <Section title='Examples' id='examples'>
         <menu>
           {Object.entries(EXAMPLES).map(([key, example]) => (
             <TabButton 
@@ -42,7 +41,7 @@ const Examples = () => {
             </div>
           ) 
         }
-      </section>
+      </Section>
     );
 }
 
