@@ -17,7 +17,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <>
       <CustomHeader />
       <main>
         <section id='core-concepts'>
@@ -58,7 +58,7 @@ const App = () => {
           }
         </section>
       </main>
-    </div>
+    </>
   );
 }
 
