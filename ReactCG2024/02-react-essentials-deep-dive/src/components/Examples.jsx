@@ -44,7 +44,9 @@ const Examples = () => {
 
     return (
         <Section title='Examples' id='examples'>
-            <Tabs buttons={buttonsContent}>
+            <Tabs 
+                buttons={buttonsContent}
+                dynamicComponent="menu" >
             {tabContent}
             </Tabs>
       </Section>
