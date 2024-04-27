@@ -20,7 +20,7 @@ const Examples = () => {
             <TabButton 
               key={key}
               isSelected={ selectedTopic === key } 
-              onSelect={() => clickHandler( key ) }
+              onClick={() => clickHandler( key ) }
             >
               {example.title}
             </TabButton>
