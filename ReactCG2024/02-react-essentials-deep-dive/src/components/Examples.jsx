@@ -7,6 +7,20 @@ const Examples = () => {
     const [ selectedTopic, setSelectedTopic ] = useState();
 
     let tabContent = 'Please select a topic.';
+
+    if (selectedTopic) {
+        tabContent = (
+            <div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
+        );
+    }
   
     function clickHandler(selectedBtn) {
       // selectedBtn => 'components', 'jsx', 'props', 'state'
@@ -27,20 +41,7 @@ const Examples = () => {
           ))}
         </menu>
 
-        { !selectedTopic ? 
-          (<p>{tabContent}</p>) : 
-          (
-            <div id='tab-content'>
-              <h3>{EXAMPLES[selectedTopic].title}</h3>
-              <p>{EXAMPLES[selectedTopic].description}</p>
-              <pre>
-                <code>
-                {EXAMPLES[selectedTopic].code}
-                </code>
-              </pre>
-            </div>
-          ) 
-        }
+        {tabContent}
       </Section>
     );
 }
