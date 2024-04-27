@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { EXAMPLES } from '../data';
 import TabButton from './TabButton';
 import Section from './Section';
+import Tabs from './Tabs';
 
 const Examples = () => {
     const [ selectedTopic, setSelectedTopic ] = useState();
@@ -22,26 +23,30 @@ const Examples = () => {
         );
     }
   
-    function clickHandler(selectedBtn) {
+    const clickHandler = (selectedBtn) => {
       // selectedBtn => 'components', 'jsx', 'props', 'state'
       setSelectedTopic(selectedBtn);
     }
 
+    const generateButtonsContent = () => {
+        return Object.entries(EXAMPLES).map(([key, example]) => (
+            <TabButton 
+                key={key}
+                isSelected={ selectedTopic === key } 
+                onClick={() => clickHandler( key ) }
+            >
+                {example.title}
+            </TabButton>
+            ));
+    };
+
+    let buttonsContent = generateButtonsContent();
+
     return (
         <Section title='Examples' id='examples'>
-        <menu>
-          {Object.entries(EXAMPLES).map(([key, example]) => (
-            <TabButton 
-              key={key}
-              isSelected={ selectedTopic === key } 
-              onClick={() => clickHandler( key ) }
-            >
-              {example.title}
-            </TabButton>
-          ))}
-        </menu>
-
-        {tabContent}
+            <Tabs buttons={buttonsContent}>
+            {tabContent}
+            </Tabs>
       </Section>
     );
 }
