@@ -5,6 +5,8 @@ const Player = ({name, symbol}) => {
 
     const handleClick = () => {
         // When updating the state based on the old state we MUST pass a funtion
+        // because React is scheduling the update behind the scenes, and this way
+        // we can warranty that we are using the latest value for the state.
         setIsEditing( (isEditing) => !isEditing );
     }
 
