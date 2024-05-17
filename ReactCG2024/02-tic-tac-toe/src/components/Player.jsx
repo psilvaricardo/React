@@ -42,6 +42,6 @@ const Player = ({ initialName, symbol }) => {
           </li>
         </>
     );
-}
+};
 
 export default Player;
