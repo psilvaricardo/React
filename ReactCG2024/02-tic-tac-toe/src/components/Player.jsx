@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-const Player = ({name, symbol}) => {
+const Player = ({ initialName, symbol }) => {
     const[isEditing, setIsEditing] = useState(false);
+    const[playerName,setPlayerName] = useState(initialName);
 
     const handleClick = () => {
         // When updating the state based on the old state we MUST pass a funtion
@@ -10,9 +11,13 @@ const Player = ({name, symbol}) => {
         setIsEditing( (isEditing) => !isEditing );
     }
 
-    let playerName = isEditing ? 
-                     <input type="text" required value={name} /> : 
-                     <span className="player-name">{name}</span> ;
+    const handleChange = (event) => {
+        setPlayerName(event.target.value);
+    }
+
+    let editablePlayerName = isEditing ? 
+                     <input type="text" required value={playerName} onChange={(e) => handleChange(e) } /> : 
+                     <span className="player-name">{playerName}</span> ;
     
     let buttonTxt = isEditing ? 'Save' : 'Edit';
     
@@ -20,7 +25,7 @@ const Player = ({name, symbol}) => {
         <>
           <li>
             <span className="player">
-              {playerName}
+              {editablePlayerName}
               <span className="player-symbol">{symbol}</span>
             </span>
             <button onClick={() => handleClick() }> {buttonTxt} </button>
