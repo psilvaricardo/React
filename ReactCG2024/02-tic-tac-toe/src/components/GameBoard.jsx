@@ -5,21 +5,16 @@ const initialGameBoard = [
     [null, null, null]
 ];
 
-const GameBoard = ({ onSelectSquare }) => {
-    // const [gameBoard, setGameBoard] = useState(initialGameBoard);
+const GameBoard = ({ onSelectSquare, turns }) => {
+    let gameBoard = initialGameBoard;
 
-    // const handleSelectedSquare = (rowIndex, colIndex) => {
-    //     if your state is an array or an object, we must update the state
-    //     in an Immutable way, making a copy and updating the copy.
-    //     https://academind.com/tutorials/reference-vs-primitive-values
-    //    setGameBoard((prevGameBoard) => {
-    //        const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-    //        updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-    //        return updatedBoard;
-    //    });
-
-    //    onSelectSquare();
-    // };
+    for (const turn of turns) {
+        // let's (derived state) destructure the properties of our turn and everything we need
+        const { square, player } = turn;
+        const { row, col } = square;
+        // update the gameBoard with the 
+        gameBoard[row][col] = player;
+    }
 
     return (
         <ol id="game-board">
@@ -28,9 +23,9 @@ const GameBoard = ({ onSelectSquare }) => {
                     <li key={rowIndex}>
                         <ol>
                             {row.map(
-                                (playerSymbol, symbolIndex) => (
-                                    <li key={symbolIndex}>
-                                        <button onClick={(e) => onSelectSquare()}>{playerSymbol}</button>
+                                (playerSymbol, colIndex) => (
+                                    <li key={colIndex}>
+                                        <button onClick={(e) => onSelectSquare(rowIndex,colIndex)}>{playerSymbol}</button>
                                     </li>
                                 )
                             )}
