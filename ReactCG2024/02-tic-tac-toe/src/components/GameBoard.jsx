@@ -6,7 +6,7 @@ const initialGameBoard = [
     [null, null, null]
 ];
 
-const GameBoard = () => {
+const GameBoard = ({ onSelectSquare, activePlayerSymbol }) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     const handleSelectedSquare = (rowIndex, colIndex) => {
@@ -15,10 +15,12 @@ const GameBoard = () => {
         // https://academind.com/tutorials/reference-vs-primitive-values
         setGameBoard((prevGameBoard) => {
             const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-            updatedBoard[rowIndex][colIndex] = 'X';
+            updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
             return updatedBoard;
         });
-    }
+
+        onSelectSquare();
+    };
 
     return (
         <ol id="game-board">
