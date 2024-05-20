@@ -28,7 +28,8 @@ const App = () => {
   
   const activePlayer = deriveActivePlayer(gameTurns);
 
-  let gameBoard = initialGameBoard;
+  // fixing a bug, as ummutability matters and we must have a copy of the array.
+  let gameBoard = [...initialGameBoard.map(array => [...array])];
 
   for (const turn of gameTurns) {
       // let's (derived state) destructure the properties of our turn and everything we need
@@ -70,6 +71,10 @@ const App = () => {
 
   };
 
+  const handleRestart = () => {
+    setGameTurns([]);
+  };
+
   return (
     <main>
       <div id="game-container">
@@ -77,7 +82,7 @@ const App = () => {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'} />
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'} />
         </ol>
-        {(winner || hasDraw) && <GameOver winner={winner}/>}
+        {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestart} />}
         <GameBoard 
           onSelectSquare={handleSelectSquare} 
           board={gameBoard} 
