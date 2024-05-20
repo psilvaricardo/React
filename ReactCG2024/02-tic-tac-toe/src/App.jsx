@@ -37,10 +37,20 @@ const App = () => {
       gameBoard[row][col] = player;
   }
 
+  let winner = null;
+
   for (const combination of WINNING_COMBINATIONS) {
-    const firstSquareSymbol = gameBoard[];
-    const secondSquareSymbol = '';
-    const thirdSquareSymbol = '';
+    const firstSquareSymbol = gameBoard[combination[0].row][combination[0].column];
+    const secondSquareSymbol = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquareSymbol = gameBoard[combination[2].row][combination[2].column];
+
+    if (firstSquareSymbol && 
+       (firstSquareSymbol === secondSquareSymbol) &&
+       (firstSquareSymbol === thirdSquareSymbol)
+      ){
+        // making the winner the same symbol of the player that has won.
+        winner = firstSquareSymbol;
+    }
   }
 
   const handleSelectSquare = (rowIndex, colIndex) => {
@@ -64,6 +74,7 @@ const App = () => {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'} />
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'} />
         </ol>
+        {winner && <p>You won, {winner}!</p>}
         <GameBoard 
           onSelectSquare={handleSelectSquare} 
           board={gameBoard} 
