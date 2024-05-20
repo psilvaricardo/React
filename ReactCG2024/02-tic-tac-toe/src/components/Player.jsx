@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Player = ({ initialName, symbol, isActive }) => {
+const Player = ({ initialName, symbol, isActive, onChangeName }) => {
     const[isEditing, setIsEditing] = useState(false);
     const[playerName,setPlayerName] = useState(initialName);
 
@@ -9,6 +9,10 @@ const Player = ({ initialName, symbol, isActive }) => {
         // because React is scheduling the update behind the scenes, and this way
         // we can warranty that we are using the latest value for the state.
         setIsEditing( (isEditing) => !isEditing );
+        
+        if (isEditing) {
+          onChangeName(symbol, playerName);
+        }
     };
 
     const handleOnTextChange = (event) => {
@@ -19,6 +23,10 @@ const Player = ({ initialName, symbol, isActive }) => {
       if (event.key === 'Enter') {
         setPlayerName(event.target.value);
         setIsEditing( (isEditing) => !isEditing );
+        
+        if (isEditing) {
+          onChangeName(symbol, playerName);
+        }
       }
     }; 
 
