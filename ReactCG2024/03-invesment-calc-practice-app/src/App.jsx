@@ -1,11 +1,12 @@
+import CustomHeader from "./components/Header/CustomHeader";
 
 const App = () => {
 
   return (
-    <>
-      <h1>React Investment Calculator</h1>
-    </>
+    <main>
+      <CustomHeader />
+    </main>
   )
-}
+};
 
 export default App
