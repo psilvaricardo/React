@@ -1,23 +1,6 @@
-import { useState } from "react";
-import './UserInput.css';
+import "./UserInput.css";
 
-const UserInput = () => {
-    const [UserInput, setUserInput] = useState({
-        initialInvestment: 10000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10,
-    });
-
-    const handleChange = (inputIdentifier, newValue) => {
-        setUserInput((prevUserInput) => {
-            return {
-                ...prevUserInput,
-                [inputIdentifier]: newValue,
-            };
-        });
-    };
-
+const UserInput = ({ onChangeInput, userInput }) => {
     return (
         <section id="user-input">
             <div className="input-group">
@@ -25,10 +8,10 @@ const UserInput = () => {
                     <label>Initial Invesment</label>
                     <input
                         type="number"
-                        value={UserInput.initialInvestment}
+                        value={userInput.initialInvestment}
                         required
                         onChange={(e) =>
-                            handleChange("initialInvestment", e.target.value)
+                            onChangeInput("initialInvestment", e.target.value)
                         }
                     />
                 </p>
@@ -36,10 +19,10 @@ const UserInput = () => {
                     <label>Annual Invesment</label>
                     <input
                         type="number"
-                        value={UserInput.annualInvestment}
+                        value={userInput.annualInvestment}
                         required
                         onChange={(e) =>
-                            handleChange("annualInvestment", e.target.value)
+                            onChangeInput("annualInvestment", e.target.value)
                         }
                     />
                 </p>
@@ -49,10 +32,10 @@ const UserInput = () => {
                     <label>Expected Return</label>
                     <input
                         type="number"
-                        value={UserInput.expectedReturn}
+                        value={userInput.expectedReturn}
                         required
                         onChange={(e) =>
-                            handleChange("expectedReturn", e.target.value)
+                            onChangeInput("expectedReturn", e.target.value)
                         }
                     />
                 </p>
@@ -60,10 +43,10 @@ const UserInput = () => {
                     <label>Duration</label>
                     <input
                         type="number"
-                        value={UserInput.duration}
+                        value={userInput.duration}
                         required
                         onChange={(e) =>
-                            handleChange("duration", e.target.value)
+                            onChangeInput("duration", e.target.value)
                         }
                     />
                 </p>
