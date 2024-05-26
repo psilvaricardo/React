@@ -56,6 +56,13 @@ Here are 4 reasons Why You Should Prefer Vite Over Create-React-App (CRA):
 https://semaphoreci.com/blog/vite
 
 
+# Adding tailwindcss to your ReactJS Projects
+
+## Step 1: Go to their website, click on Installation and pickup Vite from the Framework Guides section.
+
+All this information should be always available at: https://tailwindcss.com/docs/guides/vite; Usually you skip the first step as you already have an existing project and continue the installation process from #2 on the list.
+
+
 # Various projects related to React, ReactJS and React Native
 
 Here are some projects related to ReactJS, some of them are from the Udemy's 2024 version.
