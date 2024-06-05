@@ -1,10 +1,16 @@
 import Player from './components/Player';
+import TimerChallenge from './components/TimerChallenge';
 
 const App = () => {
   return (
     <>
       <Player />
-      <div id="challenges"></div>
+      <div id="challenges">
+        <TimerChallenge title="Easy" targetTime={1} />
+        <TimerChallenge title="Not Easy" targetTime={5} />
+        <TimerChallenge title="Geting tougt" targetTime={10} />
+        <TimerChallenge title="Pros Only" targetTime={15} />
+      </div>
     </>
   );
 };
