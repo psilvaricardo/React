@@ -5,7 +5,9 @@ const ResultModal = forwardRef(
         const dialog = useRef();
         const userLost = remainingTime <= 0;
         const formattedRemainingTime = (remainingTime / 1000).toFixed(2);
-        const score = Math.round((1 - remainingTime / (targetTime * 1000)) * 100);
+        const score = Math.round(
+            (1 - remainingTime / (targetTime * 1000)) * 100
+        );
 
         // exposing Component's API to make it more robust and reUsable
         // 1. For this component, we are using showModal() outside this method.
@@ -22,7 +24,11 @@ const ResultModal = forwardRef(
         });
 
         return (
-            <dialog className="result-modal" ref={dialog}>
+            <dialog
+                className="result-modal"
+                ref={dialog}
+                onClose={() => onReset}
+            >
                 <h2>You {userLost ? "lost" : "won, your score: " + score} </h2>
                 <p>
                     The target time was{" "}
