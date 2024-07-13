@@ -25,61 +25,61 @@ export const CartContext = createContext({
 });
 
 const shoppingCartReducer = (state, action) => {
-    if (action.type === "ADD_ITEM") {
-        const updatedItems = [...state.items];
+    const updatedItems = [...state.items];
 
-        const existingCartItemIndex = updatedItems.findIndex(
-            (cartItem) => cartItem.id === action.payload
-        );
-        const existingCartItem = updatedItems[existingCartItemIndex];
-
-        if (existingCartItem) {
-            const updatedItem = {
-                ...existingCartItem,
-                quantity: existingCartItem.quantity + 1,
-            };
-            updatedItems[existingCartItemIndex] = updatedItem;
-        } else {
-            const product = DUMMY_PRODUCTS.find(
-                (product) => product.id === action.payload
+    switch (action.type) {
+        case "ADD_ITEM":
+            const existingCartItemIndex = updatedItems.findIndex(
+                (cartItem) => cartItem.id === action.payload
             );
-            updatedItems.push({
-                id: action.payload,
-                name: product.title,
-                price: product.price,
-                quantity: 1,
-            });
-        }
+            const existingCartItem = updatedItems[existingCartItemIndex];
 
-        return {
-            items: updatedItems,
-        };
-    } 
-    
-    if (action.type === "UPDATE_ITEM") {
-        const updatedItems = [...state.items];
-        const updatedItemIndex = updatedItems.findIndex(
-            (item) => item.id === action.payload.productId
-        );
+            if (existingCartItem) {
+                const updatedItem = {
+                    ...existingCartItem,
+                    quantity: existingCartItem.quantity + 1,
+                };
+                updatedItems[existingCartItemIndex] = updatedItem;
+            } else {
+                const product = DUMMY_PRODUCTS.find(
+                    (product) => product.id === action.payload
+                );
+                updatedItems.push({
+                    id: action.payload,
+                    name: product.title,
+                    price: product.price,
+                    quantity: 1,
+                });
+            }
 
-        const updatedItem = {
-            ...updatedItems[updatedItemIndex],
-        };
+            return {
+                items: updatedItems,
+            };
 
-        updatedItem.quantity += action.payload.amount;
+        case "UPDATE_ITEM":
+            const updatedItemIndex = updatedItems.findIndex(
+                (item) => item.id === action.payload.productId
+            );
 
-        if (updatedItem.quantity <= 0) {
-            updatedItems.splice(updatedItemIndex, 1);
-        } else {
-            updatedItems[updatedItemIndex] = updatedItem;
-        }
+            const updatedItem = {
+                ...updatedItems[updatedItemIndex],
+            };
 
-        return {
-            items: updatedItems,
-        };
+            updatedItem.quantity += action.payload.amount;
+
+            if (updatedItem.quantity <= 0) {
+                updatedItems.splice(updatedItemIndex, 1);
+            } else {
+                updatedItems[updatedItemIndex] = updatedItem;
+            }
+
+            return {
+                items: updatedItems,
+            };
+
+        default:
+            return state;
     }
-
-    return state;
 };
 
 /* Outsourcing context and state into a separate provider component */
