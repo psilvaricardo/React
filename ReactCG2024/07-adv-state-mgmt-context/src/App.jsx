@@ -69,7 +69,10 @@ const App = () => {
     }
 
     return (
-        <CartContext.Provider>
+        /* The default value is set when creating the context is only
+        used if a component that was not wrapped by the Provider compoent
+        tries to access the context value */
+        <CartContext.Provider value={{ items: [] }}>
             <Header
                 cart={shoppingCart}
                 onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
