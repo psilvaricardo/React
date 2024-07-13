@@ -71,6 +71,7 @@ const App = () => {
     const ctxValue = {
         items: shoppingCart.items,
         addItemToCart: handleAddItemToCart,
+        updateItemQuantity: handleUpdateCartItemQuantity,
     };
 
     return (
@@ -78,10 +79,7 @@ const App = () => {
         used if a component that was not wrapped by the Provider compoent
         tries to access the context value */
         <CartContext.Provider value={ctxValue}>
-            <Header
-                cart={shoppingCart}
-                onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-            />
+            <Header />
             <Shop>
                 {DUMMY_PRODUCTS.map((product) => (
                     <li key={product.id}>
