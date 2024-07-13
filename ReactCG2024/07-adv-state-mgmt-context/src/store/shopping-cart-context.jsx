@@ -19,4 +19,5 @@ so to say, so that those wrapped compoents can access this value. */
 
 export const CartContext = createContext({
     items: [],
+    addItemToCart: () => {},
 });
