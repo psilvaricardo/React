@@ -1,14 +1,38 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Places from "./components/Places";
 import { AVAILABLE_PLACES } from "./data";
 import Modal from "./components/Modal";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import logoImg from "./assets/logo.png";
+import { sortPlacesByDistance } from "./loc";
 
 const App = () => {
     const modal = useRef();
     const selectedPlace = useRef();
+    const [availablePlaces, setAvailablePlaces] = useState([]);
     const [pickedPlaces, setPickedPlaces] = useState([]);
+
+    /* The first arg is a function that should wrap your side-effect code.
+       The second arg is an array of dependencies of that effect function.
+       The function that you pass as the first arg will be executed by React
+       AFTER the JSX code has been return for the current component. AFTER
+       the component's function is done executing. */
+    /* If you define the dependencies array, aka the second arg and don't omit it
+       then, React will take a look at the dependencies specifed there, and will 
+       only execute this effect function again if the dependencies value changed.
+       If we have no dependencies, they will never change, therefore React will
+       never re-executes this effect function. */
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const sortedPlaces = sortPlacesByDistance(
+                AVAILABLE_PLACES,
+                position.coords.latitude,
+                position.coords.longitude
+            );
+
+            setAvailablePlaces(sortedPlaces);
+        });
+    }, []);
 
     const handleStartRemovePlace = (id) => {
         modal.current.open();
@@ -66,7 +90,8 @@ const App = () => {
                 />
                 <Places
                     title="Available Places"
-                    places={AVAILABLE_PLACES}
+                    places={availablePlaces}
+                    fallbackText="Sorting places by distance..."
                     onSelectPlace={handleSelectPlace}
                 />
             </main>
