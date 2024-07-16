@@ -9,14 +9,14 @@ import { sortPlacesByDistance } from "./loc";
 // retrieve the Ids stored in the web browser...
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map((id) => {
-    AVAILABLE_PLACES.find((place) => place.id === id);
+    return AVAILABLE_PLACES.find((place) => place.id === id);
 });
 
 const App = () => {
     const modal = useRef();
     const selectedPlace = useRef();
     const [availablePlaces, setAvailablePlaces] = useState([]);
-    const [pickedPlaces, setPickedPlaces] = useState([]);
+    const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
     /* The first arg is a function that should wrap your side-effect code.
        The second arg is an array of dependencies of that effect function.
