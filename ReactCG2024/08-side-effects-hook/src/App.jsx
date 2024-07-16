@@ -6,6 +6,12 @@ import DeleteConfirmation from "./components/DeleteConfirmation";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc";
 
+// retrieve the Ids stored in the web browser...
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) => {
+    AVAILABLE_PLACES.find((place) => place.id === id);
+});
+
 const App = () => {
     const modal = useRef();
     const selectedPlace = useRef();
@@ -69,6 +75,18 @@ const App = () => {
             )
         );
         modal.current.close();
+
+        const storedIds =
+            JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+
+        localStorage.setItem(
+            "selectedPlaces",
+            JSON.stringify(
+                storedIds.filter((id) => {
+                    id !== selectedPlace.current;
+                })
+            )
+        );
     };
 
     return (
