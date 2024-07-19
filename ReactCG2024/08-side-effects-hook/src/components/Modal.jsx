@@ -14,7 +14,7 @@ const Modal = ({ open, children }) => {
         } else {
             dialog.current.close();
         }
-    }, []);
+    }, [open]);
 
     // dialog.current.showModal();
 
