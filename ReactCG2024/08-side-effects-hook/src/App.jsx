@@ -74,6 +74,10 @@ const App = () => {
                 (place) => place.id !== selectedPlace.current
             )
         );
+
+        // this state update is very important to prevemt
+        // an infinite loop as we are using useEffect with
+        // a function as property in there.
         setIsModalOpen(false);
 
         const storedIds =

@@ -5,8 +5,8 @@ const Modal = ({ open, children, onClose }) => {
     const dialog = useRef();
 
     // another example on how we can use useEffect to
-    // sync a property value with the DOM/API, because 
-    // these functiom calls does not directly modify 
+    // sync a property value with the DOM/API, because
+    // these functiom calls does not directly modify
     // the behavior of the JSX code
     useEffect(() => {
         if (open) {
@@ -16,11 +16,9 @@ const Modal = ({ open, children, onClose }) => {
         }
     }, [open]);
 
-    // dialog.current.showModal();
-
     return createPortal(
         <dialog className="modal" ref={dialog} onClose={onClose}>
-            {children}
+            {open ? children : null}
         </dialog>,
         document.getElementById("modal")
     );
