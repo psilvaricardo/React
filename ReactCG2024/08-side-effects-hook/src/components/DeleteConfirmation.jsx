@@ -14,11 +14,13 @@ const DeleteConfirmation = ({ onConfirm, onCancel }) => {
 
         // When adding functions as dependencies there is
         // always the danger of creating an infinite loop,
-        // because functions in JS are 'objects' that are 
-        // re-created every time the containing Component's 
+        // because functions in JS are 'objects' that are
+        // re-created every time the containing Component's
         // function executes (the App component in this case).
-        // The issue is that the onConfirm property will be 
+        // The issue is that the onConfirm property will be
         // different between render cycles.
+        // We should use useCallback hook when passing functions
+        // as dependencies to useEffect.
     }, [onConfirm]);
 
     return (

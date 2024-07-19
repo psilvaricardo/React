@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Places from "./components/Places";
 import { AVAILABLE_PLACES } from "./data";
 import Modal from "./components/Modal";
@@ -68,16 +68,15 @@ const App = () => {
         }
     };
 
-    const handleRemovePlace = () => {
+    // useCallback makes use the function inside is not re-created on every render cycle,
+    // instead React stores it in memory and just re-use it whenever is needed.
+    const handleRemovePlace = useCallback(() => {
         setPickedPlaces((prevPickedPlaces) =>
             prevPickedPlaces.filter(
                 (place) => place.id !== selectedPlace.current
             )
         );
 
-        // this state update is very important to prevemt
-        // an infinite loop as we are using useEffect with
-        // a function as property in there.
         setIsModalOpen(false);
 
         const storedIds =
@@ -91,7 +90,7 @@ const App = () => {
                 })
             )
         );
-    };
+    }, []);
 
     return (
         <>
