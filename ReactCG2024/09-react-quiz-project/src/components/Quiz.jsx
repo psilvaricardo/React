@@ -1,4 +1,5 @@
 import { useState } from "react";
+import QUESTIONS from "../questions";
 
 const Quiz = () => {
     // index-based logic to render the questions to the user.
@@ -7,10 +8,31 @@ const Quiz = () => {
     const [userAnswers, setUserAnswers] = useState([]);
     const activeQuestionIndex = userAnswers.length;
 
+    const handleSelectedAnswer = (selectedAnswer) => {
+        setUserAnswers((prevUserAnswer) => {
+            return [...prevUserAnswer, selectedAnswer];
+        });
+    };
+
     return (
-        <>
-            <p>Currently Active Question</p>
-        </>
+        <div id="quiz">
+            <div id="question">
+                <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
+                <ul id="answers">
+                    {QUESTIONS[activeQuestionIndex].answers.map((answer) => (
+                        <li key={answer} className="answer">
+                            <button
+                                onClick={() => {
+                                    handleSelectedAnswer(answer);
+                                }}
+                            >
+                                {answer}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     );
 };
 
