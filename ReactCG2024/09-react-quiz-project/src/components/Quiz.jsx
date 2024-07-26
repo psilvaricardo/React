@@ -48,6 +48,7 @@ const Quiz = () => {
         <div id="quiz">
             <div id="question">
                 <QuestionTimer
+                    key={activeQuestionIndex}
                     timeout={TIMEOUT_DUARATION}
                     onTimeout={handleSkipAnswer}
                 />
