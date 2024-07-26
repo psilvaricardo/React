@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import QUESTIONS from "../questions";
+import QuestionTimer from "./QuestionTimer";
 import quizCompletedImg from "../assets/quiz-complete.png";
+
+const TIMEOUT_DUARATION = 10000; // 10 seconds in milliseconds.
 
 const Quiz = () => {
     // index-based logic to render the questions to the user.
@@ -11,11 +14,11 @@ const Quiz = () => {
     // let's find out whether the quiz is over or not
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-    const handleSelectedAnswer = (selectedAnswer) => {
+    const handleSelectedAnswer = useCallback((selectedAnswer) => {
         setUserAnswers((prevUserAnswer) => {
             return [...prevUserAnswer, selectedAnswer];
         });
-    };
+    }, []);
 
     if (quizIsComplete) {
         return (
@@ -39,6 +42,10 @@ const Quiz = () => {
     return (
         <div id="quiz">
             <div id="question">
+                <QuestionTimer
+                    timeout={TIMEOUT_DUARATION}
+                    onTimeout={() => handleSelectedAnswer(null)}
+                />
                 <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
                 <ul id="answers">
                     {shuffleAnswers.map((answer) => (
