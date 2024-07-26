@@ -1,24 +1,45 @@
 import { useState, useCallback } from "react";
+import Question from "./Question";
 import QUESTIONS from "../questions";
-import QuestionTimer from "./QuestionTimer";
 import quizCompletedImg from "../assets/quiz-complete.png";
-
-const TIMEOUT_DUARATION = 10000; // 10 seconds in milliseconds.
 
 const Quiz = () => {
     // index-based logic to render the questions to the user.
     // example: 2 answers given means 2 question answered
     // and next question should be third, and index = 2
     const [userAnswers, setUserAnswers] = useState([]);
-    const activeQuestionIndex = userAnswers.length;
+    // adding more state to highlight correct/incorrect answers
+    const [answerState, setAnswerState] = useState("");
+    const activeQuestionIndex =
+        answerState === "" ? userAnswers.length : userAnswers.length - 1;
     // let's find out whether the quiz is over or not
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-    const handleSelectedAnswer = useCallback((selectedAnswer) => {
-        setUserAnswers((prevUserAnswer) => {
-            return [...prevUserAnswer, selectedAnswer];
-        });
-    }, []);
+    const handleSelectedAnswer = useCallback(
+        (selectedAnswer) => {
+            setAnswerState("answered");
+            setUserAnswers((prevUserAnswer) => {
+                return [...prevUserAnswer, selectedAnswer];
+            });
+
+            const answerTimeout = setTimeout(() => {
+                // check if the selected answer is correct
+                if (
+                    selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]
+                ) {
+                    setAnswerState("correct");
+                } else {
+                    setAnswerState("wrong");
+                }
+
+                setTimeout(() => {
+                    // make sure we reset the state
+                    setAnswerState("");
+                }, 2000);
+            }, 1000);
+        },
+        [activeQuestionIndex]
+    );
 
     const handleSkipAnswer = useCallback(
         () => handleSelectedAnswer(null),
@@ -34,39 +55,17 @@ const Quiz = () => {
         );
     }
 
-    // let's create a copy of the original array where we have all the answers
-    // because I want to keep my original array as it is, I know I have the right
-    // answer in the first element and I will use that information later.
-    const shuffleAnswers = [...QUESTIONS[activeQuestionIndex].answers];
-    // I want to make sure to shuffle those answers, so they are not
-    // always presented in the same order. Sort will not return a new array,
-    // but instead it will edit the same array,
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-    shuffleAnswers.sort(() => Math.random() - 0.5);
-
     return (
         <div id="quiz">
-            <div id="question">
-                <QuestionTimer
-                    key={activeQuestionIndex}
-                    timeout={TIMEOUT_DUARATION}
-                    onTimeout={handleSkipAnswer}
-                />
-                <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-                <ul id="answers">
-                    {shuffleAnswers.map((answer) => (
-                        <li key={answer} className="answer">
-                            <button
-                                onClick={() => {
-                                    handleSelectedAnswer(answer);
-                                }}
-                            >
-                                {answer}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <Question
+                key={activeQuestionIndex}
+                questionText={QUESTIONS[activeQuestionIndex].text}
+                answers={QUESTIONS[activeQuestionIndex].answers}
+                onSelectAnswer={handleSelectedAnswer}
+                answerState={answerState}
+                selectedAnswer={userAnswers[userAnswers.length - 1]}
+                onSkipAnswer={handleSkipAnswer}
+            />
         </div>
     );
 };
