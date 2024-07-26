@@ -20,6 +20,11 @@ const Quiz = () => {
         });
     }, []);
 
+    const handleSkipAnswer = useCallback(
+        () => handleSelectedAnswer(null),
+        [handleSelectedAnswer]
+    );
+
     if (quizIsComplete) {
         return (
             <div id="summary">
@@ -44,7 +49,7 @@ const Quiz = () => {
             <div id="question">
                 <QuestionTimer
                     timeout={TIMEOUT_DUARATION}
-                    onTimeout={() => handleSelectedAnswer(null)}
+                    onTimeout={handleSkipAnswer}
                 />
                 <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
                 <ul id="answers">
