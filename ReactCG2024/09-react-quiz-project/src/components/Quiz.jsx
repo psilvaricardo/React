@@ -8,38 +8,15 @@ const Quiz = () => {
     // example: 2 answers given means 2 question answered
     // and next question should be third, and index = 2
     const [userAnswers, setUserAnswers] = useState([]);
-    // adding more state to highlight correct/incorrect answers
-    const [answerState, setAnswerState] = useState("");
-    const activeQuestionIndex =
-        answerState === "" ? userAnswers.length : userAnswers.length - 1;
+    const activeQuestionIndex = userAnswers.length;
     // let's find out whether the quiz is over or not
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-    const handleSelectedAnswer = useCallback(
-        (selectedAnswer) => {
-            setAnswerState("answered");
-            setUserAnswers((prevUserAnswer) => {
-                return [...prevUserAnswer, selectedAnswer];
-            });
-
-            const answerTimeout = setTimeout(() => {
-                // check if the selected answer is correct
-                if (
-                    selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]
-                ) {
-                    setAnswerState("correct");
-                } else {
-                    setAnswerState("wrong");
-                }
-
-                setTimeout(() => {
-                    // make sure we reset the state
-                    setAnswerState("");
-                }, 2000);
-            }, 1000);
-        },
-        [activeQuestionIndex]
-    );
+    const handleSelectedAnswer = useCallback((selectedAnswer) => {
+        setUserAnswers((prevUserAnswer) => {
+            return [...prevUserAnswer, selectedAnswer];
+        });
+    }, []);
 
     const handleSkipAnswer = useCallback(
         () => handleSelectedAnswer(null),
@@ -59,11 +36,8 @@ const Quiz = () => {
         <div id="quiz">
             <Question
                 key={activeQuestionIndex}
-                questionText={QUESTIONS[activeQuestionIndex].text}
-                answers={QUESTIONS[activeQuestionIndex].answers}
+                questionIndex={activeQuestionIndex}
                 onSelectAnswer={handleSelectedAnswer}
-                answerState={answerState}
-                selectedAnswer={userAnswers[userAnswers.length - 1]}
                 onSkipAnswer={handleSkipAnswer}
             />
         </div>

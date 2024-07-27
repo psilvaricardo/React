@@ -42,6 +42,7 @@ const Answers = ({ answers, selectedAnswer, answerState, onSelect }) => {
                 return (
                     <li key={answer} className="answer">
                         <button
+                            disabled={answerState !== ''}
                             className={cssClass}
                             onClick={() => {
                                 onSelect(answer);
