@@ -3,13 +3,21 @@ import Answers from "./Answers";
 import QUESTIONS from "../questions";
 import QuestionTimer from "./QuestionTimer";
 
-const TIMEOUT_DUARATION = 10000; // 10 seconds in milliseconds.
-
 const Question = ({ questionIndex, onSelectAnswer, onSkipAnswer }) => {
     const [answer, setAnswer] = useState({
         selectedAnswer: "",
         isCorrect: null,
     });
+
+    // Setting different timers based on timing the user is answering questions.
+    let TIMEOUT_DUARATION = 10000; // 10 seconds in milliseconds.
+    if (answer.selectedAnswer) {
+        TIMEOUT_DUARATION = 1000;
+    }
+
+    if (answer.isCorrect !== null) {
+        TIMEOUT_DUARATION = 2000;
+    }
 
     const handleSelectAnswer = (answer) => {
         setAnswer({
@@ -39,8 +47,10 @@ const Question = ({ questionIndex, onSelectAnswer, onSkipAnswer }) => {
     return (
         <div id="question">
             <QuestionTimer
+                key={TIMEOUT_DUARATION}
                 timeout={TIMEOUT_DUARATION}
-                onTimeout={onSkipAnswer}
+                onTimeout={answer.selectedAnswer === "" ? onSkipAnswer : null}
+                mode={answerState}
             />
             <h2>{QUESTIONS[questionIndex].text}</h2>
             <Answers
