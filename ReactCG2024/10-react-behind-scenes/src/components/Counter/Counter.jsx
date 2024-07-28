@@ -4,7 +4,7 @@ import IconButton from "../UI/IconButton";
 import MinusIcon from "../UI/Icons/MinusIcon";
 import PlusIcon from "../UI/Icons/PlusIcon";
 import CounterOutput from "./CounterOutput";
-import { log } from "../../log.js";
+import log from "../../log.js";
 
 const isPrime = (number) => {
     log("Calculating if is prime number", 2, "other");

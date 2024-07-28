@@ -1,4 +1,4 @@
-import { log } from "../../../log.js";
+import log from "../../../log.js";
 
 const PlusIcon = (props) => {
     log("<PlusIcon /> rendered", 3);

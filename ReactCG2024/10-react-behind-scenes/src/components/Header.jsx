@@ -1,4 +1,4 @@
-import { log } from "../log";
+import log from "../log.js";
 import logoImg from "../assets/logo.png";
 
 const Header = () => {

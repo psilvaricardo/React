@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Counter from "./components/Counter/Counter";
 import Header from "./components/Header";
-import { log } from "./log.js";
+import log from "./log.js";
 
 const App = () => {
     log("<App /> rendered");
