@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
 import IconButton from "../UI/IconButton";
 import MinusIcon from "../UI/Icons/MinusIcon";
@@ -23,7 +23,13 @@ const isPrime = (number) => {
     return true;
 };
 
-const Counter = ({ initialCount }) => {
+// memo will look at the props of your component function and whenever the
+// component's function would normally execute again -- for example, when
+// the App's component function executes -- it will look at the old value
+// and will compare it to the new value received when the function is executed
+// again, and if those prop values are exactly the same, will NOT execute.
+// memo only prevents function executions that are triggered by the parent component.
+const Counter = memo(({ initialCount }) => {
     log("<Counter /> rendered", 1);
     const initialCountIsPrime = isPrime(initialCount);
 
@@ -55,6 +61,6 @@ const Counter = ({ initialCount }) => {
             </p>
         </section>
     );
-};
+});
 
 export default Counter;
