@@ -11,8 +11,11 @@ const ConfigureCounter = ({ onSet }) => {
     };
 
     const handleSetClick = () => {
-        console.log("console.log: ConfigureCounter.handleSetClick");
-        onSet(enteredNumber);
+        console.log(
+            "console.log: ConfigureCounter.handleSetClick - entered number: " +
+                enteredNumber
+        );
+        onSet(+enteredNumber);
         setEnteredNumber(0);
     };
 
