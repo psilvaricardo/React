@@ -10,8 +10,13 @@ const App = () => {
     const [chosenCount, setChosenCount] = useState(0);
 
     const handleSetCount = (newCount) => {
-        console.log("console.log: App.handleSetCount - newCount: " + JSON.stringify(newCount));
-        setChosenCount(newCount);
+        console.log(
+            "console.log: App.handleSetCount - newCount: " +
+                JSON.stringify(newCount)
+        );
+        setChosenCount((prevChosenCount) => {
+            return newCount;
+        });
     };
 
     return (
