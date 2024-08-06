@@ -5,7 +5,7 @@ import express from "express";
 
 const app = express();
 
-app.use(express.static("backend/images"));
+app.use(express.static("images"));
 app.use(bodyParser.json());
 
 // CORS
