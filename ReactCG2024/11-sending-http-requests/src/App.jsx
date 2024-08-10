@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback } from "react";
 import Places from "./components/Places";
 import Modal from "./components/Modal";
+import Error from "./components/Error";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import logoImg from "./assets/logo.png";
 import AvailablePlaces from "./components/AvailablePlaces";
@@ -10,6 +11,7 @@ const App = () => {
     const selectedPlace = useRef();
     const [userPlaces, setUserPlaces] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
 
     const handleStartRemovePlace = (place) => {
         setModalIsOpen(true);
@@ -34,9 +36,15 @@ const App = () => {
         });
 
         try {
+            // sending the request after the UI was updated is called optimisting updating...
             await updateUserPlaces([selectedPlace, ...userPlaces]);
         } catch (error) {
-            console.error(error);
+            console.error(JSON.stringify(error));
+            // if something goes wrong, we need to reset the state to whatever it was before.
+            setUserPlaces(userPlaces);
+            setErrorUpdatingPlaces({
+                message: error.message || "Failed to update places.",
+            });
         }
     };
 
@@ -50,8 +58,25 @@ const App = () => {
         setModalIsOpen(false);
     }, []);
 
+    const handleErrorUpdatingPlaces = () => {
+        setErrorUpdatingPlaces(null);
+    };
+
     return (
         <>
+            <Modal
+                open={errorUpdatingPlaces}
+                onClose={handleErrorUpdatingPlaces}
+            >
+                {errorUpdatingPlaces && (
+                    <Error
+                        title="An error occurred!"
+                        message={errorUpdatingPlaces.message}
+                        onConfirm={handleErrorUpdatingPlaces}
+                    />
+                )}
+            </Modal>
+
             <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>
                 <DeleteConfirmation
                     onCancel={handleStopRemovePlace}
