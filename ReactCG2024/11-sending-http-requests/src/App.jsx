@@ -34,9 +34,9 @@ const App = () => {
         });
 
         try {
-            await updateUserPlaces([selectedPlace, ...prevPickedPlaces]);
+            await updateUserPlaces([selectedPlace, ...userPlaces]);
         } catch (error) {
-            //... error handling here ?
+            console.error(error);
         }
     };
 
