@@ -3,39 +3,31 @@ import Error from "./Error";
 import Places from "./Places";
 import sortPlacesByDistance from "../loc";
 import { fetchAvailablePlaces } from "../http";
+import { useFetch } from "../hooks/useFetch";
+
+/*
+navigator.geolocation.getCurrentPosition((position) => {
+    const sortedPlaces = sortPlacesByDistance(
+        places,
+        position.coords.latitude,
+        position.coords.longitude
+    );
+
+    setAvailablePlaces(sortedPlaces);
+    setIsFetching(false);
+});*/
 
 const AvailablePlaces = ({ onSelectPlace }) => {
-    const [isFetching, setIsFetching] = useState(false);
-    const [availablePlaces, setAvailablePlaces] = useState([]);
-    const [error, setError] = useState();
-
-    useEffect(() => {
-        const fetchPlaces = async () => {
-            setIsFetching(true);
-
-            try {
-                const places = await fetchAvailablePlaces();
-                navigator.geolocation.getCurrentPosition((position) => {
-                    const sortedPlaces = sortPlacesByDistance(
-                        places,
-                        position.coords.latitude,
-                        position.coords.longitude
-                    );
-
-                    setAvailablePlaces(sortedPlaces);
-                    setIsFetching(false);
-                });
-            } catch (error) {
-                setError({
-                    message:
-                        error.message ||
-                        "Could not fetch places, please try again later.",
-                });
-                setIsFetching(false);
-            }
-        };
-        fetchPlaces();
-    }, []);
+    // retrieve the places saved by the user only once when the app starts...
+    // this custom hook is also returning state-updating Functions...
+    const {
+        isFetching,
+        fetchedData: availablePlaces,
+        error,
+        setIsFetching,
+        setFetchedData: setAvailablePlaces,
+        setError,
+    } = useFetch(fetchAvailablePlaces, []);
 
     if (error) {
         return <Error title="An error occurred!" message={error.message} />;

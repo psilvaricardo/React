@@ -19,9 +19,7 @@ const App = () => {
         isFetching,
         fetchedData: userPlaces,
         error,
-        setIsFetching,
         setFetchedData: setUserPlaces,
-        setError,
     } = useFetch(fetchUserPlaces, []);
 
     const handleStartRemovePlace = (place) => {
