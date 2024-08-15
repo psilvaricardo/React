@@ -14,10 +14,14 @@ const App = () => {
     const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
 
     // retrieve the places saved by the user only once when the app starts...
+    // this custom hook is also returning state-updating Functions...
     const {
         isFetching,
         fetchedData: userPlaces,
         error,
+        setIsFetching,
+        setFetchedData: setUserPlaces,
+        setError,
     } = useFetch(fetchUserPlaces, []);
 
     const handleStartRemovePlace = (place) => {
@@ -80,7 +84,7 @@ const App = () => {
 
             setModalIsOpen(false);
         },
-        [userPlaces]
+        [userPlaces, setUserPlaces]
     );
 
     const handleErrorUpdatingPlaces = () => {
