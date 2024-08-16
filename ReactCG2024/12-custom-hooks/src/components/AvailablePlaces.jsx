@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
 import Error from "./Error";
 import Places from "./Places";
 import sortPlacesByDistance from "../loc";
 import { fetchAvailablePlaces } from "../http";
 import { useFetch } from "../hooks/useFetch";
 
-/*
-navigator.geolocation.getCurrentPosition((position) => {
-    const sortedPlaces = sortPlacesByDistance(
-        places,
-        position.coords.latitude,
-        position.coords.longitude
-    );
+const fetchSortedPlaces = async () => {
+    const places = await fetchAvailablePlaces();
 
-    setAvailablePlaces(sortedPlaces);
-    setIsFetching(false);
-});*/
+    // This is an example on how to convert a non-Promise 
+    // feature into a Promise-base feature
+    return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const sortedPlaces = sortPlacesByDistance(
+                places,
+                position.coords.latitude,
+                position.coords.longitude
+            );
+
+            resolve(sortedPlaces);
+        });
+    });
+};
 
 const AvailablePlaces = ({ onSelectPlace }) => {
     // retrieve the places saved by the user only once when the app starts...
@@ -24,10 +29,7 @@ const AvailablePlaces = ({ onSelectPlace }) => {
         isFetching,
         fetchedData: availablePlaces,
         error,
-        setIsFetching,
-        setFetchedData: setAvailablePlaces,
-        setError,
-    } = useFetch(fetchAvailablePlaces, []);
+    } = useFetch(fetchSortedPlaces, []);
 
     if (error) {
         return <Error title="An error occurred!" message={error.message} />;
