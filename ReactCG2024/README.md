@@ -37,7 +37,7 @@ cd my-react-app
 Run the following command to install the project dependencies:
 
 ```bash
-npm install eslint@8 eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
+npm install eslint@8 eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh prop-types
 npm install
 ```
 
