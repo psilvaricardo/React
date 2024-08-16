@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import ProgressBar from "./ProgressBar.jsx";
+import PropTypes from "prop-types";
 
 const TIMER = 3000;
 
@@ -29,6 +30,12 @@ const DeleteConfirmation = ({ onConfirm, onCancel }) => {
             <ProgressBar timer={TIMER} />
         </div>
     );
+};
+
+// Define prop types for the DeleteConfirmation component
+DeleteConfirmation.propTypes = {
+    onConfirm: PropTypes.func.isRequired, // ensure that onConfirm is a function
+    onCancel: PropTypes.func.isRequired, // ensure that onCancel is a function
 };
 
 export default DeleteConfirmation;

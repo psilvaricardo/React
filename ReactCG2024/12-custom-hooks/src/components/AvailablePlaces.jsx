@@ -3,11 +3,12 @@ import Places from "./Places";
 import sortPlacesByDistance from "../loc";
 import { fetchAvailablePlaces } from "../http";
 import { useFetch } from "../hooks/useFetch";
+import PropTypes from "prop-types";
 
 const fetchSortedPlaces = async () => {
     const places = await fetchAvailablePlaces();
 
-    // This is an example on how to convert a non-Promise 
+    // This is an example on how to convert a non-Promise
     // feature into a Promise-base feature
     return new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -45,6 +46,11 @@ const AvailablePlaces = ({ onSelectPlace }) => {
             onSelectPlace={onSelectPlace}
         />
     );
+};
+
+// Define prop types for the AvailablePlaces component
+AvailablePlaces.propTypes = {
+    onSelectPlace: PropTypes.func.isRequired, // ensure that onSelectPlace is a function
 };
 
 export default AvailablePlaces;

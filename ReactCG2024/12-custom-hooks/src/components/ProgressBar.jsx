@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const ProgressBar = ({ timer }) => {
     const [remainingTime, setRemainingTime] = useState(timer);
@@ -14,6 +15,11 @@ const ProgressBar = ({ timer }) => {
     }, []);
 
     return <progress value={remainingTime} max={timer} />;
+};
+
+// Define prop types for the ProgressBar component
+ProgressBar.propTypes = {
+    timer: PropTypes.number,
 };
 
 export default ProgressBar;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Places = ({
     title,
     places,
@@ -31,6 +33,16 @@ const Places = ({
             )}
         </section>
     );
+};
+
+// Define prop types for the Places component
+Places.propTypes = {
+    title: PropTypes.string,
+    loadingText: PropTypes.string,
+    fallbackText: PropTypes.string,
+    isLoading: PropTypes.bool,
+    places: PropTypes.array,
+    onSelectPlace: PropTypes.func.isRequired, // ensure that onConfirm is a function
 };
 
 export default Places;
