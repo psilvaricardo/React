@@ -1,6 +1,18 @@
 const Login = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // extract Form data
+        const formData = new FormData(event.target);
+        const data = {
+            email: formData.get("email"),
+            password: formData.get("password"),
+        };
+        console.log("handleSubmit..." + JSON.stringify(data));
+    };
+
     return (
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
             <h2>Login</h2>
 
             <div className="control-row">
