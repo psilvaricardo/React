@@ -7,13 +7,28 @@ const LoginStateEnhancedValidations = () => {
         passwd: "",
     });
 
-    const IsEmailInvalid =
-        enteredValues.email !== "" && !isEmail(enteredValues.email);
+    const [didEdit, setDidEdit] = useState({
+        email: false,
+        passwd: false,
+    });
+
+    const IsEmailInvalid = didEdit.email && !isEmail(enteredValues.email);
 
     const handleInputChange = (id, value) => {
         setEnteredValues((prevValues) => ({
             ...prevValues,
             [id]: value,
+        }));
+        setDidEdit((prevEdit) => ({
+            ...prevEdit,
+            [id]: false,
+        }));
+    };
+
+    const handleInputBlur = (id) => {
+        setDidEdit((prevValues) => ({
+            ...prevValues,
+            [id]: true,
         }));
     };
 
@@ -35,6 +50,7 @@ const LoginStateEnhancedValidations = () => {
                         type="email"
                         name="email"
                         value={enteredValues.email}
+                        onBlur={() => handleInputBlur("email")}
                         onChange={(e) =>
                             handleInputChange("email", e.target.value)
                         }
