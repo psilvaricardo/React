@@ -7,7 +7,8 @@ const LoginStateEnhancedValidations = () => {
         passwd: "",
     });
 
-    const IsEmailInvalid = !isEmail(enteredValues.email);
+    const IsEmailInvalid =
+        enteredValues.email !== "" && !isEmail(enteredValues.email);
 
     const handleInputChange = (id, value) => {
         setEnteredValues((prevValues) => ({
