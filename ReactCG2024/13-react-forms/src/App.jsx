@@ -3,15 +3,15 @@ import Header from "./components/Header";
 // import LoginSubmit from "./components/LoginSubmit";
 // import LoginState from "./components/LoginState";
 // import LoginStateEnhanced from "./components/LoginStateEnhanced";
-import LoginRefs from "./components/LoginRefs";
-// import Signup from "./components/Signup";
+// import LoginRefs from "./components/LoginRefs";
+import Signup from "./components/Signup";
 
 const App = () => {
     return (
         <>
             <Header />
             <main>
-                <LoginRefs />
+                <Signup />
             </main>
         </>
     );
