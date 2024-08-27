@@ -4,14 +4,15 @@ import Header from "./components/Header";
 // import LoginState from "./components/LoginState";
 // import LoginStateEnhanced from "./components/LoginStateEnhanced";
 // import LoginRefs from "./components/LoginRefs";
-import Signup from "./components/Signup";
+// import Signup from "./components/Signup";
+import LoginStateEnhancedValidations from "./components/LoginStateEnhancedValidations";
 
 const App = () => {
     return (
         <>
             <Header />
             <main>
-                <Signup />
+                <LoginStateEnhancedValidations />
             </main>
         </>
     );
