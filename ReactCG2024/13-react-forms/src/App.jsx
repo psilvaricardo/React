@@ -1,13 +1,14 @@
 import Header from "./components/Header";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+// import Login from "./components/Login";
+import LoginSubmit from "./components/LoginSubmit";
+// import Signup from "./components/Signup";
 
 const App = () => {
     return (
         <>
             <Header />
             <main>
-                <Signup />
+                <LoginSubmit />
             </main>
         </>
     );
