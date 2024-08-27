@@ -14,6 +14,9 @@ const Signup = () => {
         data.acquisition = acquisitionChannel;
         console.log(data);
         console.log("handleSubmit..." + JSON.stringify(data));
+
+        // calling reset on event.target will clear the form
+        // event.target.reset();
     };
 
     return (
