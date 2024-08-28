@@ -5,14 +5,15 @@ import Header from "./components/Header";
 // import LoginStateEnhanced from "./components/LoginStateEnhanced";
 // import LoginRefs from "./components/LoginRefs";
 // import Signup from "./components/Signup";
-import LoginStateEnhancedValidations from "./components/LoginStateEnhancedValidations";
+// import LoginStateEnhancedValidations from "./components/LoginStateEnhancedValidations";
+import LoginRefsValidations from "./components/LoginRefsValidations";
 
 const App = () => {
     return (
         <>
             <Header />
             <main>
-                <LoginStateEnhancedValidations />
+                <LoginRefsValidations />
             </main>
         </>
     );
