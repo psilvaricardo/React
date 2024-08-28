@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 const Signup = () => {
+    const [passwdNotEq, setPasswdNotEd] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -12,6 +15,14 @@ const Signup = () => {
         const data = Object.fromEntries(formData.entries());
         const acquisitionChannel = formData.getAll("acquisition");
         data.acquisition = acquisitionChannel;
+
+        if (data.password !== data["confirm-password"]) {
+            setPasswdNotEd(true);
+            console.log("handleSubmit... Passwords are not equal!!");
+            return;
+        }
+        setPasswdNotEd(false);
+
         console.log(data);
         console.log("handleSubmit..." + JSON.stringify(data));
 
@@ -20,7 +31,7 @@ const Signup = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
             <h2>Welcome on board!</h2>
             <p>
                 We just need a little bit of data from you to get you started 🚀
@@ -52,6 +63,9 @@ const Signup = () => {
                         required
                         minLength={6}
                     />
+                    <div className="control-error">
+                        {passwdNotEq && <p>Passwords must match!</p>}
+                    </div>
                 </div>
             </div>
 
@@ -60,12 +74,22 @@ const Signup = () => {
             <div className="control-row">
                 <div className="control">
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first-name" required />
+                    <input
+                        type="text"
+                        id="first-name"
+                        name="first-name"
+                        required
+                    />
                 </div>
 
                 <div className="control">
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name" required />
+                    <input
+                        type="text"
+                        id="last-name"
+                        name="last-name"
+                        required
+                    />
                 </div>
             </div>
 
