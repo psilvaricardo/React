@@ -10,7 +10,9 @@ const LoginRefsValidations = () => {
         event.preventDefault();
 
         const enteredEmail = email.current.value;
-        const enteredPasswd = passwd.current.value;
+        // var validityState_object = email.current.validity;
+        // console.log(validityState_object);
+        // const enteredPasswd = passwd.current.value;
 
         // email validation
         if (isEmail(enteredEmail)) {
