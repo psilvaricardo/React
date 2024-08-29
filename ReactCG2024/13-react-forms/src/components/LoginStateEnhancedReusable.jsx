@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Input from "./Input";
-import { isEmail } from "../util/validation";
+import { isEmail, hasMinLength } from "../util/validation";
 
 const LoginStateEnhancedReusable = () => {
     const [enteredValues, setEnteredValues] = useState({
@@ -15,7 +15,7 @@ const LoginStateEnhancedReusable = () => {
 
     const IsEmailInvalid = didEdit.email && !isEmail(enteredValues.email);
     const IsPasswdInvalid =
-        didEdit.passwd && enteredValues.passwd.trim().length < 6;
+        didEdit.passwd && !hasMinLength(enteredValues.passwd, 6);
 
     const handleInputChange = (id, value) => {
         setEnteredValues((prevValues) => ({
