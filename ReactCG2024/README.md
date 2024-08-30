@@ -116,6 +116,14 @@ The following page gives a good overview over the various methods you can use on
 - Enabling CSS Modules: https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet
 - Styled Components: https://styled-components.com/
 
+## Third-Party Form Libraries
+
+- Validex: https://www.npmjs.com/package/validex It is a complete collection of react form validation. It has over 36 validators ranging from string, password, credit card, email, checkbox, radio, file, image and more. Each validator has TypeScript and JavaScript codes, regex and non-regex options and unit tests
+- React Hook Form: https://react-hook-form.com/ React Hook Form (RHF) is easy to use and requires minimal boilerplate code from developers because it is built on top of the React hooks. A lightweight package with simple-to-use API that mainly focuses on performance and minimal re-renders.
+- Ant Design (AntD): https://ant.design/docs/react/introduce AntD is a UI framework that is the second most popular in the world because it provides high-quality React components, including a set of built-in typescript forms and validations. Unlike the other libraries mentioned in this article, AntD is a full UI library that offers a comprehensive suite of design elements along with forms and validations.
+- TanTrack Form: https://tanstack.com/form/latest TanStack is not just a single library. It is actually a set of open-source libraries that are highly reliable. It has a variety of headless, type-safe, powerful utilities for web developers, such as state management, routing, data visualization, charts, tables, rather than focusing solely on UI components.
+- React Final Form: https://final-form.org/react React Final Form provides a straightforward way to handle form state and validation with minimal impact on performance. It is a wrapper around Final Form with no dependencies. It follows an observer design pattern in which components subscribe to specific events that cause fewer re-renders instead of re-rendering the whole form.
+
 ## Reaching out to the Web from React (Http/Ajax)
 
 - Axios Docs: https://github.com/axios/axios
