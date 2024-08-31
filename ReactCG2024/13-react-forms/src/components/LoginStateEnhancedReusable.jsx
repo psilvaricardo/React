@@ -1,44 +1,36 @@
-import { useState } from "react";
 import Input from "./Input";
-import { isEmail, hasMinLength } from "../util/validation";
+import { isEmail, hasMinLength, isEmpty } from "../util/validation";
+import { useInput } from "../hooks/useInput";
 
 const LoginStateEnhancedReusable = () => {
-    const [enteredValues, setEnteredValues] = useState({
-        email: "",
-        passwd: "",
-    });
+    const {
+        value: emailValue,
+        hasError: IsEmailInvalid,
+        handleInputChange: handleEmailChange,
+        handleInputBlur: handleEmailBlur,
+    } = useInput("", (value) => !isEmail(value) || isEmpty(value));
 
-    const [didEdit, setDidEdit] = useState({
-        email: false,
-        passwd: false,
-    });
-
-    const IsEmailInvalid = didEdit.email && !isEmail(enteredValues.email);
-    const IsPasswdInvalid =
-        didEdit.passwd && !hasMinLength(enteredValues.passwd, 6);
-
-    const handleInputChange = (id, value) => {
-        setEnteredValues((prevValues) => ({
-            ...prevValues,
-            [id]: value,
-        }));
-        setDidEdit((prevEdit) => ({
-            ...prevEdit,
-            [id]: false,
-        }));
-    };
-
-    const handleInputBlur = (id) => {
-        setDidEdit((prevValues) => ({
-            ...prevValues,
-            [id]: true,
-        }));
-    };
+    const {
+        value: passwdValue,
+        hasError: IsPasswdInvalid,
+        handleInputChange: handlePwChange,
+        handleInputBlur: handlePwBlur,
+    } = useInput("", (value) => hasMinLength(value, 6));
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (isEmpty(emailValue) || isEmpty(passwdValue)) {
+            console.log("handleSubmit... with some errors!");
+            return;
+        }
+
+        if (IsEmailInvalid || IsPasswdInvalid) {
+            console.log("handleSubmit... with some errors...");
+            return;
+        }
+
         console.log("handleSubmit... Submitted!");
-        console.log("Values: " + JSON.stringify(enteredValues));
     };
 
     return (
@@ -54,9 +46,9 @@ const LoginStateEnhancedReusable = () => {
                     }
                     type="email"
                     name="email"
-                    value={enteredValues.email}
-                    onBlur={() => handleInputBlur("email")}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    value={emailValue}
+                    onBlur={handleEmailBlur}
+                    onChange={handleEmailChange}
                 />
 
                 <Input
@@ -65,11 +57,9 @@ const LoginStateEnhancedReusable = () => {
                     error={IsPasswdInvalid && "Please enter a valid password"}
                     type="password"
                     name="password"
-                    value={enteredValues.passwd}
-                    onBlur={() => handleInputBlur("passwd")}
-                    onChange={(e) =>
-                        handleInputChange("passwd", e.target.value)
-                    }
+                    value={passwdValue}
+                    onBlur={handlePwBlur}
+                    onChange={handlePwChange}
                 />
             </div>
 

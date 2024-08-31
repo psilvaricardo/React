@@ -3,12 +3,15 @@ export const isEmail = (value) => {
     return emailRegex.test(value);
 };
 
-export const isNotEmpty = (value) => {
-    return value.trim() !== "";
+export const isEmpty = (value) => {
+    console.log(
+        "isEmpty " + value + " " + (!value || value.trim().length === 0)
+    );
+    return !value || value.trim().length === 0;
 };
 
 export const hasMinLength = (value, minLength) => {
-    return value.length >= minLength;
+    return !(value.length >= minLength);
 };
 
 export const isEqualsToOtherValue = (value, otherValue) => {
