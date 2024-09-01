@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import { currencyFormatter } from "../util/formatting.js";
@@ -31,6 +32,15 @@ const MealItem = ({ meal }) => {
             </article>
         </li>
     );
+};
+
+MealItem.propTypes = {
+    meal: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default MealItem;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { currencyFormatter } from "../util/formatting.js";
 
 const CartItem = ({ name, quantity, price, onIncrease, onDecrease }) => {
@@ -13,6 +14,14 @@ const CartItem = ({ name, quantity, price, onIncrease, onDecrease }) => {
             </p>
         </li>
     );
+};
+
+CartItem.propTypes = {
+    name: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    onIncrease: PropTypes.func.isRequired,
+    onDecrease: PropTypes.func.isRequired,
 };
 
 export default CartItem;

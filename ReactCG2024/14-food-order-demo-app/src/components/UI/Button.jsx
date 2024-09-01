@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Button = ({ children, textOnly, className, ...props }) => {
     let cssClasses = textOnly ? "text-button" : "button";
     cssClasses += " " + className;
@@ -7,6 +9,17 @@ const Button = ({ children, textOnly, className, ...props }) => {
             {children}
         </button>
     );
+};
+
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+    textOnly: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+    textOnly: false,
+    className: "",
 };
 
 export default Button;
