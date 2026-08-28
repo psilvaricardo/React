@@ -19,6 +19,12 @@ const content = [
         "Next.js (Fullstack framework)",
         "React Native (build native mobile apps with React)",
     ],
+    [
+        "Vanilla JavaScript requires imperative programming",
+        "Imperative Programming: You define all the steps needed to achieve a result",
+        "React on the other hand embraces declarative programming",
+        "With React, you define the goal and React figures out how to get there",
+    ],
 ];
 
 const App = () => {
@@ -53,6 +59,12 @@ const App = () => {
                         onClick={() => setActiveContentIndex(2)}
                     >
                         Related Resources
+                    </button>
+                    <button
+                        className={activeContentIndex === 3 ? "active" : ""}
+                        onClick={() => setActiveContentIndex(3)}
+                    >
+                        React vs JS
                     </button>
                 </menu>
                 <div id="tab-content">
