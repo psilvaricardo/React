@@ -26,3 +26,23 @@ console.log(index);
 
 const editedHobbies = util.hobbies.map((item) => item + "!");
 console.log(editedHobbies);
+
+// destructuting arrays
+console.log(util.firstName);
+console.log(util.lastName);
+// destructuting arrays
+console.log(util.name);
+console.log(util.addr);
+console.log(util.age);
+
+// spread operator
+console.log(util.mergeTestSprOp);
+console.log(util.extendedUser1);
+
+// using functions as a values
+util.greeter(() => {
+    console.log("greetFn saying Hello!!");
+});
+
+// functions inside functions
+util.initFn();
