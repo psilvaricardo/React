@@ -23,6 +23,22 @@ The following page gives a good overview over the various methods you can use on
 - concat()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat?v=b
 - slice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 - splice()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+- array: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+## Next-Gen JavaScript
+
+let and const basically replace var. You use let instead of var and const instead of var if you plan on never re-assigning this "variable" (effectively turning it into a constant therefore).
+
+- let: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
+- const: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
+
+## ES6 Arrow Functions
+
+Arrow functions are a different way of creating functions in JavaScript. Besides a shorter syntax, they offer advantages when it comes to keeping the scope of the this keyword.
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this
+- Read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
 
 ## Useful Resources & Links
 
