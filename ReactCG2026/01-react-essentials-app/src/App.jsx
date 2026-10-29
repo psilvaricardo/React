@@ -1,5 +1,6 @@
 import reactCoreConceptsImg from "./assets/react-core-concepts.png";
-import componentsImg from "./assets/components.png";
+
+import { CORE_CONCEPTS } from "./data.js";
 
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
 
@@ -40,26 +41,18 @@ export const App = () => {
                 <section id="core-concepts">
                     <h2>Core Concepts</h2>
                     <ul>
+                        {/* If you have a use case like this where your props names in your
+                        Component -- in this case CoreConcept -- are the same to the property 
+                        names of the object that contains the data you want to set, you can 
+                        use the spread operator to pull out the (key, value) pairs */}
                         <CoreConcept
-                            title="Components"
-                            description="The Core UI building block"
-                            image={componentsImg}
+                            title={CORE_CONCEPTS[0].title}
+                            description={CORE_CONCEPTS[0].description}
+                            image={CORE_CONCEPTS[0].image}
                         />
-                        <CoreConcept
-                            title="Props"
-                            description=""
-                            image={componentsImg}
-                        />
-                        <CoreConcept
-                            title=""
-                            description=""
-                            image={componentsImg}
-                        />
-                        <CoreConcept
-                            title=""
-                            description=""
-                            image={componentsImg}
-                        />
+                        <CoreConcept {...CORE_CONCEPTS[1]} />
+                        <CoreConcept {...CORE_CONCEPTS[2]} />
+                        <CoreConcept {...CORE_CONCEPTS[3]} />
                     </ul>
                 </section>
             </main>
