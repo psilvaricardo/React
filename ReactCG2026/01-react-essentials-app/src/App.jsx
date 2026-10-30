@@ -10,7 +10,7 @@ import { CORE_CONCEPTS, EXAMPLES } from "./data.js";
 import { useState } from "react";
 
 export const App = () => {
-    const [selectedTab, setSelectedTab] = useState("components");
+    const [selectedTab, setSelectedTab] = useState();
 
     const onClickHandler = (e, id) => {
         console.log("onClickHandler: ", id);
@@ -61,14 +61,17 @@ export const App = () => {
                             State
                         </TabButton>
                     </menu>
-                    <div id="tab-content">
-                        <h3>{EXAMPLES[selectedTab].title}</h3>
-                        <p>{EXAMPLES[selectedTab].description}</p>
-                        <pre>
-                            <code>{EXAMPLES[selectedTab].code}</code>
-                        </pre>
-                        {selectedTab}
-                    </div>
+                    {!selectedTab ? (
+                        <p>Plese select a tab to see more information</p>
+                    ) : (
+                        <div id="tab-content">
+                            <h3>{EXAMPLES[selectedTab].title}</h3>
+                            <p>{EXAMPLES[selectedTab].description}</p>
+                            <pre>
+                                <code>{EXAMPLES[selectedTab].code}</code>
+                            </pre>
+                        </div>
+                    )}
                 </section>
             </main>
         </div>
