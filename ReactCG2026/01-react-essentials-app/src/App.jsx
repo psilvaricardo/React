@@ -10,14 +10,14 @@ import { CORE_CONCEPTS } from "./data.js";
 import { useState } from "react";
 
 export const App = () => {
-    const [tabContent, setTabContent] = useState(
+    const [selectedTab, setSelectedTab] = useState(
         "Please click a tab to see more information",
     );
 
     const onClickHandler = (e, idx) => {
         console.log("onClickHandler: ", idx);
         // setting the content dynamically using useState react hooks
-        setTabContent(CORE_CONCEPTS[idx].description);
+        setSelectedTab(CORE_CONCEPTS[idx].description);
     };
 
     return (
@@ -57,7 +57,7 @@ export const App = () => {
                             State
                         </TabButton>
                     </menu>
-                    {tabContent}
+                    {selectedTab}
                 </section>
             </main>
         </div>
