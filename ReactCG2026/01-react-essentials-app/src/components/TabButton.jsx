@@ -2,7 +2,7 @@
 // we can use object destructuring...
 // pulling out the children property
 // so we can use it just like this.
-export const TabButton = ({ children, onClickFn }) => {
+export const TabButton = ({ children, onClickFn, isTabSelected }) => {
     // when you add the definition of your handler inside
     // the functional component, you have the advantage that
     // your handler will have access to the component's
@@ -22,7 +22,12 @@ export const TabButton = ({ children, onClickFn }) => {
              This is set by React, and it refers to whichever content
              between your component's tags, it can be anything simple
              or complex */}
-            <button onClick={onClickFn}>{children}</button>
+            <button
+                className={isTabSelected ? "active" : undefined}
+                onClick={onClickFn}
+            >
+                {children}
+            </button>
         </li>
     );
 };

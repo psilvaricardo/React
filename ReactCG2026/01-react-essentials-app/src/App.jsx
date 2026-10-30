@@ -18,6 +18,20 @@ export const App = () => {
         setSelectedTab(id);
     };
 
+    let tabContent = <p>Plese select a tab to see more information</p>;
+
+    if (selectedTab) {
+        tabContent = (
+            <div id="tab-content">
+                <h3>{EXAMPLES[selectedTab].title}</h3>
+                <p>{EXAMPLES[selectedTab].description}</p>
+                <pre>
+                    <code>{EXAMPLES[selectedTab].code}</code>
+                </pre>
+            </div>
+        );
+    }
+
     return (
         <div>
             <Header />
@@ -43,35 +57,31 @@ export const App = () => {
                     <h2>Examples</h2>
                     <menu>
                         <TabButton
+                            isTabSelected={selectedTab === "components"}
                             onClickFn={(e) => onClickHandler(e, "components")}
                         >
                             Components
                         </TabButton>
-                        <TabButton onClickFn={(e) => onClickHandler(e, "jsx")}>
+                        <TabButton
+                            isTabSelected={selectedTab === "jsx"}
+                            onClickFn={(e) => onClickHandler(e, "jsx")}
+                        >
                             JSX
                         </TabButton>
                         <TabButton
+                            isTabSelected={selectedTab === "props"}
                             onClickFn={(e) => onClickHandler(e, "props")}
                         >
                             Props
                         </TabButton>
                         <TabButton
+                            isTabSelected={selectedTab === "state"}
                             onClickFn={(e) => onClickHandler(e, "state")}
                         >
                             State
                         </TabButton>
                     </menu>
-                    {!selectedTab ? (
-                        <p>Plese select a tab to see more information</p>
-                    ) : (
-                        <div id="tab-content">
-                            <h3>{EXAMPLES[selectedTab].title}</h3>
-                            <p>{EXAMPLES[selectedTab].description}</p>
-                            <pre>
-                                <code>{EXAMPLES[selectedTab].code}</code>
-                            </pre>
-                        </div>
-                    )}
+                    {tabContent}
                 </section>
             </main>
         </div>
