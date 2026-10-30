@@ -4,8 +4,8 @@ import { TabButton } from "./components/TabButton.jsx";
 
 import { CORE_CONCEPTS } from "./data.js";
 
-const onClickHandler = (e) => {
-    console.log("onClickHandler: ", e.target);
+const onClickHandler = (e, id) => {
+    console.log("onClickHandler: ", id);
 };
 
 export const App = () => {
@@ -33,12 +33,24 @@ export const App = () => {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton onClickFn={onClickHandler}>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "components")}
+                        >
                             Components
                         </TabButton>
-                        <TabButton onClickFn={onClickHandler}>JSX</TabButton>
-                        <TabButton onClickFn={onClickHandler}>Props</TabButton>
-                        <TabButton onClickFn={onClickHandler}>State</TabButton>
+                        <TabButton onClickFn={(e) => onClickHandler(e, "jsx")}>
+                            JSX
+                        </TabButton>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "props")}
+                        >
+                            Props
+                        </TabButton>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "state")}
+                        >
+                            State
+                        </TabButton>
                     </menu>
                 </section>
             </main>
