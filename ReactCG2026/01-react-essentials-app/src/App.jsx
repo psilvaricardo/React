@@ -1,7 +1,7 @@
 import { Header } from "./components/Header/Header.jsx";
 import { CoreConcept } from "./components/CoreConcept.jsx";
 import { TabButton } from "./components/TabButton.jsx";
-import { CORE_CONCEPTS } from "./data.js";
+import { CORE_CONCEPTS, EXAMPLES } from "./data.js";
 
 // Adding a react Hooks:
 // 1. must be called ONLY inside component functions
@@ -10,14 +10,12 @@ import { CORE_CONCEPTS } from "./data.js";
 import { useState } from "react";
 
 export const App = () => {
-    const [selectedTab, setSelectedTab] = useState(
-        "Please click a tab to see more information",
-    );
+    const [selectedTab, setSelectedTab] = useState("components");
 
-    const onClickHandler = (e, idx) => {
-        console.log("onClickHandler: ", idx);
+    const onClickHandler = (e, id) => {
+        console.log("onClickHandler: ", id);
         // setting the content dynamically using useState react hooks
-        setSelectedTab(CORE_CONCEPTS[idx].description);
+        setSelectedTab(id);
     };
 
     return (
@@ -44,20 +42,33 @@ export const App = () => {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton onClickFn={(e) => onClickHandler(e, 0)}>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "components")}
+                        >
                             Components
                         </TabButton>
-                        <TabButton onClickFn={(e) => onClickHandler(e, 1)}>
+                        <TabButton onClickFn={(e) => onClickHandler(e, "jsx")}>
                             JSX
                         </TabButton>
-                        <TabButton onClickFn={(e) => onClickHandler(e, 2)}>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "props")}
+                        >
                             Props
                         </TabButton>
-                        <TabButton onClickFn={(e) => onClickHandler(e, 3)}>
+                        <TabButton
+                            onClickFn={(e) => onClickHandler(e, "state")}
+                        >
                             State
                         </TabButton>
                     </menu>
-                    {selectedTab}
+                    <div id="tab-content">
+                        <h3>{EXAMPLES[selectedTab].title}</h3>
+                        <p>{EXAMPLES[selectedTab].description}</p>
+                        <pre>
+                            <code>{EXAMPLES[selectedTab].code}</code>
+                        </pre>
+                        {selectedTab}
+                    </div>
                 </section>
             </main>
         </div>
