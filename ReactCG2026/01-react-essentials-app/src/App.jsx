@@ -4,6 +4,10 @@ import { TabButton } from "./components/TabButton.jsx";
 
 import { CORE_CONCEPTS } from "./data.js";
 
+const onClickHandler = (e) => {
+    console.log("onClickHandler: ", e.target);
+};
+
 export const App = () => {
     return (
         <div>
@@ -29,10 +33,12 @@ export const App = () => {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton>Components</TabButton>
-                        <TabButton>JSX</TabButton>
-                        <TabButton>Props</TabButton>
-                        <TabButton>State</TabButton>
+                        <TabButton onClickFn={onClickHandler}>
+                            Components
+                        </TabButton>
+                        <TabButton onClickFn={onClickHandler}>JSX</TabButton>
+                        <TabButton onClickFn={onClickHandler}>Props</TabButton>
+                        <TabButton onClickFn={onClickHandler}>State</TabButton>
                     </menu>
                 </section>
             </main>
