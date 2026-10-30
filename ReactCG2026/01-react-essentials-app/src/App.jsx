@@ -43,14 +43,9 @@ export const App = () => {
                         Component -- in this case CoreConcept -- are the same to the property 
                         names of the object that contains the data you want to set, you can 
                         use the spread operator to pull out the (key, value) pairs */}
-                        <CoreConcept
-                            title={CORE_CONCEPTS[0].title}
-                            description={CORE_CONCEPTS[0].description}
-                            image={CORE_CONCEPTS[0].image}
-                        />
-                        <CoreConcept {...CORE_CONCEPTS[1]} />
-                        <CoreConcept {...CORE_CONCEPTS[2]} />
-                        <CoreConcept {...CORE_CONCEPTS[3]} />
+                        {CORE_CONCEPTS.map((concept) => (
+                            <CoreConcept key={concept.title} {...concept} />
+                        ))}
                     </ul>
                 </section>
                 <section id="examples">
