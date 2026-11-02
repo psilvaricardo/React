@@ -1,3 +1,4 @@
+import { Tabs } from "./Tabs";
 import { TabButton } from "./TabButton";
 import { Section } from "./Section";
 import { EXAMPLES } from "../data.js";
@@ -32,33 +33,38 @@ export const Examples = () => {
 
     return (
         <Section id="examples" title="Examples">
-            <menu>
-                <TabButton
-                    isTabSelected={selectedTab === "components"}
-                    onClick={(e) => onClickHandler(e, "components")}
-                >
-                    Components
-                </TabButton>
-                <TabButton
-                    isTabSelected={selectedTab === "jsx"}
-                    onClick={(e) => onClickHandler(e, "jsx")}
-                >
-                    JSX
-                </TabButton>
-                <TabButton
-                    isTabSelected={selectedTab === "props"}
-                    onClick={(e) => onClickHandler(e, "props")}
-                >
-                    Props
-                </TabButton>
-                <TabButton
-                    isTabSelected={selectedTab === "state"}
-                    onClick={(e) => onClickHandler(e, "state")}
-                >
-                    State
-                </TabButton>
-            </menu>
-            {tabContent}
+            <Tabs
+                buttons={
+                    <>
+                        <TabButton
+                            isTabSelected={selectedTab === "components"}
+                            onClick={(e) => onClickHandler(e, "components")}
+                        >
+                            Components
+                        </TabButton>
+                        <TabButton
+                            isTabSelected={selectedTab === "jsx"}
+                            onClick={(e) => onClickHandler(e, "jsx")}
+                        >
+                            JSX
+                        </TabButton>
+                        <TabButton
+                            isTabSelected={selectedTab === "props"}
+                            onClick={(e) => onClickHandler(e, "props")}
+                        >
+                            Props
+                        </TabButton>
+                        <TabButton
+                            isTabSelected={selectedTab === "state"}
+                            onClick={(e) => onClickHandler(e, "state")}
+                        >
+                            State
+                        </TabButton>
+                    </>
+                }
+            >
+                {tabContent}
+            </Tabs>
         </Section>
     );
 };
