@@ -1,4 +1,5 @@
 import { TabButton } from "./TabButton";
+import { Section } from "./Section";
 import { EXAMPLES } from "../data.js";
 // Adding a react Hooks:
 // 1. must be called ONLY inside component functions
@@ -28,37 +29,36 @@ export const Examples = () => {
             </div>
         );
     }
-    
+
     return (
-        <section id="examples">
-            <h2>Examples</h2>
+        <Section id="examples" title="Examples">
             <menu>
                 <TabButton
                     isTabSelected={selectedTab === "components"}
-                    onClickFn={(e) => onClickHandler(e, "components")}
+                    onClick={(e) => onClickHandler(e, "components")}
                 >
                     Components
                 </TabButton>
                 <TabButton
                     isTabSelected={selectedTab === "jsx"}
-                    onClickFn={(e) => onClickHandler(e, "jsx")}
+                    onClick={(e) => onClickHandler(e, "jsx")}
                 >
                     JSX
                 </TabButton>
                 <TabButton
                     isTabSelected={selectedTab === "props"}
-                    onClickFn={(e) => onClickHandler(e, "props")}
+                    onClick={(e) => onClickHandler(e, "props")}
                 >
                     Props
                 </TabButton>
                 <TabButton
                     isTabSelected={selectedTab === "state"}
-                    onClickFn={(e) => onClickHandler(e, "state")}
+                    onClick={(e) => onClickHandler(e, "state")}
                 >
                     State
                 </TabButton>
             </menu>
             {tabContent}
-        </section>
+        </Section>
     );
 };
