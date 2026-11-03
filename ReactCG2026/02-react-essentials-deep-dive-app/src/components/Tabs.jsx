@@ -1,7 +1,4 @@
-export const Tabs = ({ children, buttons, buttonsContainer }) => {
-    
-    const ButtonsContainer = buttonsContainer;
-
+export const Tabs = ({ children, buttons, ButtonsContainer }) => {
     return (
         <>
             <ButtonsContainer>{buttons}</ButtonsContainer>

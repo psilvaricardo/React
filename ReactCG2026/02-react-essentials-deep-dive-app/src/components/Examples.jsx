@@ -34,7 +34,7 @@ export const Examples = () => {
     return (
         <Section id="examples" title="Examples">
             <Tabs
-                buttonsContainer="menu"
+                ButtonsContainer="menu"
                 buttons={
                     <>
                         <TabButton
