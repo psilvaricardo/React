@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Player = ({ initialName, symbol }) => {
+export const Player = ({ initialName, symbol, isActive }) => {
     // using array destructuring to save the values
     const [isEditing, setIsEditing] = useState(false);
     const [playerName, setPlayerName] = useState(initialName);
@@ -33,7 +33,7 @@ export const Player = ({ initialName, symbol }) => {
 
     return (
         <>
-            <li>
+            <li className={isActive ? "active" : undefined}>
                 <span className="player">
                     {editablePlayerName}
                     <span className="player-symbol">{symbol}</span>

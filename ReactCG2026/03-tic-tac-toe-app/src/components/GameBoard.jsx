@@ -6,12 +6,12 @@ const initialGameBoard = [
     [undefined, undefined, undefined],
 ];
 
-export const GameBoard = () => {
+export const GameBoard = ({ onSelectSquareFn, activePlayerSymbol }) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     // when this is trigger, we want to change one of the squares
     // from undefined to either X or O, depending on who's clicking it.
-    const onBoardClickHandler = (e, rowIndex, colIndex, symbol) => {
+    const onBoardClickHandler = (e, rowIndex, colIndex) => {
         // we need to preserve the previous state.
         setGameBoard((prevGameBoard) => {
             // following best practices, we need to create a copy of the array.
@@ -21,10 +21,12 @@ export const GameBoard = () => {
             ];
 
             // we are updating the state in an immatable way!!
-            // updatedBoard[rowIndex][colIndex] = symbol;
-            updatedBoard[rowIndex][colIndex] = "X";
+            updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
             return updatedBoard;
         });
+
+        // calling the function reference
+        onSelectSquareFn();
     };
 
     return (
@@ -36,12 +38,7 @@ export const GameBoard = () => {
                             <li key={j}>
                                 <button
                                     onClick={(e) =>
-                                        onBoardClickHandler(
-                                            e,
-                                            i,
-                                            j,
-                                            playerSymbol,
-                                        )
+                                        onBoardClickHandler(e, i, j)
                                     }
                                 >
                                     {playerSymbol}
