@@ -1,30 +1,44 @@
 import { useState } from "react";
 
-export const Player = ({ name, symbol }) => {
+export const Player = ({ initialName, symbol }) => {
     // using array destructuring to save the values
     const [isEditing, setIsEditing] = useState(false);
+    const [playerName, setPlayerName] = useState(initialName);
 
     const onClickHandler = () => {
-        // Recommended for safe state updates
+        // Recommended for safe state updates based on a previous value
+        // we will pass a function that will be called by react.
         setIsEditing((prev) => !prev);
     };
 
+    const onChangeHandler = (e) => {
+        setPlayerName(e.target.value);
+    };
+
     // adding some improvements
-    let playerName = <span className="player-name">{name}</span>;
+    let btnCaption = "Edit";
+    let editablePlayerName = <span className="player-name">{playerName}</span>;
+
     if (isEditing) {
-        playerName = <input type="text" required />;
+        editablePlayerName = (
+            <input
+                type="text"
+                required
+                value={playerName}
+                onChange={(e) => onChangeHandler(e)}
+            />
+        );
+        btnCaption = "Save";
     }
 
     return (
         <>
             <li>
                 <span className="player">
-                    {playerName}
+                    {editablePlayerName}
                     <span className="player-symbol">{symbol}</span>
                 </span>
-                <button onClick={onClickHandler}>
-                    {isEditing ? "Save" : "Edit"}
-                </button>
+                <button onClick={onClickHandler}>{btnCaption}</button>
             </li>
         </>
     );
