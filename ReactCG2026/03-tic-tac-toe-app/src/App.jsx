@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Log } from "./components/Log.jsx";
 import { Player } from "./components/Player.jsx";
 import { GameBoard } from "./components/GameBoard.jsx";
 import "./App.css";
 
 export const App = () => {
+    const [gameTurns, setGameTurns] = useState([]);
     // Liftting state up, as it is common for Player and GameBoard
     const [activePlayer, setActivePlayer] = useState("X");
 
@@ -11,6 +13,7 @@ export const App = () => {
         setActivePlayer((currActivePlayer) =>
             currActivePlayer === "X" ? "O" : "X",
         );
+        setGameTurns();
     };
 
     return (
@@ -33,6 +36,7 @@ export const App = () => {
                     activePlayerSymbol={activePlayer}
                 />
             </div>
+            <Log />
         </main>
     );
 };
