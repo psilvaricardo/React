@@ -1,12 +1,10 @@
-import { useState } from "react";
-
 const initialGameBoard = [
     [undefined, undefined, undefined],
     [undefined, undefined, undefined],
     [undefined, undefined, undefined],
 ];
 
-export const GameBoard = ({ onSelectSquareFn, activePlayerSymbol }) => {
+export const GameBoard = ({ onSelectSquareFn }) => {
     // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     // // when this is trigger, we want to change one of the squares
@@ -37,9 +35,7 @@ export const GameBoard = ({ onSelectSquareFn, activePlayerSymbol }) => {
                         {row.map((playerSymbol, j) => (
                             <li key={j}>
                                 <button
-                                    onClick={(e) =>
-                                        onBoardClickHandler(e, i, j)
-                                    }
+                                    onClick={(e) => onSelectSquareFn(e, i, j)}
                                 >
                                     {playerSymbol}
                                 </button>

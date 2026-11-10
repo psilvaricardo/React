@@ -9,11 +9,29 @@ export const App = () => {
     // Liftting state up, as it is common for Player and GameBoard
     const [activePlayer, setActivePlayer] = useState("X");
 
-    const onSelectSquareClickHandler = () => {
+    const onSelectSquareClickHandler = (e, rowIndex, colIndex) => {
         setActivePlayer((currActivePlayer) =>
             currActivePlayer === "X" ? "O" : "X",
         );
-        setGameTurns();
+
+        setGameTurns((prevTurns) => {
+            let currentPlayer = "X";
+            if (prevTurns.length > 0) {
+                prevTurns[0].player === "X"
+                    ? (currentPlayer = "O")
+                    : (currentPlayer = "X");
+            }
+
+            const updatedTurns = [
+                {
+                    square: { row: rowIndex, col: colIndex },
+                    player: currentPlayer,
+                },
+                ...prevTurns,
+            ];
+
+            return updatedTurns;
+        });
     };
 
     return (
