@@ -51,7 +51,7 @@ export const App = () => {
                 </ol>
                 <GameBoard
                     onSelectSquareFn={onSelectSquareClickHandler}
-                    activePlayerSymbol={activePlayer}
+                    turns={gameTurns}
                 />
             </div>
             <Log />

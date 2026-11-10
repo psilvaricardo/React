@@ -4,7 +4,16 @@ const initialGameBoard = [
     [undefined, undefined, undefined],
 ];
 
-export const GameBoard = ({ onSelectSquareFn }) => {
+export const GameBoard = ({ onSelectSquareFn, turns }) => {
+    let gameBoard = initialGameBoard;
+
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, col } = square;
+
+        gameBoard[row][col] = player;
+    }
+
     // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     // // when this is trigger, we want to change one of the squares
