@@ -1,14 +1,28 @@
 import { useState } from "react";
 
-export const Player = ({ initialName, symbol, isActive }) => {
+export const Player = ({ initialName, symbol, isActive, onChangeName }) => {
     // using array destructuring to save the values
     const [isEditing, setIsEditing] = useState(false);
     const [playerName, setPlayerName] = useState(initialName);
 
+    // fixing empty names, and rejecting empty names and keeping
+    // the user in editing mode until a valid name is provided.
     const onClickHandler = () => {
-        // Recommended for safe state updates based on a previous value
-        // we will pass a function that will be called by react.
-        setIsEditing((prev) => !prev);
+        if (!isEditing) {
+            setIsEditing(true);
+            return;
+        }
+
+        // This prevents an empty name from being saved
+        // or displayed as the final player name.
+        const trimmedName = playerName.trim();
+        if (trimmedName === "") {
+            return;
+        }
+
+        setPlayerName(trimmedName);
+        onChangeName(symbol, trimmedName);
+        setIsEditing(false);
     };
 
     const onChangeHandler = (e) => {
@@ -38,7 +52,12 @@ export const Player = ({ initialName, symbol, isActive }) => {
                     {editablePlayerName}
                     <span className="player-symbol">{symbol}</span>
                 </span>
-                <button onClick={onClickHandler}>{btnCaption}</button>
+                <button
+                    onClick={onClickHandler}
+                    disabled={isEditing && playerName.trim() === ""}
+                >
+                    {btnCaption}
+                </button>
             </li>
         </>
     );

@@ -1,4 +1,4 @@
-export const GameBoard = ({ onSelectSquareFn, board }) => {
+export const GameBoard = ({ onSelectSquareFn, board, isGameOver }) => {
     return (
         <ol id="game-board">
             {board.map((row, i) => (
@@ -8,7 +8,9 @@ export const GameBoard = ({ onSelectSquareFn, board }) => {
                             <li key={j}>
                                 <button
                                     onClick={(e) => onSelectSquareFn(e, i, j)}
-                                    disabled={playerSymbol !== null}
+                                    disabled={
+                                        playerSymbol !== null || isGameOver
+                                    }
                                 >
                                     {playerSymbol}
                                 </button>

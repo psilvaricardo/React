@@ -3,62 +3,25 @@ import { Log } from "./components/Log.jsx";
 import { Player } from "./components/Player.jsx";
 import { GameOver } from "./components/GameOver.jsx";
 import { GameBoard } from "./components/GameBoard.jsx";
-import { WINNING_COMBINATIONS } from "./components/winning-combinations.js";
 import "./App.css";
-
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-];
-
-const deriveActivePlayer = (gameTurns) => {
-    let currentPlayer = "X";
-    if (gameTurns.length > 0 && gameTurns[0].player === "X") {
-        currentPlayer = "O";
-    }
-
-    return currentPlayer;
-};
+import {
+    PLAYERS,
+    deriveActivePlayer,
+    deriveGameBoard,
+    deriveWinner,
+} from "./util.js";
 
 export const App = () => {
+    const [players, setPlayers] = useState(PLAYERS);
     const [gameTurns, setGameTurns] = useState([]);
     const activePlayer = deriveActivePlayer(gameTurns);
-
-    // Modifying a variable defined outside a component is not allowed,
-    // and we should not try to edit the original in-memory array.
-    // we must create a deep copy when we derive the game board !!!
-    // let gameBoard = initialGameBoard;
-    let gameBoard = [...initialGameBoard.map((e) => [...e])];
-
-    for (const turn of gameTurns) {
-        const { square, player } = turn;
-        const { row, col } = square;
-
-        gameBoard[row][col] = player;
-    }
-
-    let winner = null;
-
-    for (const combination of WINNING_COMBINATIONS) {
-        const firstSquareSymbol =
-            gameBoard[combination[0].row][combination[0].column];
-        const secondSquareSymbol =
-            gameBoard[combination[1].row][combination[1].column];
-        const thirdSquareSymbol =
-            gameBoard[combination[2].row][combination[2].column];
-
-        if (
-            firstSquareSymbol !== undefined &&
-            firstSquareSymbol === secondSquareSymbol &&
-            firstSquareSymbol === thirdSquareSymbol
-        ) {
-            winner = firstSquareSymbol;
-        }
-    }
+    const gameBoard = deriveGameBoard(gameTurns);
+    // fixing issue if player names are empty
+    const winnerSymbol = deriveWinner(gameBoard);
+    const winnerName = winnerSymbol ? players[winnerSymbol] : null;
 
     // check if we have a draw
-    const hasDraw = gameTurns.length === 9 && !winner;
+    const hasDraw = gameTurns.length === 9 && winnerSymbol === null;
 
     const onSelectSquareClickHandler = (e, rowIndex, colIndex) => {
         setGameTurns((prevTurns) => {
@@ -76,8 +39,21 @@ export const App = () => {
         });
     };
 
-    const handleRestart = () => {
+    const onRestartHandler = () => {
         setGameTurns([]);
+    };
+
+    const handlePlayerNameChange = (symbol, newName) => {
+        setPlayers((prevPlayers) => {
+            return {
+                // I'll spread my old player's object into,
+                // I use this aproach to make sure I keep the name
+                // and symbol of the player that's not changing
+                ...prevPlayers,
+                // and then, override the one that was updated.
+                [symbol]: newName,
+            };
+        });
     };
 
     return (
@@ -85,22 +61,29 @@ export const App = () => {
             <div id="game-container">
                 <ol id="players" className="highlight-player">
                     <Player
-                        initialName="Player 1"
+                        initialName={PLAYERS.X}
                         symbol="X"
                         isActive={activePlayer === "X"}
+                        onChangeName={handlePlayerNameChange}
                     />
                     <Player
-                        initialName="Player 2"
+                        initialName={PLAYERS.O}
                         symbol="O"
                         isActive={activePlayer === "O"}
+                        onChangeName={handlePlayerNameChange}
                     />
                 </ol>
-                {(winner || hasDraw) && (
-                    <GameOver winner={winner} onRestart={handleRestart} />
+                {(winnerSymbol !== null || hasDraw) && (
+                    <GameOver
+                        winner={winnerSymbol}
+                        winnerName={winnerName}
+                        onRestart={onRestartHandler}
+                    />
                 )}
                 <GameBoard
                     onSelectSquareFn={onSelectSquareClickHandler}
                     board={gameBoard}
+                    isGameOver={winnerSymbol !== null || hasDraw}
                 />
             </div>
             <Log turns={gameTurns} />
