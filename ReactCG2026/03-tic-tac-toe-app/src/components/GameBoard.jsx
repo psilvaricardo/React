@@ -1,21 +1,4 @@
-const initialGameBoard = [
-    [undefined, undefined, undefined],
-    [undefined, undefined, undefined],
-    [undefined, undefined, undefined],
-];
-
-export const GameBoard = ({ onSelectSquareFn, turns }) => {
-    let gameBoard = initialGameBoard;
-
-    for (const turn of turns) {
-        const { square, player } = turn;
-        const { row, col } = square;
-
-        // modifying a variable defined outside a component
-        // is not correct and not allowed.
-        gameBoard[row][col] = player;
-    }
-
+export const GameBoard = ({ onSelectSquareFn, gameBoard }) => {
     return (
         <ol id="game-board">
             {gameBoard.map((row, i) => (
@@ -25,7 +8,7 @@ export const GameBoard = ({ onSelectSquareFn, turns }) => {
                             <li key={j}>
                                 <button
                                     onClick={(e) => onSelectSquareFn(e, i, j)}
-                                    disabled={playerSymbol !== undefined}
+                                    disabled={playerSymbol !== null}
                                 >
                                     {playerSymbol}
                                 </button>
