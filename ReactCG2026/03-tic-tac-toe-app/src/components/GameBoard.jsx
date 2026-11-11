@@ -1,7 +1,7 @@
-export const GameBoard = ({ onSelectSquareFn, gameBoard }) => {
+export const GameBoard = ({ onSelectSquareFn, board }) => {
     return (
         <ol id="game-board">
-            {gameBoard.map((row, i) => (
+            {board.map((row, i) => (
                 <li key={i}>
                     <ol>
                         {row.map((playerSymbol, j) => (

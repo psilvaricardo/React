@@ -6,7 +6,6 @@ import { GameBoard } from "./components/GameBoard.jsx";
 import { WINNING_COMBINATIONS } from "./components/winning-combinations.js";
 import "./App.css";
 
-
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
@@ -26,7 +25,11 @@ export const App = () => {
     const [gameTurns, setGameTurns] = useState([]);
     const activePlayer = deriveActivePlayer(gameTurns);
 
-    let gameBoard = initialGameBoard;
+    // Modifying a variable defined outside a component is not allowed,
+    // and we should not try to edit the original in-memory array.
+    // we must create a deep copy when we derive the game board !!!
+    // let gameBoard = initialGameBoard;
+    let gameBoard = [...initialGameBoard.map((e) => [...e])];
 
     for (const turn of gameTurns) {
         const { square, player } = turn;
@@ -73,6 +76,10 @@ export const App = () => {
         });
     };
 
+    const handleRestart = () => {
+        setGameTurns([]);
+    };
+
     return (
         <main>
             <div id="game-container">
@@ -88,7 +95,9 @@ export const App = () => {
                         isActive={activePlayer === "O"}
                     />
                 </ol>
-                {(winner || hasDraw) && <GameOver winner={winner} />}
+                {(winner || hasDraw) && (
+                    <GameOver winner={winner} onRestart={handleRestart} />
+                )}
                 <GameBoard
                     onSelectSquareFn={onSelectSquareClickHandler}
                     board={gameBoard}
