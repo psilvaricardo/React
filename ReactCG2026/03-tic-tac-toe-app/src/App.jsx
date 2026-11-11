@@ -4,24 +4,25 @@ import { Player } from "./components/Player.jsx";
 import { GameBoard } from "./components/GameBoard.jsx";
 import "./App.css";
 
+const deriveActivePlayer = (gameTurns) => {
+    let currentPlayer = "X";
+    if (gameTurns.length > 0) {
+        gameTurns[0].player === "X"
+            ? (currentPlayer = "O")
+            : (currentPlayer = "X");
+    }
+
+    return currentPlayer;
+};
+
 export const App = () => {
     const [gameTurns, setGameTurns] = useState([]);
-    // Liftting state up, as it is common for Player and GameBoard
-    const [activePlayer, setActivePlayer] = useState("X");
+
+    const activePlayer = deriveActivePlayer(gameTurns);
 
     const onSelectSquareClickHandler = (e, rowIndex, colIndex) => {
-        setActivePlayer((currActivePlayer) =>
-            currActivePlayer === "X" ? "O" : "X",
-        );
-
         setGameTurns((prevTurns) => {
-            let currentPlayer = "X";
-            if (prevTurns.length > 0) {
-                prevTurns[0].player === "X"
-                    ? (currentPlayer = "O")
-                    : (currentPlayer = "X");
-            }
-
+            const currentPlayer = deriveActivePlayer(prevTurns);
             const updatedTurns = [
                 {
                     square: { row: rowIndex, col: colIndex },
