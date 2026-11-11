@@ -11,30 +11,10 @@ export const GameBoard = ({ onSelectSquareFn, turns }) => {
         const { square, player } = turn;
         const { row, col } = square;
 
+        // modifying a variable defined outside a component
+        // is not correct and not allowed.
         gameBoard[row][col] = player;
     }
-
-    // const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-    // // when this is trigger, we want to change one of the squares
-    // // from undefined to either X or O, depending on who's clicking it.
-    // const onBoardClickHandler = (e, rowIndex, colIndex) => {
-    //     // we need to preserve the previous state.
-    //     setGameBoard((prevGameBoard) => {
-    //         // following best practices, we need to create a copy of the array.
-    //         // this is a new array with the old values
-    //         const updatedBoard = [
-    //             ...prevGameBoard.map((innerArray) => [...innerArray]),
-    //         ];
-
-    //         // we are updating the state in an immatable way!!
-    //         updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-    //         return updatedBoard;
-    //     });
-
-    //     // calling the function reference
-    //     onSelectSquareFn();
-    // };
 
     return (
         <ol id="game-board">
@@ -45,6 +25,7 @@ export const GameBoard = ({ onSelectSquareFn, turns }) => {
                             <li key={j}>
                                 <button
                                     onClick={(e) => onSelectSquareFn(e, i, j)}
+                                    disabled={playerSymbol !== undefined}
                                 >
                                     {playerSymbol}
                                 </button>

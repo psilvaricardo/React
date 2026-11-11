@@ -6,10 +6,8 @@ import "./App.css";
 
 const deriveActivePlayer = (gameTurns) => {
     let currentPlayer = "X";
-    if (gameTurns.length > 0) {
-        gameTurns[0].player === "X"
-            ? (currentPlayer = "O")
-            : (currentPlayer = "X");
+    if (gameTurns.length > 0 && gameTurns[0].player === "X") {
+        currentPlayer = "O";    
     }
 
     return currentPlayer;
@@ -21,8 +19,10 @@ export const App = () => {
     const activePlayer = deriveActivePlayer(gameTurns);
 
     const onSelectSquareClickHandler = (e, rowIndex, colIndex) => {
+
         setGameTurns((prevTurns) => {
             const currentPlayer = deriveActivePlayer(prevTurns);
+            
             const updatedTurns = [
                 {
                     square: { row: rowIndex, col: colIndex },
