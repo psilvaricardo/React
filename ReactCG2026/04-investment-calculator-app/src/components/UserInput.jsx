@@ -1,27 +1,4 @@
-import { useState } from "react";
-
-export const UserInput = () => {
-    // for managing this state, I will
-    // one state object that merges all
-    // the input fields
-    const [userInput, setUserInput] = useState({
-        initialInvestment: 10000, // USD
-        annualInvestment: 1200, // USD
-        expectedReturn: 6, // percent
-        duration: 10,
-    });
-
-    const onChangeHandler = (inputId, newValue) => {
-        setUserInput((prevUserInput) => {
-            return {
-                // spreading the old user input info so we copy the old values
-                ...prevUserInput,
-                // and we just update the value we need, the one updated.
-                inputId: newValue,
-            };
-        });
-    };
-
+export const UserInput = ({ userInput, onChangeHandler }) => {
     return (
         <section id="user-input">
             <div id="input-group">
