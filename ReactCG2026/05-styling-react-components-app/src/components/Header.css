@@ -1,3 +1,96 @@
+/*
+Advantages & Disadvantages of Using Vanilla CSS in ReactJS
+
+Vanilla CSS refers to using standard CSS files to style React
+components without relying on additional styling libraries or
+frameworks.
+
+Example:
+
+import logo from "../assets/logo.png";
+import "./Header.css";
+
+export const Header = () => {
+    ...
+};
+
+
+ADVANTAGES                          DISADVANTAGES
+----------------------------------------------------------------
+1. Simplicity                       1. Global Scope
+Uses standard CSS syntax without    CSS rules are applied globally,
+requiring additional libraries,     even when the CSS file is
+dependencies, or configuration.      imported into a specific
+                                    React component.
+
+2. Separation of Concerns           2. Naming Conflicts
+Keeps styling separate from         Class names defined in different
+component logic, making the         CSS files can conflict with each
+code easier to read and maintain.   other and cause unexpected
+                                    styling behavior.
+
+3. Familiarity                      3. Lack of Component Isolation
+Developers can use their existing   Importing Header.css into
+CSS knowledge without learning      Header.jsx does not automatically
+a new styling methodology.          restrict its styles to the
+                                    Header component.
+
+4. Reusability                      4. Maintenance Challenges
+CSS classes can be shared across    As an application grows, managing
+multiple React components,          global styles, selectors, and
+promoting consistent styling.       dependencies between CSS files
+                                    becomes more difficult.
+
+5. Browser Compatibility            5. Dynamic Styling
+Uses native browser-supported       Applying styles based on component
+CSS features, including media       props or state often requires
+queries, animations, Flexbox,        conditional class names, CSS
+and Grid.                           variables, or inline styles.
+
+6. No Additional Dependencies       6. Unused CSS
+Does not require external           Styles may remain in CSS files
+styling libraries, reducing         even after the components that
+dependency management and           originally used them have been
+potential library overhead.         removed.
+
+7. Easy to Debug                    7. Specificity Issues
+Styles can be inspected and         CSS specificity, inheritance, and
+modified directly using browser     stylesheet ordering can cause
+developer tools.                    unexpected style overrides.
+
+8. CSS code is decoupled from       8. You need to know CSS.
+JSX code.
+
+
+CONCLUSION
+
+Vanilla CSS is a simple and effective approach to styling React
+applications, particularly small and medium-sized projects.
+
+However, because standard CSS operates in a global scope, larger
+applications may encounter naming conflicts, style overrides,
+and maintainability challenges.
+
+Alternative approaches, such as CSS Modules, CSS-in-JS, or
+utility-first CSS frameworks, can help address some of these
+limitations by providing better style isolation, organization,
+or dynamic styling capabilities.
+
+IMPORTANT:
+
+Importing a CSS file into a React component does not mean that
+the styles are scoped exclusively to that component.
+
+For example:
+
+import "./Header.css";
+
+The styles defined in Header.css can affect any element in the
+application that matches its CSS selectors, regardless of which
+React component contains that element.
+
+*/
+
 header {
     display: flex;
     flex-direction: column;
