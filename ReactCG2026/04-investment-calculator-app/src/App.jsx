@@ -14,14 +14,17 @@ export const App = () => {
         duration: 10, // years
     });
 
+    // fixing UI issues for negative/invalid duration
+    const isInputValid = userInput.duration >= 1;
+
     const onChangeHandler = (inputIdKey, newValue) => {
         setUserInput((prevUserInput) => {
             return {
                 // spreading the old user input info so we copy the old values
                 ...prevUserInput,
                 // and we just update the value we need, the one updated.
-                // I dynamically determine the property name from the value 
-                // of [inputIdKey] variable, because JavaScript evaluates the 
+                // I dynamically determine the property name from the value
+                // of [inputIdKey] variable, because JavaScript evaluates the
                 // expression inside the square brackets.
                 // and adding the plus + symbol will force a conversion to 'number'
                 [inputIdKey]: +newValue,
@@ -36,7 +39,7 @@ export const App = () => {
                 userInput={userInput}
                 onChangeHandler={onChangeHandler}
             />
-            <Results userInput={userInput} />
+            <Results userInput={userInput} isValid={isInputValid} />
         </>
     );
 };
