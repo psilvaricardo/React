@@ -7,7 +7,7 @@ export const Results = ({ userInput }) => {
         resultData[0].interest -
         resultData[0].annualInvestment;
 
-    console.table(resultData);
+    //console.table(resultData);
     return (
         <table id="result">
             <thead>
@@ -26,15 +26,17 @@ export const Results = ({ userInput }) => {
                         yearData.annualInvestment * yearData.year -
                         initialInvestment;
                     const totAmmountInvested =
-                        yearData.annualInvestment - totalInterest;
+                        yearData.valueEndOfYear - totalInterest;
 
-                    <tr key={yearData.year}>
-                        <td>{yearData.year}</td>
-                        <td>{formatter.format(yearData.valueEndOfYear)}</td>
-                        <td>{formatter.format(yearData.interest)}</td>
-                        <td>{formatter.format(totalInterest)}</td>
-                        <td>{formatter.format(totAmmountInvested)}</td>
-                    </tr>;
+                    return (
+                        <tr key={yearData.year}>
+                            <td>{yearData.year}</td>
+                            <td>{formatter.format(yearData.valueEndOfYear)}</td>
+                            <td>{formatter.format(yearData.interest)}</td>
+                            <td>{formatter.format(totalInterest)}</td>
+                            <td>{formatter.format(totAmmountInvested)}</td>
+                        </tr>
+                    );
                 })}
             </tbody>
         </table>
