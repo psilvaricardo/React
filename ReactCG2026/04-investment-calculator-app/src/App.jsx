@@ -11,16 +11,20 @@ export const App = () => {
         initialInvestment: 10000, // USD
         annualInvestment: 1200, // USD
         expectedReturn: 6, // percent
-        duration: 10,
+        duration: 10, // years
     });
 
-    const onChangeHandler = (inputId, newValue) => {
+    const onChangeHandler = (inputIdKey, newValue) => {
         setUserInput((prevUserInput) => {
             return {
                 // spreading the old user input info so we copy the old values
                 ...prevUserInput,
                 // and we just update the value we need, the one updated.
-                inputId: newValue,
+                // I dynamically determine the property name from the value 
+                // of [inputIdKey] variable, because JavaScript evaluates the 
+                // expression inside the square brackets.
+                // and adding the plus + symbol will force a conversion to 'number'
+                [inputIdKey]: +newValue,
             };
         });
     };
