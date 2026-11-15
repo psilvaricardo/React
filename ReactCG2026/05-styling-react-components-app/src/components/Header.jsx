@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import "./Header.css";
+import classes from "./Header.module.css";
 
 export const Header = () => {
     /** 
@@ -160,7 +160,7 @@ export const Header = () => {
         <header>
             <img src={logo} alt="A canvas" />
             <h1>ReactArt</h1>
-            <p style={{ color: "red" }}>
+            <p className={classes.paragraph}>
                 A community of artists and art-lovers.
             </p>
         </header>

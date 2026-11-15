@@ -133,3 +133,9 @@ header p {
         font-size: 2.25rem;
     }
 }
+
+.paragraph {
+    text-align: center;
+    color: #a39191;
+    margin: 0;
+}
