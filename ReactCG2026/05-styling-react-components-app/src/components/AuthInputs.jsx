@@ -1,4 +1,13 @@
 import { useState } from "react";
+import { styled } from "styled-components";
+
+// using a tag template
+const DivCSSComponent = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+`;
 
 export const AuthInputs = () => {
     const [enteredEmail, setEnteredEmail] = useState("");
@@ -22,7 +31,7 @@ export const AuthInputs = () => {
 
     return (
         <div id="auth-inputs">
-            <div className="controls">
+            <DivCSSComponent>
                 <p>
                     <label
                         className={`label ${emailNotValid ? "invalid" : ""}`}
@@ -54,7 +63,7 @@ export const AuthInputs = () => {
                         }
                     />
                 </p>
-            </div>
+            </DivCSSComponent>
             <div className="actions">
                 <button type="button" className="text-button">
                     Create a new account

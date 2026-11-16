@@ -22,8 +22,6 @@ npm install -D @types/react@19 @types/react-dom@19
 ```
 ## Install Styled Components
 
-- https://styled-components.com/
-
 All you need to do to download and install styled-components run:
 
 ```bash
@@ -35,3 +33,7 @@ It's recommended (but not required) to also use the styled-components Babel plug
 ```bash
 npm install --save-dev babel-plugin-styled-components
 ```
+
+- https://styled-components.com/
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
+
