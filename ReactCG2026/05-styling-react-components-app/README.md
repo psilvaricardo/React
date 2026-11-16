@@ -20,3 +20,18 @@ If you are developing a production application, we recommend using TypeScript wi
 ```bash
 npm install -D @types/react@19 @types/react-dom@19
 ```
+## Install Styled Components
+
+- https://styled-components.com/
+
+All you need to do to download and install styled-components run:
+
+```bash
+npm install styled-components
+```
+
+It's recommended (but not required) to also use the styled-components Babel plugin if you can. It offers many benefits like more legible class names, server-side rendering compatibility, smaller bundles, and more.
+
+```bash
+npm install --save-dev babel-plugin-styled-components
+```
