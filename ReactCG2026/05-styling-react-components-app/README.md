@@ -37,3 +37,7 @@ npm install --save-dev babel-plugin-styled-components
 - https://styled-components.com/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
 
+## Get started with Tailwind CSS
+
+Using Vite:
+- https://tailwindcss.com/docs/installation/using-vite
