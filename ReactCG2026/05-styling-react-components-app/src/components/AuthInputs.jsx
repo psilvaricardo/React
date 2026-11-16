@@ -9,6 +9,16 @@ const DivCSSComponent = styled.div`
     margin-bottom: 1.5rem;
 `;
 
+const LabelCSSComponent = styled.label`
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+`;
+
 export const AuthInputs = () => {
     const [enteredEmail, setEnteredEmail] = useState("");
     const [enteredPassword, setEnteredPassword] = useState("");
@@ -33,11 +43,11 @@ export const AuthInputs = () => {
         <div id="auth-inputs">
             <DivCSSComponent>
                 <p>
-                    <label
+                    <LabelCSSComponent
                         className={`label ${emailNotValid ? "invalid" : ""}`}
                     >
                         Email
-                    </label>
+                    </LabelCSSComponent>
                     <input
                         type="email"
                         //style={{
