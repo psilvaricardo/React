@@ -57,7 +57,7 @@ export const AuthInputs = () => {
         <div id="auth-inputs">
             <DivCSSComponent>
                 <p>
-                    <LabelCSSComponent invalid={emailNotValid}>
+                    <LabelCSSComponent $invalid={emailNotValid}>
                         Email
                     </LabelCSSComponent>
                     <InputCSSComponent
