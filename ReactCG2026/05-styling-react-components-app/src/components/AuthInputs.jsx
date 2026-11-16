@@ -17,7 +17,7 @@ const LabelCSSComponent = styled.label`
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: ${(props) => (props.invalid ? "#f87171" : "#6b7280")} 
-    color: ${({ invalid }) => (invalid ? "#f87171" : "#6b7280")} 
+    color: ${({ $invalid }) => ($invalid ? "#f87171" : "#6b7280")} 
 `;
 
 const InputCSSComponent = styled.input`
@@ -72,7 +72,7 @@ export const AuthInputs = () => {
                     />
                 </p>
                 <p>
-                    <LabelCSSComponent invalid={passwordNotValid}>
+                    <LabelCSSComponent $invalid={passwordNotValid}>
                         Password
                     </LabelCSSComponent>
                     <InputCSSComponent
