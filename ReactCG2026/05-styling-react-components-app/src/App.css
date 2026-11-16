@@ -78,6 +78,12 @@ button:focus {
         0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
+/* just for POC */
+.label.invalid {
+    color: #f87171;
+}
+
+
 label.invalid {
     color: #f87171;
 }
