@@ -10,6 +10,12 @@ export const Player = () => {
         // we can access all the properties and methods of the native
         // inpput element (in this case) using the current property of the ref
         setEnteredPlayerName(playerName.current.value);
+        // if we want to clear the input text after the click
+        // usually in react you write declarative code, not imperative like the
+        // following line, but this is a special case in which the input is not
+        // connected to any state of the component and this line will help you 
+        // save a lot of time.
+        playerName.current.value = '';
     };
 
     return (
