@@ -1,6 +1,6 @@
-import Player from "./components/Player";
+import { Player } from "./components/Player";
 
-function App() {
+export const App = () => {
   return (
     <>
       <Player />
@@ -9,4 +9,3 @@ function App() {
   );
 }
 
-export default App;
