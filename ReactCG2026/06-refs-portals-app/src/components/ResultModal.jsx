@@ -1,4 +1,5 @@
 import { useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export const ResultModal = ({ ref, targetTime, timeRemaining, onResetFn }) => {
     const dialog = useRef();
@@ -14,7 +15,10 @@ export const ResultModal = ({ ref, targetTime, timeRemaining, onResetFn }) => {
         };
     });
 
-    return (
+    /** createPortal() allows React to render JSX into a different location
+     * in the DOM, outside its parent component's HTML hierarchy. It's commonly
+     * used for modals, dialogs, tooltips, and overlays. */
+    return createPortal(
         <dialog ref={dialog} className="result-modal" onClose={onResetFn}>
             {userLost && <h2>You lost</h2>}
             {!userLost && <h2>Your score: {score}</h2>}
@@ -28,6 +32,7 @@ export const ResultModal = ({ ref, targetTime, timeRemaining, onResetFn }) => {
             <form method="dialog" onSubmit={onResetFn}>
                 <button>Close</button>
             </form>
-        </dialog>
+        </dialog>,
+        document.getElementById("modal-root"),
     );
 };
