@@ -12,6 +12,7 @@ export const TimerChallenge = ({ title, targetTime }) => {
      * but it is NOT part of the component state.
      */
     const timer = useRef();
+    const dialog = useRef();
 
     const [timerStarted, setTimerStarted] = useState(false);
     const [timerExpired, setTimerExpired] = useState(false);
@@ -20,6 +21,7 @@ export const TimerChallenge = ({ title, targetTime }) => {
         // setting the ref does not re-execute the component funtion
         timer.current = setTimeout(() => {
             setTimerExpired(true);
+            dialog.current.open();
         }, targetTime * 1000);
 
         setTimerStarted(true);
@@ -31,9 +33,7 @@ export const TimerChallenge = ({ title, targetTime }) => {
 
     return (
         <>
-            {timerExpired && (
-                <ResultModal result="lost" targetTime={targetTime} />
-            )}
+            <ResultModal ref={dialog} result="lost" targetTime={targetTime} />
             <section className="challenge">
                 <h2>{title}</h2>
                 <p className="challenge-time">
