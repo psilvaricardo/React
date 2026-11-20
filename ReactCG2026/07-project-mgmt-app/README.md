@@ -20,6 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ```bash
 npm install -D @types/react@19 @types/react-dom@19
 ```
+
 ## Install Styled Components
 
 All you need to do to download and install styled-components run:
@@ -39,5 +40,10 @@ npm install --save-dev babel-plugin-styled-components
 
 ## Get started with Tailwind CSS
 
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
 Using Vite:
+
 - https://tailwindcss.com/docs/installation/using-vite
