@@ -15,7 +15,7 @@ export const ResultModal = ({ ref, targetTime, timeRemaining, onResetFn }) => {
     });
 
     return (
-        <dialog ref={dialog} className="result-modal">
+        <dialog ref={dialog} className="result-modal" onClose={onResetFn}>
             {userLost && <h2>You lost</h2>}
             {!userLost && <h2>Your score: {score}</h2>}
             <p>
