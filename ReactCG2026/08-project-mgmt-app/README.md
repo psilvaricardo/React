@@ -47,3 +47,10 @@ npm install tailwindcss @tailwindcss/vite
 Using Vite:
 
 - https://tailwindcss.com/docs/installation/using-vite
+
+
+## Installing all the above in one command: 
+
+```bash
+npm install styled-components tailwindcss @tailwindcss/vite && npm install -D @types/react@19 @types/react-dom@19 babel-plugin-styled-components && npm install
+```
