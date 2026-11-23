@@ -2,7 +2,7 @@ import { Shop } from "./components/Shop.jsx";
 import { Header } from "./components/Header.jsx";
 import { Product } from "./components/Product.jsx";
 import { DUMMY_PRODUCTS } from "./dummy-products.js";
-import { CartContextProvider } from "./store/shopping-cart-context.jsx";
+import { CartContextProvider } from "./store/shopping-cart-reducer.jsx";
 import "./App.css";
 
 export const App = () => {
