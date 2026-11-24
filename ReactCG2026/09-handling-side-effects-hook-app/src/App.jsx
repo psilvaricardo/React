@@ -1,122 +1,114 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useRef, useState, useEffect, useCallback } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Places } from "./components/Places.jsx";
+import { AVAILABLE_PLACES } from "./data.js";
+import { Modal } from "./components/Modal.jsx";
+import { DeleteConfirmation } from "./components/DeleteConfirmation.jsx";
+import logoImg from "./assets/logo.png";
+import { sortPlacesByDistance } from "./loc.js";
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+    AVAILABLE_PLACES.find((place) => place.id === id),
+);
 
-      <div className="ticks"></div>
+export const App = () => {
+    const selectedPlace = useRef();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [availablePlaces, setAvailablePlaces] = useState([]);
+    const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const sortedPlaces = sortPlacesByDistance(
+                AVAILABLE_PLACES,
+                position.coords.latitude,
+                position.coords.longitude,
+            );
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+            setAvailablePlaces(sortedPlaces);
+        });
+    }, []);
 
-export default App
+    const handleStartRemovePlace = (id) => {
+        setModalIsOpen(true);
+        selectedPlace.current = id;
+    };
+
+    const handleStopRemovePlace = () => {
+        setModalIsOpen(false);
+    };
+
+    const handleSelectPlace = (id) => {
+        setPickedPlaces((prevPickedPlaces) => {
+            if (prevPickedPlaces.some((place) => place.id === id)) {
+                return prevPickedPlaces;
+            }
+            const place = AVAILABLE_PLACES.find((place) => place.id === id);
+            return [place, ...prevPickedPlaces];
+        });
+
+        const storedIds =
+            JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+        if (storedIds.indexOf(id) === -1) {
+            localStorage.setItem(
+                "selectedPlaces",
+                JSON.stringify([id, ...storedIds]),
+            );
+        }
+    };
+
+    const handleRemovePlace = useCallback(() => {
+        setPickedPlaces((prevPickedPlaces) =>
+            prevPickedPlaces.filter(
+                (place) => place.id !== selectedPlace.current,
+            ),
+        );
+        setModalIsOpen(false);
+
+        const storedIds =
+            JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+        localStorage.setItem(
+            "selectedPlaces",
+            JSON.stringify(
+                storedIds.filter((id) => id !== selectedPlace.current),
+            ),
+        );
+    }, []);
+
+    return (
+        <>
+            <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>
+                <DeleteConfirmation
+                    onCancel={handleStopRemovePlace}
+                    onConfirm={handleRemovePlace}
+                />
+            </Modal>
+
+            <header>
+                <img src={logoImg} alt="Stylized globe" />
+                <h1>PlacePicker</h1>
+                <p>
+                    Create your personal collection of places you would like to
+                    visit or you have visited.
+                </p>
+            </header>
+            <main>
+                <Places
+                    title="I'd like to visit ..."
+                    fallbackText={
+                        "Select the places you would like to visit below."
+                    }
+                    places={pickedPlaces}
+                    onSelectPlace={handleStartRemovePlace}
+                />
+                <Places
+                    title="Available Places"
+                    places={availablePlaces}
+                    fallbackText="Sorting places by distance..."
+                    onSelectPlace={handleSelectPlace}
+                />
+            </main>
+        </>
+    );
+};
